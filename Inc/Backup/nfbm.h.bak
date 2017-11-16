@@ -1,0 +1,40 @@
+#ifndef __nfbm_h
+#define __nfbm_h
+
+#include "stdint.h"
+
+
+struct AdcData{
+	
+	float Van; 				//AN-1
+	float Iloada;			//AN-2
+	float Ia;					//AN-11
+	
+	float Vbn;				//AN-3
+	float Iloadb;			//AN-4
+	float Ib;					//AN-12
+	
+	float Vcn;				//AN-5
+	float Ic;					//AN-6
+	
+	float IRESa;			//AN-8
+	float In;					//AN-7
+	
+	float IRESb;			//AN-9
+	float IRESc;			//AN-10
+	
+	float AB_synth;
+	float BC_synth;
+	float CA_synth;
+
+
+}; 
+
+
+
+
+
+
+
+
+#endif
