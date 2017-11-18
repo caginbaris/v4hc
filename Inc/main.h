@@ -136,8 +136,8 @@
 #define DI_53_DI_20_GPIO_Port GPIOD
 #define DI_54_DI_21_Pin GPIO_PIN_10
 #define DI_54_DI_21_GPIO_Port GPIOD
-#define COLD_TEST_DI_22_Pin GPIO_PIN_11
-#define COLD_TEST_DI_22_GPIO_Port GPIOD
+#define DI_55_DI_22_Pin GPIO_PIN_11
+#define DI_55_DI_22_GPIO_Port GPIOD
 #define DI_56_DI_23_Pin GPIO_PIN_12
 #define DI_56_DI_23_GPIO_Port GPIOD
 #define COLD_TEST_DI_24_Pin GPIO_PIN_13
