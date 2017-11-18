@@ -80,6 +80,126 @@ enum AdcChannel{
 };
 
 
+struct PhaseLockedLoop{
+
+	float ab_rad;
+	float bc_rad;
+	float ca_rad;
+	
+	float ab_deg;
+	float bc_deg;
+	float ca_deg;
+
+};
+
+extern struct PhaseLockedLoop PLL;
+
+struct control_loops{
+
+	float Qref;
+
+
+	struct{
+
+		float Kp;
+		float Ki;
+		float plimit;
+		float nlimit;
+
+		struct{float Qin;float error;float Pout;float Iout;float PIout;}ab;
+		struct{float Qin;float error;float Pout;float Iout;float PIout;}bc;
+		struct{float Qin;float error;float Pout;float Iout;float PIout;}ca;
+
+	}CL;
+
+	struct{
+
+		float Kp;
+		float Ki;
+		float plimit;
+		float nlimit;
+		float error;
+		float Pout;
+		float Iout;
+		float PIout;
+		float Qin;
+
+	}OL;
+
+
+};
+
+
+extern struct control_loops PI;
+
+struct firing_parameters{
+
+
+
+
+	float alpha_limit_up;
+	float alpha_limit_down;
+
+	float overload_alpha;
+	float nominal_alpha;
+
+
+
+
+	struct{
+
+		float alpha;
+		float alpha_neg;
+		float pre_alpha_p;
+		float pre_alpha_n;
+
+		uint8_t  p_fired:1;
+		uint8_t n_fired:1;
+		uint8_t p_flag:1;
+		uint8_t n_flag:1;
+
+	}ab;
+
+
+
+	struct{
+
+		float alpha;
+		float alpha_neg;
+		float pre_alpha_p;
+		float pre_alpha_n;
+
+		uint8_t p_fired:1;
+		uint8_t n_fired:1;
+		uint8_t p_flag:1;
+		uint8_t n_flag:1;
+
+	}bc;
+
+
+
+	struct{
+
+		float alpha;
+		float alpha_neg;
+		float pre_alpha_p;
+		float pre_alpha_n;
+
+		uint8_t p_fired:1;
+		uint8_t n_fired:1;
+		uint8_t p_flag:1;
+		uint8_t n_flag:1;
+
+	}ca;
+
+
+
+};
+
+extern struct firing_parameters fire;
+
+
+
 
 
 

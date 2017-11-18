@@ -34,6 +34,10 @@
 "v4hc\spi.o"
 "v4hc\rtc.o"
 "v4hc\stm32f7xx_it.o"
+"v4hc\pll.o"
+"v4hc\pi.o"
+"v4hc\q2alpha.o"
+"v4hc\firing.o"
 "v4hc\conversion.o"
 "v4hc\states.o"
 "v4hc\startupstate.o"
@@ -50,6 +54,9 @@
 "v4hc\manualanglemode.o"
 "v4hc\firingtestmode.o"
 "v4hc\hfmode.o"
+"v4hc\parameter_config.o"
+"v4hc\configroutines.o"
+"v4hc\ios.o"
 --library_type=microlib --strict --scatter "v4Hc\v4Hc.sct"
 --diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

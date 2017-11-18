@@ -850,6 +850,15 @@ Section Cross References
     stm32f7xx_it.o(i.SysTick_Handler) refers to stm32f7xx_hal_cortex.o(i.HAL_SYSTICK_IRQHandler) for HAL_SYSTICK_IRQHandler
     stm32f7xx_it.o(i.TIM1_UP_TIM10_IRQHandler) refers to stm32f7xx_hal_tim.o(i.HAL_TIM_IRQHandler) for HAL_TIM_IRQHandler
     stm32f7xx_it.o(i.TIM1_UP_TIM10_IRQHandler) refers to tim.o(.bss) for htim1
+    pll.o(i.PLL_all) refers to pll.o(i.PLL_theta) for PLL_theta
+    pll.o(i.PLL_all) refers to pll.o(.bss) for .bss
+    pll.o(i.PLL_all) refers to conversion.o(.bss) for adc
+    pll.o(i.PLL_theta) refers to cos.o(i.__hardfp_cos) for __hardfp_cos
+    pll.o(i.PLL_theta) refers to sin.o(i.__hardfp_sin) for __hardfp_sin
+    pll.o(i.PLL_theta) refers to pll.o(.bss) for .bss
+    pi.o(i.PI_CL) refers to pi.o(.bss) for .bss
+    pi.o(i.PI_OL) refers to pi.o(.bss) for .bss
+    q2alpha.o(i.Q2alpha) refers to firing.o(.bss) for fire
     conversion.o(i.HAL_ADC_ConvCpltCallback) refers to conversion.o(.bss) for .bss
     conversion.o(i.HAL_ADC_ConvCpltCallback) refers to conversion.o(.data) for .data
     conversion.o(i.init_conversion) refers to memseta.o(.text) for __aeabi_memset
@@ -868,6 +877,52 @@ Section Cross References
     modes.o(.data) refers to manualvarmode.o(i.manualVarMode) for manualVarMode
     modes.o(.data) refers to manualanglemode.o(i.manualAngleMode) for manualAngleMode
     modes.o(.data) refers to firingtestmode.o(i.firingTestMode) for firingTestMode
+    parameter_config.o(i.config_chart) refers to parameter_config.o(.data) for .data
+    parameter_config.o(.data) refers to configroutines.o(i.configReadStage) for configReadStage
+    parameter_config.o(.data) refers to configroutines.o(i.configReadErrorStage) for configReadErrorStage
+    parameter_config.o(.data) refers to configroutines.o(i.configRunStage) for configRunStage
+    parameter_config.o(.data) refers to configroutines.o(i.configSetStage) for configSetStage
+    parameter_config.o(.data) refers to configroutines.o(i.configWriteStage) for configWriteStage
+    parameter_config.o(.data) refers to configroutines.o(i.configWriteErrorStage) for configWriteErrorStage
+    parameter_config.o(.data) refers to configroutines.o(i.configRestartStage) for configRestartStage
+    cos.o(i.__hardfp_cos) refers (Special) to iusefp.o(.text) for __I$use$fp
+    cos.o(i.__hardfp_cos) refers to errno.o(i.__set_errno) for __set_errno
+    cos.o(i.__hardfp_cos) refers to dunder.o(i.__mathlib_dbl_invalid) for __mathlib_dbl_invalid
+    cos.o(i.__hardfp_cos) refers to rred.o(i.__ieee754_rem_pio2) for __ieee754_rem_pio2
+    cos.o(i.__hardfp_cos) refers to sin_i.o(i.__kernel_sin) for __kernel_sin
+    cos.o(i.__hardfp_cos) refers to cos_i.o(i.__kernel_cos) for __kernel_cos
+    cos.o(i.__softfp_cos) refers (Special) to iusefp.o(.text) for __I$use$fp
+    cos.o(i.__softfp_cos) refers to cos.o(i.__hardfp_cos) for __hardfp_cos
+    cos.o(i.cos) refers (Special) to iusefp.o(.text) for __I$use$fp
+    cos.o(i.cos) refers to cos.o(i.__hardfp_cos) for __hardfp_cos
+    cos_x.o(i.____hardfp_cos$lsc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    cos_x.o(i.____hardfp_cos$lsc) refers to errno.o(i.__set_errno) for __set_errno
+    cos_x.o(i.____hardfp_cos$lsc) refers to rred.o(i.__ieee754_rem_pio2) for __ieee754_rem_pio2
+    cos_x.o(i.____hardfp_cos$lsc) refers to sin_i.o(i.__kernel_sin) for __kernel_sin
+    cos_x.o(i.____hardfp_cos$lsc) refers to cos_i.o(i.__kernel_cos) for __kernel_cos
+    cos_x.o(i.____softfp_cos$lsc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    cos_x.o(i.____softfp_cos$lsc) refers to cos_x.o(i.____hardfp_cos$lsc) for ____hardfp_cos$lsc
+    cos_x.o(i.__cos$lsc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    cos_x.o(i.__cos$lsc) refers to cos_x.o(i.____hardfp_cos$lsc) for ____hardfp_cos$lsc
+    sin.o(i.__hardfp_sin) refers (Special) to iusefp.o(.text) for __I$use$fp
+    sin.o(i.__hardfp_sin) refers to errno.o(i.__set_errno) for __set_errno
+    sin.o(i.__hardfp_sin) refers to dunder.o(i.__mathlib_dbl_invalid) for __mathlib_dbl_invalid
+    sin.o(i.__hardfp_sin) refers to rred.o(i.__ieee754_rem_pio2) for __ieee754_rem_pio2
+    sin.o(i.__hardfp_sin) refers to cos_i.o(i.__kernel_cos) for __kernel_cos
+    sin.o(i.__hardfp_sin) refers to sin_i.o(i.__kernel_sin) for __kernel_sin
+    sin.o(i.__softfp_sin) refers (Special) to iusefp.o(.text) for __I$use$fp
+    sin.o(i.__softfp_sin) refers to sin.o(i.__hardfp_sin) for __hardfp_sin
+    sin.o(i.sin) refers (Special) to iusefp.o(.text) for __I$use$fp
+    sin.o(i.sin) refers to sin.o(i.__hardfp_sin) for __hardfp_sin
+    sin_x.o(i.____hardfp_sin$lsc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    sin_x.o(i.____hardfp_sin$lsc) refers to errno.o(i.__set_errno) for __set_errno
+    sin_x.o(i.____hardfp_sin$lsc) refers to rred.o(i.__ieee754_rem_pio2) for __ieee754_rem_pio2
+    sin_x.o(i.____hardfp_sin$lsc) refers to cos_i.o(i.__kernel_cos) for __kernel_cos
+    sin_x.o(i.____hardfp_sin$lsc) refers to sin_i.o(i.__kernel_sin) for __kernel_sin
+    sin_x.o(i.____softfp_sin$lsc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    sin_x.o(i.____softfp_sin$lsc) refers to sin_x.o(i.____hardfp_sin$lsc) for ____hardfp_sin$lsc
+    sin_x.o(i.__sin$lsc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    sin_x.o(i.__sin$lsc) refers to sin_x.o(i.____hardfp_sin$lsc) for ____hardfp_sin$lsc
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000D) for __rt_final_cpp
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$0000000F) for __rt_final_exit
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
@@ -875,6 +930,25 @@ Section Cross References
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry9a.o(.ARM.Collect$$$$0000000B) for _main_init
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry5.o(.ARM.Collect$$$$00000004) for _main_scatterload
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry2.o(.ARM.Collect$$$$00000001) for _main_stk
+    cos_i.o(i.__kernel_cos) refers (Special) to iusefp.o(.text) for __I$use$fp
+    cos_i.o(i.__kernel_cos) refers to poly.o(i.__kernel_poly) for __kernel_poly
+    cos_i.o(i.__kernel_cos) refers to cos_i.o(.constdata) for .constdata
+    cos_i.o(.constdata) refers (Special) to iusefp.o(.text) for __I$use$fp
+    rred.o(i.__ieee754_rem_pio2) refers (Special) to iusefp.o(.text) for __I$use$fp
+    rred.o(i.__ieee754_rem_pio2) refers to fabs.o(i.fabs) for fabs
+    rred.o(i.__ieee754_rem_pio2) refers to rred.o(.constdata) for .constdata
+    rred.o(i.__use_accurate_range_reduction) refers (Special) to iusefp.o(.text) for __I$use$fp
+    rred.o(.constdata) refers (Special) to iusefp.o(.text) for __I$use$fp
+    sin_i.o(i.__kernel_sin) refers (Special) to iusefp.o(.text) for __I$use$fp
+    sin_i.o(i.__kernel_sin) refers to fpclassify.o(i.__ARM_fpclassify) for __ARM_fpclassify
+    sin_i.o(i.__kernel_sin) refers to dunder.o(i.__mathlib_dbl_underflow) for __mathlib_dbl_underflow
+    sin_i.o(i.__kernel_sin) refers to poly.o(i.__kernel_poly) for __kernel_poly
+    sin_i.o(i.__kernel_sin) refers to sin_i.o(.constdata) for .constdata
+    sin_i.o(.constdata) refers (Special) to iusefp.o(.text) for __I$use$fp
+    sin_i_x.o(i.____kernel_sin$lsc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    sin_i_x.o(i.____kernel_sin$lsc) refers to poly.o(i.__kernel_poly) for __kernel_poly
+    sin_i_x.o(i.____kernel_sin$lsc) refers to sin_i_x.o(.constdata) for .constdata
+    sin_i_x.o(.constdata) refers (Special) to iusefp.o(.text) for __I$use$fp
     entry2.o(.ARM.Collect$$$$00000001) refers to entry2.o(.ARM.Collect$$$$00002712) for __lit__00000000
     entry2.o(.ARM.Collect$$$$00002712) refers to startup_stm32f767xx.o(STACK) for __initial_sp
     entry2.o(__vectab_stack_and_reset_area) refers to startup_stm32f767xx.o(STACK) for __initial_sp
@@ -882,6 +956,14 @@ Section Cross References
     entry5.o(.ARM.Collect$$$$00000004) refers to init.o(.text) for __scatterload
     entry9a.o(.ARM.Collect$$$$0000000B) refers to main.o(i.main) for main
     entry9b.o(.ARM.Collect$$$$0000000C) refers to main.o(i.main) for main
+    errno.o(i.__aeabi_errno_addr) refers to errno.o(.data) for .data
+    errno.o(i.__read_errno) refers to errno.o(.data) for .data
+    errno.o(i.__set_errno) refers to errno.o(.data) for .data
+    fabs.o(i.__hardfp_fabs) refers (Special) to iusefp.o(.text) for __I$use$fp
+    fabs.o(i.__softfp_fabs) refers (Special) to iusefp.o(.text) for __I$use$fp
+    fabs.o(i.fabs) refers (Special) to iusefp.o(.text) for __I$use$fp
+    fpclassify.o(i.__ARM_fpclassify) refers (Special) to iusefp.o(.text) for __I$use$fp
+    poly.o(i.__kernel_poly) refers (Special) to iusefp.o(.text) for __I$use$fp
     init.o(.text) refers to entry5.o(.ARM.Collect$$$$00000004) for __main_after_scatterload
 
 
@@ -1545,10 +1627,22 @@ Removing Unused input sections from the image.
     Removing stm32f7xx_it.o(.rev16_text), (4 bytes).
     Removing stm32f7xx_it.o(.revsh_text), (4 bytes).
     Removing stm32f7xx_it.o(.rrx_text), (6 bytes).
+    Removing pll.o(i.PLL_all), (72 bytes).
+    Removing pll.o(i.PLL_theta), (384 bytes).
+    Removing pll.o(.bss), (96 bytes).
+    Removing pi.o(i.PI_CL), (356 bytes).
+    Removing pi.o(i.PI_OL), (140 bytes).
+    Removing pi.o(i.init_PI), (2 bytes).
+    Removing pi.o(.bss), (116 bytes).
+    Removing q2alpha.o(i.Q2alpha), (324 bytes).
+    Removing q2alpha.o(i.Q2alpha_transforms), (2 bytes).
+    Removing q2alpha.o(i.init_Q2alpha), (2 bytes).
+    Removing firing.o(.bss), (76 bytes).
     Removing conversion.o(.rev16_text), (4 bytes).
     Removing conversion.o(.revsh_text), (4 bytes).
     Removing conversion.o(.rrx_text), (6 bytes).
     Removing conversion.o(i.init_conversion), (36 bytes).
+    Removing conversion.o(.bss), (72 bytes).
     Removing states.o(i.state_chart), (16 bytes).
     Removing states.o(.data), (32 bytes).
     Removing startupstate.o(i.startupState), (2 bytes).
@@ -1566,8 +1660,21 @@ Removing Unused input sections from the image.
     Removing manualanglemode.o(i.manualAngleMode), (2 bytes).
     Removing firingtestmode.o(i.firingTestMode), (2 bytes).
     Removing hfmode.o(i.hfMode), (2 bytes).
+    Removing parameter_config.o(i.config_chart), (16 bytes).
+    Removing parameter_config.o(.data), (32 bytes).
+    Removing configroutines.o(i.configReadErrorStage), (2 bytes).
+    Removing configroutines.o(i.configReadStage), (2 bytes).
+    Removing configroutines.o(i.configRestartStage), (2 bytes).
+    Removing configroutines.o(i.configRunStage), (2 bytes).
+    Removing configroutines.o(i.configSetStage), (2 bytes).
+    Removing configroutines.o(i.configWriteErrorStage), (2 bytes).
+    Removing configroutines.o(i.configWriteStage), (2 bytes).
+    Removing ios.o(.rev16_text), (4 bytes).
+    Removing ios.o(.revsh_text), (4 bytes).
+    Removing ios.o(.rrx_text), (6 bytes).
+    Removing ios.o(i.ios), (2 bytes).
 
-677 unused section(s) (total 50340 bytes) removed from the image.
+702 unused section(s) (total 52060 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1611,20 +1718,34 @@ Image Symbol Table
     ../Src/system_stm32f7xx.c                0x00000000   Number         0  system_stm32f7xx.o ABSOLUTE
     ../Src/tim.c                             0x00000000   Number         0  tim.o ABSOLUTE
     ../Src/usart.c                           0x00000000   Number         0  usart.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/errno.c                 0x00000000   Number         0  errno.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     ../clib/microlib/string/memset.c         0x00000000   Number         0  memseta.o ABSOLUTE
+    ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
+    ../mathlib/cos.c                         0x00000000   Number         0  cos_x.o ABSOLUTE
+    ../mathlib/cos.c                         0x00000000   Number         0  cos.o ABSOLUTE
+    ../mathlib/cos_i.c                       0x00000000   Number         0  cos_i.o ABSOLUTE
+    ../mathlib/dunder.c                      0x00000000   Number         0  dunder.o ABSOLUTE
+    ../mathlib/fabs.c                        0x00000000   Number         0  fabs.o ABSOLUTE
+    ../mathlib/fpclassify.c                  0x00000000   Number         0  fpclassify.o ABSOLUTE
+    ../mathlib/poly.c                        0x00000000   Number         0  poly.o ABSOLUTE
+    ../mathlib/rred.c                        0x00000000   Number         0  rred.o ABSOLUTE
+    ../mathlib/sin.c                         0x00000000   Number         0  sin.o ABSOLUTE
+    ../mathlib/sin.c                         0x00000000   Number         0  sin_x.o ABSOLUTE
+    ../mathlib/sin_i.c                       0x00000000   Number         0  sin_i_x.o ABSOLUTE
+    ../mathlib/sin_i.c                       0x00000000   Number         0  sin_i.o ABSOLUTE
     ..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal.c 0x00000000   Number         0  stm32f7xx_hal.o ABSOLUTE
     ..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_adc.c 0x00000000   Number         0  stm32f7xx_hal_adc.o ABSOLUTE
     ..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_adc_ex.c 0x00000000   Number         0  stm32f7xx_hal_adc_ex.o ABSOLUTE
@@ -1659,7 +1780,12 @@ Image Symbol Table
     ..\Src\system_stm32f7xx.c                0x00000000   Number         0  system_stm32f7xx.o ABSOLUTE
     ..\Src\tim.c                             0x00000000   Number         0  tim.o ABSOLUTE
     ..\Src\usart.c                           0x00000000   Number         0  usart.o ABSOLUTE
+    Firing.c                                 0x00000000   Number         0  firing.o ABSOLUTE
+    PI.c                                     0x00000000   Number         0  pi.o ABSOLUTE
+    PLL.c                                    0x00000000   Number         0  pll.o ABSOLUTE
+    Q2Alpha.c                                0x00000000   Number         0  q2alpha.o ABSOLUTE
     closedLoopMode.c                         0x00000000   Number         0  closedloopmode.o ABSOLUTE
+    configRoutines.c                         0x00000000   Number         0  configroutines.o ABSOLUTE
     conversion.c                             0x00000000   Number         0  conversion.o ABSOLUTE
     conversion.c                             0x00000000   Number         0  conversion.o ABSOLUTE
     dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
@@ -1669,10 +1795,13 @@ Image Symbol Table
     hfMode.c                                 0x00000000   Number         0  hfmode.o ABSOLUTE
     idleState.c                              0x00000000   Number         0  idlestate.o ABSOLUTE
     init.s                                   0x00000000   Number         0  init.o ABSOLUTE
+    ios.c                                    0x00000000   Number         0  ios.o ABSOLUTE
+    ios.c                                    0x00000000   Number         0  ios.o ABSOLUTE
     manualAngleMode.c                        0x00000000   Number         0  manualanglemode.o ABSOLUTE
     manualVarMode.c                          0x00000000   Number         0  manualvarmode.o ABSOLUTE
     modes.c                                  0x00000000   Number         0  modes.o ABSOLUTE
     openLoopMode.c                           0x00000000   Number         0  openloopmode.o ABSOLUTE
+    parameter_config.c                       0x00000000   Number         0  parameter_config.o ABSOLUTE
     readyState.c                             0x00000000   Number         0  readystate.o ABSOLUTE
     runState.c                               0x00000000   Number         0  runstate.o ABSOLUTE
     startupState.c                           0x00000000   Number         0  startupstate.o ABSOLUTE
@@ -1831,7 +1960,7 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    BuildAttributes$$THM_ISAv4$E$P$D$K$B$S$7EM$VFPv5_D16$PE$PLD8$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$EBA8$MICROLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    BuildAttributes$$THM_ISAv4$E$P$D$K$B$S$7EM$VFPv5_D16$PE$PLD8$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OTIME$ROPI$IEEEX$EBA8$MICROLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
     __ARM_use_no_argv                        0x00000000   Number         0  main.o ABSOLUTE
     __cpp_initialize__aeabi_                  - Undefined Weak Reference
     __cxa_finalize                            - Undefined Weak Reference
@@ -2090,17 +2219,17 @@ Memory Map of the image
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x000001f8   Data   RO          157    RESET               startup_stm32f767xx.o
-    0x080001f8   0x00000000   Code   RO         4849  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x080001f8   0x00000004   Code   RO         4854    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x080001fc   0x00000004   Code   RO         4857    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x08000200   0x00000000   Code   RO         4859    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x08000200   0x00000000   Code   RO         4861    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x08000200   0x00000008   Code   RO         4862    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x08000208   0x00000000   Code   RO         4864    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x08000208   0x00000000   Code   RO         4866    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x08000208   0x00000004   Code   RO         4855    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x080001f8   0x00000000   Code   RO         5071  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x080001f8   0x00000004   Code   RO         5104    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x080001fc   0x00000004   Code   RO         5107    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x08000200   0x00000000   Code   RO         5109    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x08000200   0x00000000   Code   RO         5111    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x08000200   0x00000008   Code   RO         5112    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x08000208   0x00000000   Code   RO         5114    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x08000208   0x00000000   Code   RO         5116    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x08000208   0x00000004   Code   RO         5105    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
     0x0800020c   0x00000024   Code   RO          158    .text               startup_stm32f767xx.o
-    0x08000230   0x00000024   Code   RO         4868    .text               mc_w.l(init.o)
+    0x08000230   0x00000024   Code   RO         5136    .text               mc_w.l(init.o)
     0x08000254   0x00000134   Code   RO         3340    i.ADC_Init          stm32f7xx_hal_adc.o
     0x08000388   0x0000005a   Code   RO         3232    i.ADC_MultiModeDMAConvCplt  stm32f7xx_hal_adc_ex.o
     0x080003e2   0x00000012   Code   RO         3233    i.ADC_MultiModeDMAError  stm32f7xx_hal_adc_ex.o
@@ -2117,7 +2246,7 @@ Memory Map of the image
     0x080004c8   0x0000006c   Code   RO         3243    i.HAL_ADCEx_MultiModeConfigChannel  stm32f7xx_hal_adc_ex.o
     0x08000534   0x00000100   Code   RO         3245    i.HAL_ADCEx_MultiModeStart_DMA  stm32f7xx_hal_adc_ex.o
     0x08000634   0x00000164   Code   RO         3342    i.HAL_ADC_ConfigChannel  stm32f7xx_hal_adc.o
-    0x08000798   0x0000018c   Code   RO         4655    i.HAL_ADC_ConvCpltCallback  conversion.o
+    0x08000798   0x0000018c   Code   RO         4755    i.HAL_ADC_ConvCpltCallback  conversion.o
     0x08000924   0x00000002   Code   RO         3344    i.HAL_ADC_ConvHalfCpltCallback  stm32f7xx_hal_adc.o
     0x08000926   0x00000002   Code   RO         3346    i.HAL_ADC_ErrorCallback  stm32f7xx_hal_adc.o
     0x08000928   0x00000054   Code   RO         3351    i.HAL_ADC_Init      stm32f7xx_hal_adc.o
@@ -2211,15 +2340,15 @@ Memory Map of the image
     0x080031c8   0x00000064   Code   RO         3808    i.UART_WaitOnFlagUntilTimeout  stm32f7xx_hal_uart.o
     0x0800322c   0x00000002   Code   RO         4567    i.UsageFault_Handler  stm32f7xx_it.o
     0x0800322e   0x00000002   Code   RO         4200    i._Error_Handler    main.o
-    0x08003230   0x0000000e   Code   RO         4872    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x0800323e   0x00000002   Code   RO         4873    i.__scatterload_null  mc_w.l(handlers.o)
-    0x08003240   0x0000000e   Code   RO         4874    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x08003230   0x0000000e   Code   RO         5140    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0800323e   0x00000002   Code   RO         5141    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08003240   0x0000000e   Code   RO         5142    i.__scatterload_zeroinit  mc_w.l(handlers.o)
     0x0800324e   0x00000002   PAD
     0x08003250   0x00000088   Code   RO         4201    i.main              main.o
     0x080032d8   0x00000010   Data   RO            6    .constdata          system_stm32f7xx.o
     0x080032e8   0x00000008   Data   RO            7    .constdata          system_stm32f7xx.o
     0x080032f0   0x00000008   Data   RO         1881    .constdata          stm32f7xx_hal_dma.o
-    0x080032f8   0x00000020   Data   RO         4870    Region$$Table       anon$$obj.o
+    0x080032f8   0x00000020   Data   RO         5138    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x000008e8, Max: 0x00080000, ABSOLUTE)
@@ -2228,7 +2357,7 @@ Memory Map of the image
 
     0x20000000   0x00000004   Data   RW            8    .data               system_stm32f7xx.o
     0x20000004   0x00000004   Data   RW         1705    .data               stm32f7xx_hal.o
-    0x20000008   0x00000001   Data   RW         4658    .data               conversion.o
+    0x20000008   0x00000001   Data   RW         4759    .data               conversion.o
     0x20000009   0x00000003   PAD
     0x2000000c   0x000001f8   Zero   RW         4144    .bss                adc.o
     0x20000204   0x00000080   Zero   RW         4295    .bss                tim.o
@@ -2236,7 +2365,7 @@ Memory Map of the image
     0x200002f4   0x0000004c   Zero   RW         4432    .bss                quadspi.o
     0x20000340   0x00000064   Zero   RW         4474    .bss                spi.o
     0x200003a4   0x00000020   Zero   RW         4516    .bss                rtc.o
-    0x200003c4   0x00000120   Zero   RW         4657    .bss                conversion.o
+    0x200003c4   0x00000120   Zero   RW         4757    .bss                conversion.o
     0x200004e4   0x00000004   PAD
     0x200004e8   0x00000400   Zero   RW          155    STACK               startup_stm32f767xx.o
 
@@ -2249,7 +2378,7 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
       1124        126          0          0        504       3605   adc.o
-       396         14          0          1        288       2115   conversion.o
+       396         14          0          1        288       3319   conversion.o
         44          4          0          0          0        770   dma.o
        556         34          0          0          0       1259   gpio.o
        330         30          0          0          0       2465   main.o
@@ -2279,7 +2408,7 @@ Image component sizes
        156         38          0          0        112       1682   usart.o
 
     ----------------------------------------------------------------------
-     12424        912        568         12       2268    1019239   Object Totals
+     12424        912        568         12       2268    1020443   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         18          0          0          3          4          0   (incl. Padding)
 
@@ -2318,8 +2447,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     12512        928        568         12       2268    1010111   Grand Totals
-     12512        928        568         12       2268    1010111   ELF Image Totals
+     12512        928        568         12       2268    1011315   Grand Totals
+     12512        928        568         12       2268    1011315   ELF Image Totals
      12512        928        568         12          0          0   ROM Totals
 
 ==============================================================================

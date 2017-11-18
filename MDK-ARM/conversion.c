@@ -14,6 +14,8 @@ uint32_t adcBuffer[18]={0};
 uint8_t conversion_completed={0};
 
 union unionAdc Adc;
+
+struct AdcData adc;
 struct AdcData offset;
 struct AdcData scale;
 
@@ -50,6 +52,8 @@ if(hadc->Instance==ADC1){
 	Adc.ch.Vab=			(Adc.ch.Van-Adc.ch.Vbn);
 	Adc.ch.Vbc=			(Adc.ch.Vbn-Adc.ch.Vcn);
 	Adc.ch.Vab=			(Adc.ch.Vcn-Adc.ch.Van);
+	
+
 
 	conversion_completed=1;
 	

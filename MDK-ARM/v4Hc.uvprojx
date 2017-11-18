@@ -576,6 +576,28 @@
         </Group>
         <Group>
           <GroupName>control</GroupName>
+          <Files>
+            <File>
+              <FileName>PLL.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\PLL.c</FilePath>
+            </File>
+            <File>
+              <FileName>PI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\PI.c</FilePath>
+            </File>
+            <File>
+              <FileName>Q2Alpha.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Q2Alpha.c</FilePath>
+            </File>
+            <File>
+              <FileName>Firing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Firing.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>measurement</GroupName>
@@ -668,7 +690,29 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>config</GroupName>
+          <GroupName>parameter_config</GroupName>
+          <Files>
+            <File>
+              <FileName>parameter_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\parameter_config.c</FilePath>
+            </File>
+            <File>
+              <FileName>configRoutines.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\configRoutines.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>io</GroupName>
+          <Files>
+            <File>
+              <FileName>ios.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ios.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
