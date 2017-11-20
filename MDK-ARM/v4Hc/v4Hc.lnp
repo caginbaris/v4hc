@@ -36,9 +36,13 @@
 "v4hc\stm32f7xx_it.o"
 "v4hc\pll.o"
 "v4hc\pi.o"
+"v4hc\references.o"
 "v4hc\q2alpha.o"
 "v4hc\firing.o"
 "v4hc\conversion.o"
+"v4hc\rms.o"
+"v4hc\qbasic.o"
+"v4hc\power.o"
 "v4hc\states.o"
 "v4hc\startupstate.o"
 "v4hc\faultstate.o"
@@ -57,6 +61,8 @@
 "v4hc\parameter_config.o"
 "v4hc\configroutines.o"
 "v4hc\ios.o"
+"v4hc\aux_functions.o"
+"v4hc\main_flow.o"
 --library_type=microlib --strict --scatter "v4Hc\v4Hc.sct"
 --diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

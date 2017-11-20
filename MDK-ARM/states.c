@@ -5,6 +5,9 @@
  */
 
 #include "states.h"
+#include "nfbm.h"
+
+struct stat status;
 
 enum StateID current_state=startup;
 
@@ -22,7 +25,7 @@ trippedState
 };
 
 
-void state_chart(){
+void state_chart(void){
 
 void(* state_fun)(void);
 

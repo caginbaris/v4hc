@@ -1,6 +1,8 @@
 /*
-*Created on : 15.11.2017
-*Author : Baris
+*
+*  Created on : 15.11.2017
+*  Author : Baris
+*
 */
 
 #ifndef __nfbm_h
@@ -31,9 +33,9 @@ struct AdcData{
 	float Vbc_sync;		//AN-8
 	float Vca_sync;		//AN-9
 	
-	float Vab;		//AN-7
-	float Vbc;		//AN-8
-	float Vca;		//AN-9
+	float Vab;		
+	float Vbc;		
+	float Vca;		
 	
 	
 
@@ -43,14 +45,14 @@ struct AdcData{
 extern struct AdcData adc;
 
 
-union unionAdc
+union uAdc
 {
   struct AdcData ch;
 	float  bufferAdc[18];
 		
 };
 
-extern union unionAdc Adc;
+extern union uAdc Adc;
 
 
 enum AdcChannel{
@@ -200,9 +202,88 @@ extern struct firing_parameters fire;
 
 
 
+struct references{
+
+float final_Q;
+float final_alpha;
+
+};
 
 
+extern struct references ref_ab;
+extern struct references ref_bc;
+extern struct references ref_ca;
 
+
+struct stat{
+
+	uint8_t MV_Ready:1;
+	uint8_t start_flag:1;
+	uint8_t Qbasic_mode:1;
+	uint8_t ol_regulation_enable:1;
+	uint8_t cl_regulation_enable:1;
+	uint8_t current_limiting:1;
+	uint8_t voltage_limiting:1;
+	
+};
+
+extern struct stat status;
+
+union statUnion{
+	
+	struct stat status;
+	uint8_t all;
+	
+	
+}; 
+
+extern union statUnion uStatus;
+
+
+struct fastRMS {
+
+	float Vab;
+	float Vbc;
+	float Vca;
+
+};
+
+extern struct fastRMS fRMS;
+
+
+struct QbasicOut{
+
+float ab;
+float bc;
+float ca;
+float mean;	
+	
+
+
+};
+
+extern struct QbasicOut Qbasic ;
+
+struct ClosedLoopPQ{
+
+	float Psum;
+	float Ptotal;
+
+	float Qab_sum;
+	float Qbc_sum;
+	float Qca_sum;
+	float Qsum;
+
+	float Qab;
+	float Qbc;
+	float Qca;
+	float Qtotal;
+
+	uint16_t counter;
+
+};
+
+extern struct ClosedLoopPQ cl;
 
 
 

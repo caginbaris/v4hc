@@ -13,7 +13,7 @@
 uint32_t adcBuffer[18]={0};
 uint8_t conversion_completed={0};
 
-union unionAdc Adc;
+union  uAdc Adc;
 
 struct AdcData adc;
 struct AdcData offset;
@@ -49,9 +49,15 @@ if(hadc->Instance==ADC1){
 	Adc.ch.Itcr_ab=	(adcBuffer[Itcr_ab]-offset.Itcr_ab)*scale.Itcr_ab;
 	Adc.ch.Itcr_ca=	(adcBuffer[Itcr_ca]-offset.Itcr_ca)*scale.Itcr_ca;
 	
+	Adc.ch.Vab_sync=(adcBuffer[Vab_sync]-offset.Vab_sync)*scale.Vab_sync;
+	Adc.ch.Vbc_sync=(adcBuffer[Vbc_sync]-offset.Vbc_sync)*scale.Vbc_sync;
+	Adc.ch.Vca_sync=(adcBuffer[Vca_sync]-offset.Vca_sync)*scale.Vca_sync;
+	
 	Adc.ch.Vab=			(Adc.ch.Van-Adc.ch.Vbn);
 	Adc.ch.Vbc=			(Adc.ch.Vbn-Adc.ch.Vcn);
 	Adc.ch.Vab=			(Adc.ch.Vcn-Adc.ch.Van);
+	
+	adc=Adc.ch;
 	
 
 

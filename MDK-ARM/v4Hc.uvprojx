@@ -588,6 +588,11 @@
               <FilePath>.\PI.c</FilePath>
             </File>
             <File>
+              <FileName>references.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\references.c</FilePath>
+            </File>
+            <File>
               <FileName>Q2Alpha.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Q2Alpha.c</FilePath>
@@ -606,6 +611,21 @@
               <FileName>conversion.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\conversion.c</FilePath>
+            </File>
+            <File>
+              <FileName>RMS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\RMS.c</FilePath>
+            </File>
+            <File>
+              <FileName>Qbasic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Qbasic.c</FilePath>
+            </File>
+            <File>
+              <FileName>Power.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Power.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -705,12 +725,32 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>io</GroupName>
+          <GroupName>ios</GroupName>
           <Files>
             <File>
               <FileName>ios.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\ios.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>aux_funcitons</GroupName>
+          <Files>
+            <File>
+              <FileName>aux_functions.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\aux_functions.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>main_flow</GroupName>
+          <Files>
+            <File>
+              <FileName>main_flow.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main_flow.c</FilePath>
             </File>
           </Files>
         </Group>

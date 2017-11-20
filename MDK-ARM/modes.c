@@ -20,7 +20,7 @@ firingTestMode
 };
 
 
-void mode_chart(){
+void mode_chart(void){
 
 void(* mode_fun)(void);
 

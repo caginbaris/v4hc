@@ -68,6 +68,8 @@ static void MX_NVIC_Init(void);
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 
+void main_flow(void);
+
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -130,6 +132,14 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
+		
+	if(conversion_completed){
+		
+		main_flow();
+		conversion_completed=0;
+	
+	}	
+		
 
   }
   /* USER CODE END 3 */

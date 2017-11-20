@@ -46,7 +46,6 @@ float Q2alpha(float Qin, float RMS, float TCR_XL){
 	alpha=alpha-trigger_offset;
 
 	if(Qin<=0){alpha=fire.alpha_limit_down;}
-	//if(faults.flag.voltage_loss_all==0){alpha=fire.alpha_limit_down;}
 
 	return alpha;
 
