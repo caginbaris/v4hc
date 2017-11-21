@@ -82,4 +82,16 @@ void f_limiter(float *x,float min, float max){
 
 }
 
+float minSelector_3p(float a, float b, float c){
+	
+	float min;
+	
+	min=a;
+	if(b<min){min=b;}
+	if(c<min){min=c;}
+	
+	return min;
+
+}
+
 

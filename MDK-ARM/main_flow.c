@@ -5,7 +5,12 @@
 
 void main_flow(){
 	
+	faultRoutines();
+	tripRoutines();
+	
 	state_chart();
 	mode_chart();
+	
+	ios();
 
 }

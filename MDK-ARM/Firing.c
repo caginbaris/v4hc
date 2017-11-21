@@ -102,7 +102,7 @@ void firing(){
 		
 		
 		ufr.all=0;
-		
+				  
 		
 		
 	}

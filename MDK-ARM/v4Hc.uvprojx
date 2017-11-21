@@ -573,6 +573,18 @@
         </Group>
         <Group>
           <GroupName>protection</GroupName>
+          <Files>
+            <File>
+              <FileName>Faults.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Faults.c</FilePath>
+            </File>
+            <File>
+              <FileName>Trips.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Trips.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>control</GroupName>

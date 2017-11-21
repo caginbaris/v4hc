@@ -38,6 +38,8 @@ struct digitalInputs{
 	uint32_t PLB_INT_DO_SPARE3:1;		// DI-28
 	uint32_t PLB_INT_DO_SPARE6:1;		// DI-26
 	uint32_t PLB_INT_DO_SPARE5:1;		// DI-25
+	
+	uint32_t reset:1;		//PE10
 
 };
 

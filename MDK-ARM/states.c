@@ -7,7 +7,7 @@
 #include "states.h"
 #include "nfbm.h"
 
-struct stat status;
+struct stat status={0};
 
 enum StateID current_state=startup;
 

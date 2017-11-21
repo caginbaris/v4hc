@@ -220,8 +220,7 @@ struct stat{
 	uint8_t MV_Ready:1;
 	uint8_t start_flag:1;
 	uint8_t Qbasic_mode:1;
-	uint8_t ol_regulation_enable:1;
-	uint8_t cl_regulation_enable:1;
+	uint8_t regulation_enable:1;
 	uint8_t current_limiting:1;
 	uint8_t voltage_limiting:1;
 	
@@ -286,6 +285,29 @@ struct ClosedLoopPQ{
 extern struct ClosedLoopPQ cl;
 
 
+
+struct internal_fault{
+
+
+ float 	limit;
+ long 	 counter;
+ uint16_t 	 pick_up:1;
+ uint16_t 	 trip:1;		
+
+};
+
+extern struct internal_fault voltage_loss;
+
+
+struct external_fault{
+	
+	long 	 counter;
+	uint32_t 	 pick_up:1;
+  uint32_t 	 all:1;		
+
+};
+
+extern struct external_fault extTrip;
 
 
 #endif
