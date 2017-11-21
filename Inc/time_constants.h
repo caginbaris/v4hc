@@ -10,6 +10,8 @@
 #define  _1sec 				2*half_sec
 #define  _2sec 				2*_1sec
 #define  _3sec				3*_1sec
+#define  _5sec				5*_1sec
+#define  _10sec				10*_1sec
 
 #endif
 

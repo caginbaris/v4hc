@@ -223,6 +223,7 @@ struct stat{
 	uint8_t regulation_enable:1;
 	uint8_t current_limiting:1;
 	uint8_t voltage_limiting:1;
+	uint8_t cb_operation:1;
 	
 };
 

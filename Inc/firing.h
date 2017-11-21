@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 
-#define r2d 57.29577951f
+#define  r2d 57.29577951f
 #define  PLL_correction 0.1f;
 
 #define firing_offset 	8.0f
@@ -12,6 +12,8 @@
 #define firing_offset3  2.0f
 #define pos_limit 		175
 #define neg_limit 		355
+
+
 
 
 struct firingOutputs {
@@ -43,3 +45,7 @@ extern union firingOutputsUnion ufr;
 
 
 #endif
+
+
+void firingOutputs(void);
+

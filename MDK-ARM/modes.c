@@ -6,7 +6,7 @@
 
 #include "modes.h"
 
-enum ModeID current_mode=closedLoop;
+enum ModeID current_mode=manualAngle;
 
 
 void (*mode[])(void)={

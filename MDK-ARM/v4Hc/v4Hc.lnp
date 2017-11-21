@@ -36,6 +36,8 @@
 "v4hc\stm32f7xx_it.o"
 "v4hc\faults.o"
 "v4hc\trips.o"
+"v4hc\current_limiter.o"
+"v4hc\voltage_limiter.o"
 "v4hc\pll.o"
 "v4hc\pi.o"
 "v4hc\references.o"

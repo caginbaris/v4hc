@@ -9,6 +9,7 @@
 
 #include "nfbm.h"
 #include "firing.h"
+#include "main.h"
 
 struct firing_parameters fire;
 struct firingOutputs fr={0};
@@ -73,7 +74,7 @@ void firing(){
 
 	fire.ca.pre_alpha_p=fire.ca.alpha;
 	fire.ca.pre_alpha_n=fire.ca.alpha_neg;
-
+	
 
 	if(status.start_flag==1){
 
@@ -102,15 +103,30 @@ void firing(){
 		
 		
 		ufr.all=0;
+		fr=ufr.fr;
 				  
-		
-		
 	}
-
-
-
+	
+	firingOutputs();
 
 }
+
+
+void firingOutputs(){
+	
+	HAL_GPIO_WritePin(FR_1_GPIO_Port,FR_1_Pin,fr.Ap);
+	HAL_GPIO_WritePin(FR_4_GPIO_Port,FR_4_Pin,fr.An);
+	
+	HAL_GPIO_WritePin(FR_2_GPIO_Port,FR_2_Pin,fr.Bp);
+	HAL_GPIO_WritePin(FR_5_GPIO_Port,FR_5_Pin,fr.Bn);
+	
+	HAL_GPIO_WritePin(FR_3_GPIO_Port,FR_3_Pin,fr.Cp);
+	HAL_GPIO_WritePin(FR_6_GPIO_Port,FR_6_Pin,fr.Cn);
+
+}
+
+
+
 
 
 

@@ -5,6 +5,12 @@
 
 void main_flow(){
 	
+	PLL_all();
+	RMS_all();
+	
+	Qbasic_calculation();
+	PowerCalculations();
+	
 	faultRoutines();
 	tripRoutines();
 	

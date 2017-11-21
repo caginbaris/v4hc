@@ -3,9 +3,12 @@
 #include "aux_functions.h"
 #include "nfbm.h"
 #include "ios.h"
+#include "time_constants.h"
 
 void runState(void){
 	
+	static long regulationCounter=0;
+	// CB timeout eklenebilir
 	// led indication
 	
 	DO.READY=0;
@@ -23,6 +26,36 @@ void runState(void){
 		status.Qbasic_mode=1;
 		
 	}
+	
+	
+	status.regulation_enable=on_delay(status.start_flag,status.regulation_enable,_10sec,&regulationCounter);
+	
+	
+	if(status.regulation_enable){
+		
+		status.Qbasic_mode=0;
+		
+		/**actions on CB switching**/
+	
+	
+	}
+	
+	
+	
+	//stop routine------------------------------
+	
+	if(DI.start_stop || extTrip.all){
+	
+	status.regulation_enable=0;
+	status.Qbasic_mode=1;	
+		
+		
+	current_state=idle;	
+		
+	
+	}
+	
+	          
 	
 	
 	

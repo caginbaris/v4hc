@@ -63,3 +63,9 @@ void fast_RMS(void){
 
 
 }
+
+void RMS_all(void){
+	
+	// mean_RMS(); watch out
+
+}

@@ -14,10 +14,8 @@ void faultState(){
 	
 	if(!voltage_loss.trip){
 		
-		
+		current_state=ready;
 		if(extTrip.all){current_state=tripped;}
-		if(current_state==fault){current_state=ready;}
-	
 	
 	}
 	

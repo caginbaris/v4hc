@@ -25,7 +25,7 @@ void init_Qbasic(void){
 
 }
 
-void Qbasic_calculation(){
+void Qbasic_calculation(void){
 	
 	
 	//HF_1------------------------------

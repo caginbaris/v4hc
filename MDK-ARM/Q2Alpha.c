@@ -35,8 +35,8 @@ float Q2alpha(float Qin, float RMS, float TCR_XL){
 	x5=x2*x3;
 
 
-	if(x>=0.1){alpha = (p1_u*x5 + p2_u*x4 + p3_u*x3 + p4_u*x2 + p5_u*x +p6_u)*r2d;}
-	if(x<0.1 ){alpha = (p1_l*x5 + p2_l*x4 + p3_l*x3 + p4_l*x2 + p5_l*x +p6_l)*r2d;}
+	if(x>=0.1f){alpha = (p1_u*x5 + p2_u*x4 + p3_u*x3 + p4_u*x2 + p5_u*x +p6_u)*r2d;}
+	if(x<0.1f ){alpha = (p1_l*x5 + p2_l*x4 + p3_l*x3 + p4_l*x2 + p5_l*x +p6_l)*r2d;}
 
 
 	if(alpha>fire.alpha_limit_down){alpha=fire.alpha_limit_down;}

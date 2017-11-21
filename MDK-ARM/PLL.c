@@ -84,7 +84,7 @@ float PLL_theta (float Valpha_pll, float wt_pll,int index){
 }
 
 
-void PLL_all(){
+void PLL_all(void){
 
 
     PLL.ab_rad=PLL_theta(adc.Vab_sync,PLL.ab_rad,1);

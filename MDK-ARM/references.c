@@ -44,9 +44,9 @@ void Ref_manualVar(){
 
 void Ref_manualAngle(){
 	
-	ref_ab.final_alpha=0.0f;
-	ref_bc.final_alpha=0.0f;
-	ref_ca.final_alpha=0.0f;
+	ref_ab.final_alpha=120.0f;
+	ref_bc.final_alpha=120.0f;
+	ref_ca.final_alpha=120.0f;
 
 
 }

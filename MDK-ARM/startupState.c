@@ -26,10 +26,11 @@ void startupState(){
 	
 		
 	if(on_delay(1,0,_3sec,&timeOutCounter)){
-		
+	
+	current_state=ready;		
 	if(extTrip.all){current_state=tripped;}
 	if(voltage_loss.trip){current_state=fault;}
-	if(current_state==startup){current_state=ready;}
+	
 	
 	}
    		
