@@ -649,6 +649,11 @@
               <FileType>1</FileType>
               <FilePath>.\Power.c</FilePath>
             </File>
+            <File>
+              <FileName>OpenLoopCalc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\OpenLoopCalc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -728,6 +733,11 @@
               <FileName>hfMode.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\hfMode.c</FilePath>
+            </File>
+            <File>
+              <FileName>interMode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\interMode.c</FilePath>
             </File>
           </Files>
         </Group>

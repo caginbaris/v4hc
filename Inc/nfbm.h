@@ -311,4 +311,68 @@ struct external_fault{
 extern struct external_fault extTrip;
 
 
+struct fastPowerParameters{
+
+	float Vlag;
+	float Vlead;
+
+	float Ilag;
+	float Ilead;
+
+};
+
+
+
+extern struct fastPowerParameters fpp_ab;
+extern struct fastPowerParameters fpp_bc;
+extern struct fastPowerParameters fpp_ca;
+
+
+struct OpenLoopQ{
+
+	float a;
+	float b;
+	float c;
+
+	float ab;
+	float bc;
+	float ca;
+
+	float ab_f;
+	float bc_f;
+	float ca_f;
+
+	float ref_ab;
+	float ref_bc;
+	float ref_ca;
+
+
+};
+
+extern struct OpenLoopQ Qol;
+
+
+struct system_parameters{
+
+
+	float TCR_XL_ab;
+	float TCR_XL_bc;
+	float TCR_XL_ca;
+
+
+	float TR_Power;
+	float TR_Ratio;
+	float TR_Uk;
+
+	float OL_ratio;
+	float OL_ref_limit;
+
+
+
+};
+
+extern struct system_parameters sys;
+
+
+
 #endif
