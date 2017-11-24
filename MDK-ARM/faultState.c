@@ -8,8 +8,11 @@ void faultState(){
 	
 	// led indication
 	
-	DO.READY=0;
-	DO.RUN=0;
+	DO.LD_IBF=1;
+	DO.LD_READY=0;
+	DO.LD_RUN=0;
+	
+	
 	
 	
 	if(!voltage_loss.trip){

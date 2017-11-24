@@ -51,7 +51,7 @@
 /* USER CODE BEGIN Includes */
 
 #include "conversion.h"
-
+#include "init_all.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -69,7 +69,7 @@ static void MX_NVIC_Init(void);
 /* Private function prototypes -----------------------------------------------*/
 
 void main_flow(void);
-
+void init_all(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -116,6 +116,8 @@ int main(void)
   MX_NVIC_Init();
 
   /* USER CODE BEGIN 2 */
+	
+	init_all();
 
   /* USER CODE END 2 */
 
@@ -137,6 +139,7 @@ int main(void)
 		
 		main_flow();
 		conversion_completed=0;
+		HAL_GPIO_WritePin(DO_TEST_1_GPIO_Port,DO_TEST_1_Pin,GPIO_PIN_RESET );
 	
 	}	
 		

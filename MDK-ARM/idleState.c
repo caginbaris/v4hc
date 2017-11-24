@@ -11,8 +11,9 @@ void idleState(){
 
 	// led indication
 	
-	DO.READY=0;
-	DO.RUN=1;
+	DO.LD_IBF=0;
+	DO.LD_READY=0;
+	DO.LD_RUN=1;
 	
 	idleFlag=off_delay(DI.Q1_cb_pos,idleFlag,_1sec,&counter);
 	

@@ -10,8 +10,9 @@ void stoppedState(){
 	
 	// led indication
 	
-	DO.READY=0;
-	DO.RUN=0;
+	DO.LD_IBF=0;
+	DO.LD_READY=0;
+	DO.LD_RUN=0;
 	
 	
 	if(on_delay(1,0,_3sec,&timeOutCounter)){

@@ -7,7 +7,7 @@
 #define i_rms_period 1/rms_period 
 
 
-struct AdcData meanRMS;
+struct AdcData meanRMS={0};
 struct fastRMS fRMS;
 union  uAdc meanRMS_sum={0};
 
@@ -55,6 +55,8 @@ void mean_RMS(union uAdc in,struct AdcData *out){
 
   }
 	
+	if(++counter==rms_channelNo){counter=0;}
+	
 }
 
 
@@ -66,6 +68,6 @@ void fast_RMS(void){
 
 void RMS_all(void){
 	
-	// mean_RMS(); watch out
+	mean_RMS(Adc,&meanRMS);
 
 }

@@ -9,10 +9,12 @@ void runState(void){
 	
 	static long regulationCounter=0;
 	// CB timeout eklenebilir
+	
 	// led indication
 	
-	DO.READY=0;
-	DO.RUN=1;
+	DO.LD_IBF=0;
+	DO.LD_READY=0;
+	DO.LD_RUN=1;
 	
 	if(DI.Q1_cb_pos && status.start_flag==0 /*remaining entry!*/){
 		

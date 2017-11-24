@@ -10,8 +10,9 @@ void trippedState(){
 	
 	// led indication
 	
-	DO.READY=0;
-	DO.RUN=0;
+	DO.LD_IBF=0;
+	DO.LD_READY=0;
+	DO.LD_RUN=0;
 	
 	
 		if(extTrip.all==0){

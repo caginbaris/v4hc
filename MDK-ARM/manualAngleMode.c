@@ -5,8 +5,8 @@
 
 void manualAngleMode(void){
 
-manual_handles();
-Ref_manualAngle();
+//manual_handles();
+//Ref_manualAngle();
 	
 }
 

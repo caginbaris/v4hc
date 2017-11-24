@@ -38,6 +38,8 @@ struct digitalInputs{
 	uint32_t PLB_INT_DO_SPARE3:1;		// DI-28
 	uint32_t PLB_INT_DO_SPARE6:1;		// DI-26
 	uint32_t PLB_INT_DO_SPARE5:1;		// DI-25
+	
+	uint32_t reset:1;		//PE10
 
 };
 
@@ -45,7 +47,7 @@ struct digitalInputs{
 extern struct digitalInputs DI;
 
 
-union digitalInputUnion  {
+union digitalInputsUnion  {
 
 	struct digitalInputs DI;
 	uint32_t all;
@@ -53,16 +55,16 @@ union digitalInputUnion  {
 
 };
 
-extern union digitalInputUnion uDI;
+extern union digitalInputsUnion uDI;
 
 
 
 struct digitalOutputs{
 	
-	uint8_t CTB1_READY:1;		// DO-1
-	uint8_t CTB1_RUN:1;			// DO-2
-	uint8_t CTB1_IBF:1;			// DO-2
-	uint8_t CTB1_SPARE:1;		// DO-2
+	uint8_t READY:1;		// DO-1
+	uint8_t RUN:1;			// DO-2
+	uint8_t IBF:1;			// DO-2
+	uint8_t SPARE:1;		// DO-2
 
 };
 

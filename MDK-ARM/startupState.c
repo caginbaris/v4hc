@@ -18,18 +18,23 @@ void startupState(){
 	
 	blinkCounter=0;
 		
-	HAL_GPIO_TogglePin(LD_ALARM_GPIO_Port,LD_ALARM_Pin);
-	HAL_GPIO_TogglePin(LD_TRIP_GPIO_Port,LD_TRIP_Pin);
-	HAL_GPIO_TogglePin(LD_RUN_GPIO_Port,LD_RUN_Pin);			
+	DO.LD_IBF^=1;
+	DO.LD_READY^=1;
+	DO.LD_RUN^=1;
 		
 	}
 	
 		
-	if(on_delay(1,0,_3sec,&timeOutCounter)){
+	if(on_delay(1,0,_5sec,&timeOutCounter)){
 	
 	current_state=ready;		
 	if(extTrip.all){current_state=tripped;}
 	if(voltage_loss.trip){current_state=fault;}
+	
+	DO.LD_IBF=0;
+	DO.LD_READY=0;
+	DO.LD_RUN=0;
+	
 	
 	
 	}

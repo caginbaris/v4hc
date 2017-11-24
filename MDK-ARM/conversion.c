@@ -8,12 +8,13 @@
 #include "stm32f7xx_hal.h"
 #include "conversion.h"
 #include "nfbm.h"
-#include "string.h"
+#include <string.h>
 
 uint32_t adcBuffer[18]={0};
 uint8_t conversion_completed={0};
 
 union  uAdc Adc;
+
 
 struct AdcData adc;
 struct AdcData offset;
@@ -21,9 +22,17 @@ struct AdcData scale;
 
 
 void init_conversion(){
+union  uAdc init;		
+uint8_t i=0;
+	
 
-memset(&offset, 2048, sizeof(offset));
-memset(&scale, 1, sizeof(scale));
+
+for(i=0;i<18;i++){init.bufferAdc[i]=2048.0f;}	
+offset=init.ch;	
+for(i=0;i<18;i++){init.bufferAdc[i]=1.0f;}	
+scale=init.ch;		
+	
+	
 	
 }
 
@@ -31,7 +40,11 @@ memset(&scale, 1, sizeof(scale));
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
 	
 
+	
 if(hadc->Instance==ADC1){
+	
+	HAL_GPIO_WritePin(DO_TEST_1_GPIO_Port,DO_TEST_1_Pin,GPIO_PIN_SET );
+	
 	
 	Adc.ch.Van=			(adcBuffer[Van]-offset.Van)*scale.Van;
 	Adc.ch.Iload_a=	(adcBuffer[Iload_a]-offset.Iload_a)*scale.Iload_a;
@@ -43,7 +56,7 @@ if(hadc->Instance==ADC1){
 	
 	Adc.ch.Vcn=			(adcBuffer[Vcn]-offset.Vcn)*scale.Vcn;
 	Adc.ch.Iload_c=	(adcBuffer[Iload_c]-offset.Iload_c)*scale.Iload_c;
-	Adc.ch.Itcr_bc=	(adcBuffer[Ib]-offset.Itcr_bc)*scale.Itcr_bc;
+	Adc.ch.Itcr_bc=	(adcBuffer[Itcr_bc]-offset.Itcr_bc)*scale.Itcr_bc;
 	
 	Adc.ch.Ic=			(adcBuffer[Ic]-offset.Ic)*scale.Ic;
 	Adc.ch.Itcr_ab=	(adcBuffer[Itcr_ab]-offset.Itcr_ab)*scale.Itcr_ab;
@@ -55,12 +68,10 @@ if(hadc->Instance==ADC1){
 	
 	Adc.ch.Vab=			(Adc.ch.Van-Adc.ch.Vbn);
 	Adc.ch.Vbc=			(Adc.ch.Vbn-Adc.ch.Vcn);
-	Adc.ch.Vab=			(Adc.ch.Vcn-Adc.ch.Van);
+	Adc.ch.Vca=			(Adc.ch.Vcn-Adc.ch.Van);
 	
 	adc=Adc.ch;
 	
-
-
 	conversion_completed=1;
 	
 	}

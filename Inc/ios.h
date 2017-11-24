@@ -61,10 +61,18 @@ extern union digitalInputsUnion uDI;
 
 struct digitalOutputs{
 	
-	uint8_t READY:1;		// DO-1
-	uint8_t RUN:1;			// DO-2
-	uint8_t IBF:1;			// DO-2
-	uint8_t SPARE:1;		// DO-2
+	uint8_t READY:1;		// DO-
+	uint8_t RUN:1;			// DO-
+	uint8_t IBF:1;			// DO-
+	uint8_t SPARE:1;		// DO-
+	
+	
+	uint8_t LD_READY:1;		// DO-
+	uint8_t LD_RUN:1;			// DO-
+	uint8_t LD_IBF:1;			// DO-
+	
+	
+	
 
 };
 

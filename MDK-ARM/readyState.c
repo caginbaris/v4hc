@@ -8,8 +8,9 @@ void readyState(void){
 	
 	// led indication
 	
-	DO.READY=1;
-	DO.RUN=0;
+	DO.LD_IBF=0;
+	DO.LD_READY=1;
+	DO.LD_RUN=0;
 	
 	if(DI.start_stop && status.MV_Ready){current_state=run;}
 	if(extTrip.all){current_state=tripped;}

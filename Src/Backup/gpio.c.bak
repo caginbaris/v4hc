@@ -170,7 +170,7 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : PDPin PDPin PDPin PDPin 
                            PDPin PDPin PDPin PDPin */
-  GPIO_InitStruct.Pin = DI_52_DI_19_Pin|DI_53_DI_20_Pin|DI_54_DI_21_Pin|COLD_TEST_DI_22_Pin 
+  GPIO_InitStruct.Pin = DI_52_DI_19_Pin|DI_53_DI_20_Pin|DI_54_DI_21_Pin|DI_55_DI_22_Pin 
                           |DI_56_DI_23_Pin|COLD_TEST_DI_24_Pin|PLB_INT_DI_SP2_DI_25_Pin|PLB_INT_DI_SP1_DI_26_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;

@@ -1,4 +1,4 @@
---cpu Cortex-M7.fp.dp
+--cpu Cortex-M7.fp.sp
 "v4hc\system_stm32f7xx.o"
 "v4hc\startup_stm32f767xx.o"
 "v4hc\stm32f7xx_hal_i2c_ex.o"
@@ -69,6 +69,7 @@
 "v4hc\ios.o"
 "v4hc\aux_functions.o"
 "v4hc\main_flow.o"
+"v4hc\init_all.o"
 --library_type=microlib --strict --scatter "v4Hc\v4Hc.sct"
 --diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

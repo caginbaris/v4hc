@@ -49,3 +49,4 @@ v4hc\main.o: ../Inc/usart.h
 v4hc\main.o: ../Inc/gpio.h
 v4hc\main.o: ../Inc/conversion.h
 v4hc\main.o: ../Inc/nfbm.h
+v4hc\main.o: ../Inc/init_all.h

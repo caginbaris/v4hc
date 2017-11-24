@@ -997,14 +997,14 @@ ARM Macro Assembler    Page 16
   515 0000001C                 END
               00000000 
               00000000 
-Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.dp --apcs=
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.sp --apcs=
 interwork --depend=v4hc\startup_stm32f767xx.d -ov4hc\startup_stm32f767xx.o -IC:
-\Users\baris.cengiz\Dropbox\habas_310\v4hc\MDK-ARM\RTE -IC:\Keil_v5\ARM\PACK\AR
-M\CMSIS\5.0.0-Beta4\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.7.
-0\Drivers\CMSIS\Device\ST\STM32F7xx\Include --predefine="__EVAL SETA 1" --prede
-fine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 521" --predefine="
-_RTE_ SETA 1" --predefine="STM32F767xx SETA 1" --list=startup_stm32f767xx.lst s
-tartup_stm32f767xx.s
+\Users\BARIS\Desktop\habas_310\mProjects\v4hc\MDK-ARM\RTE -IC:\Keil_v5\ARM\PACK
+\ARM\CMSIS\5.0.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.8.0\D
+rivers\CMSIS\Device\ST\STM32F7xx\Include --predefine="__EVAL SETA 1" --predefin
+e="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 521" --predefine="_RT
+E_ SETA 1" --predefine="STM32F767xx SETA 1" --list=startup_stm32f767xx.lst star
+tup_stm32f767xx.s
 
 
 

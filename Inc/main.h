@@ -152,12 +152,12 @@
 #define PLB_INT_DI_SP3_DI_28_GPIO_Port GPIOG
 #define PLB_INT_DI_SP6_DI_29_Pin GPIO_PIN_4
 #define PLB_INT_DI_SP6_DI_29_GPIO_Port GPIOG
-#define LD_TRIP_Pin GPIO_PIN_6
-#define LD_TRIP_GPIO_Port GPIOG
-#define LD_ALARM_Pin GPIO_PIN_7
-#define LD_ALARM_GPIO_Port GPIOG
-#define LD_RUN_Pin GPIO_PIN_8
+#define LD_RUN_Pin GPIO_PIN_6
 #define LD_RUN_GPIO_Port GPIOG
+#define LD_READY_Pin GPIO_PIN_7
+#define LD_READY_GPIO_Port GPIOG
+#define LD_IBF_Pin GPIO_PIN_8
+#define LD_IBF_GPIO_Port GPIOG
 #define FR_4_Pin GPIO_PIN_6
 #define FR_4_GPIO_Port GPIOC
 #define FR_5_Pin GPIO_PIN_7
