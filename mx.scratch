@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
-<ProjectName>C:\Users\BARIS\Desktop\habas_310\mProjects\v4hc\\v4Hc</ProjectName>
+<ProjectName>C:\Users\Serbay\Desktop\27.11.17-v4hc_CTB1\27.11.17-v4hc_CTB1\v4hc\\v4Hc</ProjectName>
 <CMSIS>..\Drivers\CMSIS</CMSIS>
-<HAL_Driver>C:\Users\BARIS\STM32Cube\Repository\STM32Cube_FW_F7_V1.8.0\Drivers\CMSIS</HAL_Driver>
+<HAL_Driver>C:\Users\Serbay\STM32Cube\Repository\STM32Cube_FW_F7_V1.8.0\Drivers\CMSIS</HAL_Driver>
 
 <Toolchain>MDK-ARM</Toolchain>
 	<Toolversion>5</Toolversion>
@@ -26,8 +26,8 @@
   <config>
     <name>v4Hc</name>				
     <device>STM32F767ZITx</device>		 
-    <heapSize>0x200</heapSize>
-    <stackSize>0x400</stackSize>
+    <heapSize>0x2000</heapSize>
+    <stackSize>0x4000</stackSize>
     
     	<cpuclock>216</cpuclock>
     	<board>custom</board>

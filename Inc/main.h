@@ -128,8 +128,9 @@
 #define FR_3_GPIO_Port GPIOE
 #define mcu2mcu_Pin GPIO_PIN_14
 #define mcu2mcu_GPIO_Port GPIOE
-#define WTF_Pin GPIO_PIN_11
-#define WTF_GPIO_Port GPIOB
+#define COM_EXT_INT_Pin GPIO_PIN_11
+#define COM_EXT_INT_GPIO_Port GPIOB
+#define COM_EXT_INT_EXTI_IRQn EXTI15_10_IRQn
 #define DI_52_DI_19_Pin GPIO_PIN_8
 #define DI_52_DI_19_GPIO_Port GPIOD
 #define DI_53_DI_20_Pin GPIO_PIN_9

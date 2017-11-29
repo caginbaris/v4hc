@@ -15,7 +15,7 @@
         <TargetCommonOption>
           <Device>STM32F767ZITx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F7xx_DFP.2.8.0</PackID>
+          <PackID>Keil.STM32F7xx_DFP.2.7.0</PackID>
           <PackURL>http://www.keil.com/pack</PackURL>
           <Cpu>IRAM(0x20000000-0x2007FFFF) IROM(0x8000000-0x81FFFFF) CLOCK(12000000) FPU3(DFPU) CPUTYPE("Cortex-M7") ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -335,7 +335,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F767xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;       ../Drivers/STM32F7xx_HAL_Driver/Inc;       ../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy;       ../Drivers/CMSIS/Device/ST/STM32F7xx/Include;       ../Drivers/CMSIS/Include</IncludePath>
+              <IncludePath>../Inc; ../Drivers/STM32F7xx_HAL_Driver/Inc; ../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy; ../Drivers/CMSIS/Device/ST/STM32F7xx/Include; ../Drivers/CMSIS/Include; ..\Inc\Comm_Library_Header; ..\Src\Comm_Library_Source</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -793,6 +793,41 @@
               <FileName>init_all.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\init_all.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Comm Layer</GroupName>
+          <Files>
+            <File>
+              <FileName>CommConfig.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Comm_Library_Source\CommConfig.c</FilePath>
+            </File>
+            <File>
+              <FileName>DataParserMerger.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Comm_Library_Source\DataParserMerger.c</FilePath>
+            </File>
+            <File>
+              <FileName>fputc_debug.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Comm_Library_Source\fputc_debug.c</FilePath>
+            </File>
+            <File>
+              <FileName>Modbus_MasterSlave.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Comm_Library_Source\Modbus_MasterSlave.c</FilePath>
+            </File>
+            <File>
+              <FileName>SPI_MasterSlave.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Comm_Library_Source\SPI_MasterSlave.c</FilePath>
+            </File>
+            <File>
+              <FileName>UART_MasterSlave.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\Comm_Library_Source\UART_MasterSlave.c</FilePath>
             </File>
           </Files>
         </Group>

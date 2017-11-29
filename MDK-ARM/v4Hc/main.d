@@ -50,3 +50,8 @@ v4hc\main.o: ../Inc/gpio.h
 v4hc\main.o: ../Inc/conversion.h
 v4hc\main.o: ../Inc/nfbm.h
 v4hc\main.o: ../Inc/init_all.h
+v4hc\main.o: ..\Inc\Comm_Library_Header\UART_MasterSlave.h
+v4hc\main.o: ..\Inc\Comm_Library_Header\CommConfig.h
+v4hc\main.o: ..\Src\Comm_Library_Source\CommConfig.c
+v4hc\main.o: ..\Inc\Comm_Library_Header\CommConfig.h
+v4hc\main.o: ..\Inc\Comm_Library_Header\SPI_MasterSlave.h

@@ -39,3 +39,8 @@ v4hc\stm32f7xx_it.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h
 v4hc\stm32f7xx_it.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h
 v4hc\stm32f7xx_it.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h
 v4hc\stm32f7xx_it.o: ../Inc/stm32f7xx_it.h
+v4hc\stm32f7xx_it.o: ..\Inc\Comm_Library_Header\UART_MasterSlave.h
+v4hc\stm32f7xx_it.o: ..\Inc\Comm_Library_Header\CommConfig.h
+v4hc\stm32f7xx_it.o: ..\Src\Comm_Library_Source\CommConfig.c
+v4hc\stm32f7xx_it.o: ..\Inc\Comm_Library_Header\CommConfig.h
+v4hc\stm32f7xx_it.o: ..\Inc\Comm_Library_Header\SPI_MasterSlave.h

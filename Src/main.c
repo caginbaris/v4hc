@@ -52,6 +52,11 @@
 
 #include "conversion.h"
 #include "init_all.h"
+
+#include "UART_MasterSlave.h"
+#include "SPI_MasterSlave.h"
+#include "CommConfig.h"
+
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -129,6 +134,9 @@ int main(void)
 	HAL_ADC_Start(&hadc2);
 	HAL_ADCEx_MultiModeStart_DMA(&hadc1,(uint32_t*)adcBuffer, 18);
 	
+	uart_initComApp();
+	spi_initComApp();
+
   while (1)
   {
   /* USER CODE END WHILE */
@@ -143,6 +151,8 @@ int main(void)
 	
 	}	
 		
+	uart_runComApp();
+	spi_runComApp();
 
   }
   /* USER CODE END 3 */

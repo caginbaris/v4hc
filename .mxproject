@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=C:/Users/BARIS/Desktop/habas_310/mProjects/v4hc/Inc
+HeaderPath=C:/Users/Serbay/Desktop/27.11.17-v4hc_CTB1/27.11.17-v4hc_CTB1/v4hc/Inc
 HeaderFiles=gpio.h;adc.h;dma.h;quadspi.h;rtc.h;spi.h;tim.h;usart.h;stm32f7xx_it.h;stm32f7xx_hal_conf.h;main.h;
-SourcePath=C:/Users/BARIS/Desktop/habas_310/mProjects/v4hc/Src
+SourcePath=C:/Users/Serbay/Desktop/27.11.17-v4hc_CTB1/27.11.17-v4hc_CTB1/v4hc/Src
 SourceFiles=gpio.c;adc.c;dma.c;quadspi.c;rtc.c;spi.c;tim.c;usart.c;stm32f7xx_it.c;stm32f7xx_hal_msp.c;main.c;
 
 [PreviousLibFiles]
