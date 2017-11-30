@@ -20,7 +20,7 @@ void idleState(){
 	if(!idleFlag){
 		
 		status.start_flag=0;
-		status.Qbasic_mode=0;
+		status.Qbasic_flag=0;
 		
 		current_state=tripped;
 		if(DI.start_stop){current_state=stopped;}

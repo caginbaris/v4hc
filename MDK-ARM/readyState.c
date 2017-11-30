@@ -12,7 +12,7 @@ void readyState(void){
 	DO.LD_READY=1;
 	DO.LD_RUN=0;
 	
-	if(DI.start_stop && status.MV_Ready){current_state=run;}
+	if(DI.start_stop && status.MV_ready_flag){current_state=run;}
 	if(extTrip.all){current_state=tripped;}
 	if(voltage_loss.trip){current_state=fault;}
 

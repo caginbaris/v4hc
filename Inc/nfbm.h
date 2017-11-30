@@ -217,13 +217,15 @@ extern struct references ref_ca;
 
 struct stat{
 
-	uint8_t MV_Ready:1;
-	uint8_t start_flag:1;
-	uint8_t Qbasic_mode:1;
-	uint8_t regulation_enable:1;
-	uint8_t current_limiting:1;
-	uint8_t voltage_limiting:1;
-	uint8_t cb_operation:1;
+	uint32_t MV_ready_flag:1;
+	uint32_t start_flag:1;
+	uint32_t Qbasic_flag:1;
+	uint32_t regulation_enable:1;
+	uint32_t current_limiting_pick_up:1;
+	uint32_t current_limiting:1;
+	uint32_t voltage_limiting_pick_up:1;
+	uint32_t voltage_limiting:1;
+	uint32_t cb_operation_flag:1;
 	
 };
 

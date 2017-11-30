@@ -25,7 +25,7 @@ void runState(void){
 	
 	if(status.start_flag==1 && status.regulation_enable==0){
 	
-		status.Qbasic_mode=1;
+		status.Qbasic_flag=1;
 		
 	}
 	
@@ -35,7 +35,7 @@ void runState(void){
 	
 	if(status.regulation_enable){
 		
-		status.Qbasic_mode=0;
+		status.Qbasic_flag=0;
 		
 		/**actions on CB switching**/
 	
@@ -49,7 +49,7 @@ void runState(void){
 	if(DI.start_stop || extTrip.all){
 	
 	status.regulation_enable=0;
-	status.Qbasic_mode=1;	
+	status.Qbasic_flag=1;	
 		
 		
 	current_state=idle;	

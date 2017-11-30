@@ -34,7 +34,7 @@ mode_fun();
 if(new_mode!=current_mode){
 
 	//entry like intermode can be entered
-	//status.Qbasic_mode=1;
+	//status.Qbasic_flag=1;
 
 }	
 

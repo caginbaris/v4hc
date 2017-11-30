@@ -9,7 +9,7 @@ void faultRoutines(void){
 	
 // voltage loss
 	
-if(minSelector_3p(fRMS.Vab,fRMS.Vbc,fRMS.Vca<voltage_loss.limit){
+if(minSelector_3p(fRMS.Vab,fRMS.Vbc,fRMS.Vca<voltage_loss.limit)){
 
 voltage_loss.pick_up=1;
 	
