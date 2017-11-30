@@ -43,6 +43,14 @@ struct OpenLoopQ Qol={0.0f};
 
 struct system_parameters sys={0};
 
+
+void init_OpenLoopCalc(){
+
+
+
+}
+
+
 void lead_lag_calculation(){
 
 
@@ -105,11 +113,6 @@ void lead_lag_calculation(){
  *  Created on: Mar 28, 2017
  *      Author: baris.cengiz
  */
-
-
-
-
-
 
 float plf_sos_ab(float x){
 

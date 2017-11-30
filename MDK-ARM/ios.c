@@ -7,7 +7,7 @@
 struct 	digitalInputs DI={0};
 struct 	digitalOutputs DO={0};
 union 	digitalInputsUnion uDI={0};
-
+union 	digitalOutputsUnion uDO={0};
 
 
 void ios(void){
@@ -50,6 +50,9 @@ void ios(void){
 	HAL_GPIO_WritePin(LD_IBF_GPIO_Port,LD_IBF_Pin,(GPIO_PinState)DO.LD_IBF);
 	HAL_GPIO_WritePin(LD_READY_GPIO_Port,LD_READY_Pin,	(GPIO_PinState)DO.LD_READY);
 	HAL_GPIO_WritePin(LD_RUN_GPIO_Port,LD_RUN_Pin,(GPIO_PinState)DO.LD_RUN);
+	
+	uDI.DI=DI;
+	uDO.DO=DO;
 	
 }
 

@@ -22,12 +22,20 @@ Dialog DLL:      TCM.DLL V1.14.14.0
  
 <h2>Project:</h2>
 C:\Users\baris.cengiz\Dropbox\habas_310\v4hc\MDK-ARM\v4Hc.uvprojx
-Project File Date:  11/27/2017
+Project File Date:  11/30/2017
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'v4Hc'
-"v4Hc\v4Hc.axf" - 0 Error(s), 0 Warning(s).
+compiling Faults.c...
+Faults.c(12): error:  #18: expected a ")"
+  if(minSelector_3p(fRMS.Vab,fRMS.Vbc,fRMS.Vca<voltage_loss.limit){
+Faults.c(40): warning:  #12-D: parsing restarts here after previous syntax error
+  }
+Faults.c(40): error:  #127: expected a statement
+  }
+Faults.c: 1 warning, 2 errors
+"v4Hc\v4Hc.axf" - 2 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -45,6 +53,7 @@ Package Vendor: ARM
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.0
+Target not created.
 Build Time Elapsed:  00:00:00
 </pre>
 </body>

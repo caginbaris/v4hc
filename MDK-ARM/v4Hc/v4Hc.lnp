@@ -76,6 +76,7 @@
 "v4hc\modbus_masterslave.o"
 "v4hc\spi_masterslave.o"
 "v4hc\uart_masterslave.o"
+"v4hc\commparams.o"
 --library_type=microlib --strict --scatter "v4Hc\v4Hc.sct"
 --diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

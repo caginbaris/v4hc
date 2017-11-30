@@ -16,7 +16,11 @@ struct firingOutputs fr={0};
 union firingOutputsUnion ufr={0};
 
 
+void init_firing(void){
+	
 
+
+}
 
 
 
@@ -27,9 +31,9 @@ void firing(){
 	PLL.bc_deg=PLL.bc_rad*r2d+PLL_correction;
 	PLL.ca_deg=PLL.ca_rad*r2d+PLL_correction;
 
-	if(PLL.ab_deg>360){PLL.ab_deg=PLL.ab_deg-360.0f;}
-	if(PLL.bc_deg>360){PLL.bc_deg=PLL.bc_deg-360.0f;}
-	if(PLL.ca_deg>360){PLL.ca_deg=PLL.ca_deg-360.0f;}
+	if(PLL.ab_deg>360.0f){PLL.ab_deg=PLL.ab_deg-360.0f;}
+	if(PLL.bc_deg>360.0f){PLL.bc_deg=PLL.bc_deg-360.0f;}
+	if(PLL.ca_deg>360.0f){PLL.ca_deg=PLL.ca_deg-360.0f;}
 
 	if(PLL.ab_deg<0){PLL.ab_deg=PLL.ab_deg+360;}
 	if(PLL.bc_deg<0){PLL.bc_deg=PLL.bc_deg+360;}

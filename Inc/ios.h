@@ -36,8 +36,8 @@ struct digitalInputs{
 	uint32_t PLB_INT_DO_SPARE1:1;		// DI-26
 	uint32_t PLB_INT_DO_SPARE4:1;		// DI-27
 	uint32_t PLB_INT_DO_SPARE3:1;		// DI-28
-	uint32_t PLB_INT_DO_SPARE6:1;		// DI-26
-	uint32_t PLB_INT_DO_SPARE5:1;		// DI-25
+	uint32_t PLB_INT_DO_SPARE6:1;		// DI-29
+	uint32_t PLB_INT_DO_SPARE5:1;		// DI-30
 	
 	uint32_t reset:1;		//PE10
 
@@ -61,15 +61,17 @@ extern union digitalInputsUnion uDI;
 
 struct digitalOutputs{
 	
-	uint8_t READY:1;		// DO-
-	uint8_t RUN:1;			// DO-
-	uint8_t IBF:1;			// DO-
-	uint8_t SPARE:1;		// DO-
+	uint32_t READY:1;				// DO-1
+	uint32_t RUN:1;					// DO-2
+	uint32_t DO3:1;					// DO-3
+	uint32_t DO4:1;					// DO-4
+	uint32_t IBF:1;					// DO-5
+	uint32_t SPARE:1;				// DO-6
+	uint32_t boardSPARE:10;	// DO-7...16
 	
-	
-	uint8_t LD_READY:1;		// DO-
-	uint8_t LD_RUN:1;			// DO-
-	uint8_t LD_IBF:1;			// DO-
+	uint32_t LD_IBF:1;			// Board Ind. Output Upper
+	uint32_t LD_READY:1;		// Board Ind. Output Mid
+	uint32_t LD_RUN:1;			// Board Ind. Output Bot
 	
 	
 	
@@ -78,6 +80,17 @@ struct digitalOutputs{
 
 
 extern struct digitalOutputs DO;
+
+union digitalOutputsUnion  {
+
+	struct digitalOutputs DO;
+	uint32_t all;
+
+
+};
+
+
+extern union digitalOutputsUnion uDO;
 
 
 #endif
