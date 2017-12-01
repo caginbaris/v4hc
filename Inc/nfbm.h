@@ -43,7 +43,7 @@ struct AdcData{
 
 
 extern struct AdcData adc;
-
+extern struct AdcData meanRMS;
 
 union uAdc
 {
@@ -368,12 +368,81 @@ struct system_parameters{
 
 	float OL_ratio;
 	float OL_ref_limit;
+	
+	float Q_limit;
+	
+	float Alpha_limit;
+	float B_limit;
+	
+	float Alpha_limit_down;
+	float B_limit_down;
+	
 
 
 
 };
 
 extern struct system_parameters sys;
+
+
+struct currentLimitParameters{
+
+float Inom;
+float level;
+float delay;
+float tau;
+float Bmax;
+	
+	struct{
+	
+		float B;
+		long pick_counter;
+		long release_counter;
+		long release_counter_val;
+		uint8_t pre_pick_up:1;
+		uint8_t pick_up:1;
+		uint8_t flag:1;
+		
+	}ab;
+	
+	
+		struct{
+	
+		float B;
+		long pick_counter;
+		long release_counter;
+		long release_counter_val;
+		uint8_t pre_pick_up:1;
+		uint8_t pick_up:1;
+		uint8_t flag:1;
+		
+	}bc;
+		
+	
+		struct{
+	
+		float B;
+		long pick_counter;
+		long release_counter;
+		long release_counter_val;
+		uint8_t pre_pick_up:1;
+		uint8_t pick_up:1;
+		uint8_t flag:1;
+		
+	}ca;
+
+	
+	
+};
+
+
+extern struct currentLimitParameters I_limiter;
+
+
+
+
+
+
 
 
 

@@ -730,14 +730,14 @@
               <FilePath>.\firingTestMode.c</FilePath>
             </File>
             <File>
-              <FileName>hfMode.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\hfMode.c</FilePath>
-            </File>
-            <File>
               <FileName>interMode.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\interMode.c</FilePath>
+            </File>
+            <File>
+              <FileName>hfMode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hfMode.c</FilePath>
             </File>
           </Files>
         </Group>

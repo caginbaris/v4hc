@@ -17,8 +17,9 @@ openLoopMode,
 manualVarMode,
 manualAngleMode,
 firingTestMode,
-//interModellar,
-	
+interMode,	
+hfMode
+
 };
 
 

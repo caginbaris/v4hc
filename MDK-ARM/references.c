@@ -52,3 +52,13 @@ void Ref_manualAngle(){
 }
 
 
+void Ref_inter(){
+	
+	ref_ab.final_alpha=Qbasic.ab;
+	ref_bc.final_alpha=Qbasic.bc;
+	ref_ca.final_alpha=Qbasic.ca;
+
+
+}
+
+

@@ -13,13 +13,11 @@ void main_flow(){
 	PowerCalculations();
 	faultRoutines();
 	tripRoutines();
-	
-	
-	mode_chart(); cau
 	*/
 	
-	
+	mode_chart(); 
 	state_chart();
+	
 	ios();
 	
 	
