@@ -387,11 +387,12 @@ extern struct system_parameters sys;
 
 struct currentLimitParameters{
 
-float Inom;
+
 float level;
 float delay;
 float tau;
 float Bmax;
+uint8_t enable;	
 	
 	struct{
 	

@@ -743,10 +743,9 @@ Section Cross References
     trips.o(i.tripRoutines) refers to aux_functions.o(i.off_delay) for off_delay
     trips.o(i.tripRoutines) refers to ios.o(.data) for DI
     trips.o(i.tripRoutines) refers to trips.o(.data) for .data
-    current_limiter.o(i.current_limiter) refers to aux_functions.o(i.on_delay) for on_delay
     current_limiter.o(i.current_limiter) refers to aux_functions.o(i.f_limiter) for f_limiter
-    current_limiter.o(i.current_limiter) refers to rms.o(.bss) for meanRMS
     current_limiter.o(i.current_limiter) refers to current_limiter.o(.bss) for .bss
+    current_limiter.o(i.current_limiter) refers to rms.o(.bss) for meanRMS
     pll.o(i.PLL_theta) refers to cosf.o(i.__hardfp_cosf) for __hardfp_cosf
     pll.o(i.PLL_theta) refers to sinf.o(i.__hardfp_sinf) for __hardfp_sinf
     pll.o(i.PLL_theta) refers to pll.o(.bss) for .bss
@@ -1627,7 +1626,7 @@ Removing Unused input sections from the image.
     Removing stm32f7xx_it.o(.rrx_text), (6 bytes).
     Removing faults.o(i.faultRoutines), (216 bytes).
     Removing trips.o(i.tripRoutines), (84 bytes).
-    Removing current_limiter.o(i.current_limiter), (200 bytes).
+    Removing current_limiter.o(i.current_limiter), (272 bytes).
     Removing current_limiter.o(i.init_current_limiter), (2 bytes).
     Removing current_limiter.o(.bss), (80 bytes).
     Removing pll.o(i.PLL_all), (2 bytes).
@@ -1705,7 +1704,7 @@ Removing Unused input sections from the image.
     Removing uart_masterslave.o(.revsh_text), (4 bytes).
     Removing uart_masterslave.o(.rrx_text), (6 bytes).
 
-691 unused section(s) (total 80501 bytes) removed from the image.
+691 unused section(s) (total 80573 bytes) removed from the image.
 
 ==============================================================================
 
@@ -2746,10 +2745,10 @@ Image component sizes
        130          0          0          0          0       1819   aux_functions.o
         68         12          0          0          0        878   closedloopmode.o
         32         10          0          0          0        455   commparams.o
-       608         28          0          1        360       6400   conversion.o
+       608         28          0          1        360       6404   conversion.o
        382          8          0          4          0       4126   dataparsermerger.o
         44          4          0          0          0        770   dma.o
-         0          0          0          0         12       4399   faults.o
+         0          0          0          0         12       4403   faults.o
         64         16          0          0          0        473   faultstate.o
          2          0          0          0          0        445   firingtestmode.o
        568         38          0          0          0       1247   gpio.o
@@ -2763,21 +2762,21 @@ Image component sizes
          2          0          0          0          0        450   manualanglemode.o
         88         12          0          0          0        877   manualvarmode.o
         16          4          0         33          0       1322   modes.o
-      1248        156          0        168        148       8829   openloopcalc.o
+      1248        156          0        168        148       8833   openloopcalc.o
        100         20          0          0          0        908   openloopmode.o
-       280          8          0          0        116       5411   pi.o
-         0          0          0          0         44       4395   power.o
-         0          0          0          0         52       5257   qbasic.o
+       280          8          0          0        116       5415   pi.o
+         0          0          0          0         44       4399   power.o
+         0          0          0          0         52       5261   qbasic.o
        220         48          0          0         76       1745   quadspi.o
         96         26          0          0          0        493   readystate.o
-       152         32          0         24          0       6197   references.o
+       152         32          0         24          0       6201   references.o
        108         30          0          0         32       1467   rtc.o
        172         28          0          4          0        611   runstate.o
        200         36          0          0        100       1701   spi.o
       1026         36          0          0       6032       6678   spi_masterslave.o
         36          8        504          0      16384        812   startup_stm32f767xx.o
        124         28          0          8          0        603   startupstate.o
-        16          4          0         36          0       5509   states.o
+        16          4          0         36          0       5513   states.o
         90         18          0          4          0       3251   stm32f7xx_hal.o
       1116         42          0          0          0       4818   stm32f7xx_hal_adc.o
        600         34          0          0          0       4338   stm32f7xx_hal_adc_ex.o
@@ -2799,12 +2798,12 @@ Image component sizes
         96         20         24          4          0     900987   system_stm32f7xx.o
        316         60          0          0        128       2391   tim.o
         60         16          0          0          0        503   trippedstate.o
-         0          0          0          8          0       4399   trips.o
+         0          0          0          8          0       4403   trips.o
        584         42          0          0       3008       6458   uart_masterslave.o
        184         34          0          0        112       1706   usart.o
 
     ----------------------------------------------------------------------
-     21702       1474        568        336      27112    1114925   Object Totals
+     21702       1474        568        336      27112    1114961   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         32          0          0          6          4          0   (incl. Padding)
 
@@ -2845,8 +2844,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     21912       1490        568        336      27112    1100945   Grand Totals
-     21912       1490        568         64      27112    1100945   ELF Image Totals (compressed)
+     21912       1490        568        336      27112    1100981   Grand Totals
+     21912       1490        568         64      27112    1100981   ELF Image Totals (compressed)
      21912       1490        568         64          0          0   ROM Totals
 
 ==============================================================================
