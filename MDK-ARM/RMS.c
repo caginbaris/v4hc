@@ -1,14 +1,19 @@
 
 #include "nfbm.h"
 #include <math.h>
+#include "time_constants.h"
 
 #define rms_channelNo 18
 #define rms_period 500.0f
 #define i_rms_period 1/rms_period 
+#define rms_div3 0.3333333333333f
+#define c_rms_time _10sec
+#define c_rms_div  1/c_rms_time
 
 
 struct AdcData meanRMS={0};
 struct fastRMS fRMS;
+float  cRMS=0;
 union  uAdc meanRMS_sum={0};
 
 
@@ -61,13 +66,43 @@ void mean_RMS(union uAdc in,struct AdcData *out){
 
 
 void fast_RMS(void){
+	
+	
+fRMS.Vab=(fpp_ab.Vlag*fpp_ab.Vlag + fpp_ab.Vlead*fpp_ab.Vlead)*0.5f;
+fRMS.Vbc=(fpp_bc.Vlag*fpp_bc.Vlag + fpp_bc.Vlead*fpp_bc.Vlead)*0.5f;
+fRMS.Vca=(fpp_ca.Vlag*fpp_ca.Vlag + fpp_ca.Vlead*fpp_ca.Vlead)*0.5f;
 
 
+
+}
+
+void correction_RMS(void){
+	
+	static uint32_t counter=0;
+	static float average_sum=0;
+	float average;
+	
+	average=(meanRMS.Ia+meanRMS.Ib+meanRMS.Ic)*rms_div3;
+	average_sum+=average;
+	
+	if(++counter==c_rms_time){
+		
+		
+	cRMS=average_sum*c_rms_div;
+	average_sum=0;	
+	counter=0;	
+	
+	}
+	
 
 }
 
 void RMS_all(void){
 	
 	mean_RMS(Adc,&meanRMS);
+	fast_RMS();
+	correction_RMS();
+	
+	
 
 }

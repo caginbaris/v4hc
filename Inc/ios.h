@@ -25,19 +25,19 @@ struct digitalInputs{
 	uint32_t Q3_open_ctb:1;					// DI-16
 	uint32_t Q3_trip_ctb:1;					// DI-17
 	uint32_t Furnace3_SWT:1;				// DI-18
-	uint32_t _52:1;									// DI-19
-	uint32_t _53:1;									// DI-20
-	uint32_t _54:1;									// DI-21
-	uint32_t _55:1;									// DI-22
-	uint32_t _56:1;									// DI-23
-	uint32_t COLD_TEST:1;						// DI-24
+	uint32_t Q10_ds_pos:1;					// DI-19-E->52
+	uint32_t Q20_ds_pos:1;					// DI-20-E->53
+	uint32_t Q31_ds_pos:1;					// DI-21-E->54
+	uint32_t _55:1;									// DI-22-E->55
+	uint32_t _56:1;									// DI-23-E->56
+	uint32_t BusVoltageSelect:1;		// DI-24
 	
-	uint32_t PLB_INT_DO_SPARE2:1;		// DI-25
-	uint32_t PLB_INT_DO_SPARE1:1;		// DI-26
+	uint32_t Commisioning:1;				// DI-25
+	uint32_t _2HF_Operation:1;			// DI-26
 	uint32_t PLB_INT_DO_SPARE4:1;		// DI-27
-	uint32_t PLB_INT_DO_SPARE3:1;		// DI-28
+	uint32_t CB_Operation_Qbasic:1;	// DI-28
 	uint32_t PLB_INT_DO_SPARE6:1;		// DI-29
-	uint32_t PLB_INT_DO_SPARE5:1;		// DI-30
+	
 	
 	uint32_t reset:1;		//PE10
 
@@ -61,17 +61,17 @@ extern union digitalInputsUnion uDI;
 
 struct digitalOutputs{
 	
-	uint32_t READY:1;				// DO-1
-	uint32_t RUN:1;					// DO-2
-	uint32_t DO3:1;					// DO-3
-	uint32_t DO4:1;					// DO-4
-	uint32_t IBF:1;					// DO-5
-	uint32_t SPARE:1;				// DO-6
-	uint32_t boardSPARE:10;	// DO-7...16
+	uint32_t READY:1;							// DO-1
+	uint32_t RUN:1;								// DO-2
+	uint32_t IBF:1;								// DO-3
+	uint32_t StartupCompleted:1;	// DO-4
+	uint32_t Spare1:1;						// DO-5
+	uint32_t Spare2:1;						// DO-6
+	uint32_t boardSPARE:10;				// DO-7...16
 	
-	uint32_t LD_IBF:1;			// Board Ind. Output Upper
-	uint32_t LD_READY:1;		// Board Ind. Output Mid
-	uint32_t LD_RUN:1;			// Board Ind. Output Bot
+	uint32_t LD_IBF:1;						// Board Ind. Output Upper
+	uint32_t LD_READY:1;					// Board Ind. Output Mid
+	uint32_t LD_RUN:1;						// Board Ind. Output Bot
 	
 	
 	

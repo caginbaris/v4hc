@@ -8,6 +8,12 @@ void stoppedState(){
 
 	static long timeOutCounter=0;
 	
+	// Output Set
+	
+	DO.READY=0;
+	DO.RUN=0;
+	DO.IBF=0;
+	
 	// led indication
 	
 	DO.LD_IBF=0;

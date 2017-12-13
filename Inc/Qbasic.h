@@ -8,6 +8,7 @@
 #define Vnom 34.5f
 #define i3   0.333333333333333f
 
+
 struct QbasicData{
 
 	float QHF_1;
@@ -31,12 +32,6 @@ struct QbasicData{
 	uint32_t HF_2_DSC_pos:1;
 	uint32_t HF_3_DSC_pos:1;
 	uint32_t HF_4_DSC_pos:1;
-	
-	
-	uint32_t HF_1_DB_pos:1;
-	uint32_t HF_2_DB_pos:1;
-	uint32_t HF_3_DB_pos:1;
-	uint32_t HF_4_DB_pos:1;
 
 	
 	uint32_t HF_1_EN:1;
@@ -48,7 +43,20 @@ struct QbasicData{
 };
 
 
+struct QbasicStartup{
+	
+	uint32_t  step1:1;
+	uint32_t  step2:1;
+	uint32_t  step3:1;
+	
+	uint32_t  step1_passed:1;
+	uint32_t  step2_passed:1;
+	
+	long step1_counter;
+	long step2_counter;
 
+
+};
 
 #endif
 

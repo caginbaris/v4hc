@@ -9,7 +9,7 @@ struct external_fault extTrip={0};
 void tripRoutines(void){
 
 
-	if(!(DI.Q1_trip_ctb & DI.Q2_trip_ctb & DI.Q3_trip_ctb & DI.SVC_TRIP)){
+	if(!(DI.SVC_TRIP & DI.Q1_trip_ctb)){
 	
 	extTrip.pick_up=1;
 		

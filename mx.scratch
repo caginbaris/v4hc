@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
-<ProjectName>C:\Users\Serbay\Desktop\27.11.17-v4hc_CTB1\27.11.17-v4hc_CTB1\v4hc\\v4Hc</ProjectName>
+<ProjectName>C:\Users\baris.cengiz\Dropbox\habas_310\v4hc\\v4Hc</ProjectName>
 <CMSIS>..\Drivers\CMSIS</CMSIS>
-<HAL_Driver>C:\Users\Serbay\STM32Cube\Repository\STM32Cube_FW_F7_V1.8.0\Drivers\CMSIS</HAL_Driver>
+<HAL_Driver>C:\Users\SVC\STM32Cube\Repository\STM32Cube_FW_F7_V1.8.0\Drivers\CMSIS</HAL_Driver>
 
 <Toolchain>MDK-ARM</Toolchain>
 	<Toolversion>5</Toolversion>

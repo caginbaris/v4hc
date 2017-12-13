@@ -12,6 +12,13 @@ void startupState(){
 	static long timeOutCounter=0;
 	static uint16_t blinkCounter=0;
 	
+	// Output Set
+	
+	DO.READY=0;
+	DO.RUN=0;
+	DO.IBF=0;
+	DO.StartupCompleted=0;
+	
 	// Led Blink indication
 	
 	if(++blinkCounter==half_sec){

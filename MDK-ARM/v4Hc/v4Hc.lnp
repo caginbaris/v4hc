@@ -64,6 +64,7 @@
 "v4hc\firingtestmode.o"
 "v4hc\intermode.o"
 "v4hc\hfmode.o"
+"v4hc\selection.o"
 "v4hc\parameter_config.o"
 "v4hc\configroutines.o"
 "v4hc\ios.o"

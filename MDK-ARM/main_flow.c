@@ -5,7 +5,7 @@
 
 void main_flow(){
 	
-	/*
+	
 	PLL_all();
 	RMS_all();
 	
@@ -13,7 +13,7 @@ void main_flow(){
 	PowerCalculations();
 	faultRoutines();
 	tripRoutines();
-	*/
+	
 	
 	mode_chart(); 
 	state_chart();

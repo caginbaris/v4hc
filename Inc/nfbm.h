@@ -215,6 +215,20 @@ extern struct references ref_bc;
 extern struct references ref_ca;
 
 
+struct ref_parameters{
+
+	float MV_Bus_Offset;
+	float TR_Offset;
+	float PF_Set;
+	float Q_PF_Set;
+	float ManualQ;
+	float ManualAlpha;
+
+};
+
+extern struct ref_parameters ref_param_received;
+extern struct ref_parameters ref_set;
+
 struct stat{
 
 	uint32_t MV_ready_flag:1;
@@ -226,6 +240,7 @@ struct stat{
 	uint32_t voltage_limiting_pick_up:1;
 	uint32_t voltage_limiting:1;
 	uint32_t cb_operation_flag:1;
+	uint32_t configData_flag;
 	
 };
 
@@ -438,6 +453,30 @@ uint8_t enable;
 
 
 extern struct currentLimitParameters I_limiter;
+
+
+
+
+union cb_operations{
+
+	struct {
+	
+		uint8_t eaf1;
+		uint8_t eaf2;
+		uint8_t eaf3;
+		
+		uint8_t lf1;
+		uint8_t lf2;
+		uint8_t lf3;
+	
+	}bit;
+	
+	uint8_t all;
+	
+	
+};
+
+extern union cb_operations cb_pos;
 
 
 

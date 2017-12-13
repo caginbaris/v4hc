@@ -43,7 +43,7 @@ struct AdcData{
 
 
 extern struct AdcData adc;
-
+extern struct AdcData meanRMS;
 
 union uAdc
 {
@@ -217,13 +217,15 @@ extern struct references ref_ca;
 
 struct stat{
 
-	uint8_t MV_Ready:1;
-	uint8_t start_flag:1;
-	uint8_t Qbasic_mode:1;
-	uint8_t regulation_enable:1;
-	uint8_t current_limiting:1;
-	uint8_t voltage_limiting:1;
-	uint8_t cb_operation:1;
+	uint32_t MV_ready_flag:1;
+	uint32_t start_flag:1;
+	uint32_t Qbasic_flag:1;
+	uint32_t regulation_enable:1;
+	uint32_t current_limiting_pick_up:1;
+	uint32_t current_limiting:1;
+	uint32_t voltage_limiting_pick_up:1;
+	uint32_t voltage_limiting:1;
+	uint32_t cb_operation_flag:1;
 	
 };
 
@@ -366,12 +368,82 @@ struct system_parameters{
 
 	float OL_ratio;
 	float OL_ref_limit;
+	
+	float Q_limit;
+	
+	float Alpha_limit;
+	float B_limit;
+	
+	float Alpha_limit_down;
+	float B_limit_down;
+	
 
 
 
 };
 
 extern struct system_parameters sys;
+
+
+struct currentLimitParameters{
+
+
+float level;
+float delay;
+float tau;
+float Bmax;
+uint8_t enable;	
+	
+	struct{
+	
+		float B;
+		long pick_counter;
+		long release_counter;
+		long release_counter_val;
+		uint8_t pre_pick_up:1;
+		uint8_t pick_up:1;
+		uint8_t flag:1;
+		
+	}ab;
+	
+	
+		struct{
+	
+		float B;
+		long pick_counter;
+		long release_counter;
+		long release_counter_val;
+		uint8_t pre_pick_up:1;
+		uint8_t pick_up:1;
+		uint8_t flag:1;
+		
+	}bc;
+		
+	
+		struct{
+	
+		float B;
+		long pick_counter;
+		long release_counter;
+		long release_counter_val;
+		uint8_t pre_pick_up:1;
+		uint8_t pick_up:1;
+		uint8_t flag:1;
+		
+	}ca;
+
+	
+	
+};
+
+
+extern struct currentLimitParameters I_limiter;
+
+
+
+
+
+
 
 
 

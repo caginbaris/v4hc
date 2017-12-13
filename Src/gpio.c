@@ -89,7 +89,7 @@ void MX_GPIO_Init(void)
                           |DO_7_Pin|DO_8_Pin|DO_9_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, CTB1_RUN_DO_2_Pin|BOARD_INHIBIT_DO_3_Pin|BOARD_BF_DO_4_Pin|CTB1_IBF_DO_5_Pin 
+  HAL_GPIO_WritePin(GPIOA, CTB1_RUN_DO_2_Pin|CTB1_IBF_DO_3_Pin|CTB1_StartComp_DO_4_Pin|CTB1_SP_DO_5_Pin 
                           |CTB1_SP_DO_6_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
@@ -139,7 +139,7 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : PGPin PGPin PGPin PGPin 
                            PGPin */
-  GPIO_InitStruct.Pin = Q2_CB_TRIP_DI_15_Pin|Q3_CB_OPEN_DI_16_Pin|PLB_INT_DI_SP4_DI_27_Pin|PLB_INT_DI_SP3_DI_28_Pin 
+  GPIO_InitStruct.Pin = Q2_CB_TRIP_DI_15_Pin|Q3_CB_OPEN_DI_16_Pin|PLB_INT_DI_SP4_DI_27_Pin|CB_Operation_Qbasic_DI_28_Pin 
                           |PLB_INT_DI_SP6_DI_29_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -167,7 +167,7 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pins : PDPin PDPin PDPin PDPin 
                            PDPin PDPin PDPin PDPin */
   GPIO_InitStruct.Pin = DI_52_DI_19_Pin|DI_53_DI_20_Pin|DI_54_DI_21_Pin|DI_55_DI_22_Pin 
-                          |DI_56_DI_23_Pin|COLD_TEST_DI_24_Pin|PLB_INT_DI_SP2_DI_25_Pin|PLB_INT_DI_SP1_DI_26_Pin;
+                          |DI_56_DI_23_Pin|Bus_Voltage_Selection_DI_24_Pin|Commisioning_DI_25_Pin|_2HF_Operation_DI_26_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
@@ -200,7 +200,7 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : PAPin PAPin PAPin PAPin 
                            PAPin */
-  GPIO_InitStruct.Pin = CTB1_RUN_DO_2_Pin|BOARD_INHIBIT_DO_3_Pin|BOARD_BF_DO_4_Pin|CTB1_IBF_DO_5_Pin 
+  GPIO_InitStruct.Pin = CTB1_RUN_DO_2_Pin|CTB1_IBF_DO_3_Pin|CTB1_StartComp_DO_4_Pin|CTB1_SP_DO_5_Pin 
                           |CTB1_SP_DO_6_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;

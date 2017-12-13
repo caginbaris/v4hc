@@ -2,10 +2,15 @@
 #include "Qbasic.h"
 #include "nfbm.h"
 #include "ios.h"
+#include "states.h"
+
+#include "aux_functions.h"
+#include "time_constants.h"
 
 
 struct QbasicData Qdata={0};
 struct QbasicOut Qbasic;
+struct QbasicStartup Qstartup;
 
 
 void init_Qbasic(void){
@@ -15,12 +20,12 @@ void init_Qbasic(void){
 	Qdata.QHF_1=0.0f; /*entered from HMI side*/
 	Qdata.QHF_2=0.0f; /*entered from HMI side*/
 	Qdata.QHF_3=0.0f; /*entered from HMI side*/
-	Qdata.QHF_4=0.0f; /*entered from HMI side*/
+
 	
 	Qdata.BHF_1=Qdata.QHF_1/(3.0f*Vnom*Vnom);
 	Qdata.BHF_2=Qdata.QHF_2/(3.0f*Vnom*Vnom);
 	Qdata.BHF_3=Qdata.QHF_3/(3.0f*Vnom*Vnom);
-	Qdata.BHF_4=Qdata.QHF_4/(3.0f*Vnom*Vnom);
+
 	
 
 }
@@ -28,41 +33,71 @@ void init_Qbasic(void){
 void Qbasic_calculation(void){
 	
 	
-	//HF_1------------------------------
 	
-	Qdata.HF_1_CB_pos=0;//DI. from MRB
-	Qdata.HF_1_DSC_pos=0;//DI. from MRB
-	Qdata.HF_1_DB_pos=0;//DI. from MRB
+	//in normal operation
 	
+	//HF_1-2------------------------------
 	
-	Qdata.HF_1_EN=Qdata.HF_1_CB_pos & 
-								Qdata.HF_1_DSC_pos&
-								Qdata.HF_1_DB_pos;
-	
-	//HF_2-----------------------------
-	
-	Qdata.HF_2_CB_pos=0;//DI. from MRB
-	Qdata.HF_2_DSC_pos=0;//DI. from MRB
-	Qdata.HF_2_DB_pos=0;//DI. from MRB
+	Qdata.HF_1_CB_pos		=	DI.Q1_cb_pos;				//DI. from MRB
+	Qdata.HF_1_DSC_pos	=	DI.Q10_ds_pos;			//DI. from MRB
+
 	
 	
-	Qdata.HF_2_EN=Qdata.HF_2_CB_pos & 
-								Qdata.HF_2_DSC_pos&
-								Qdata.HF_2_DB_pos;
-								
+	Qdata.HF_1_EN				=	Qdata.HF_1_CB_pos & Qdata.HF_1_DSC_pos;
+	Qdata.HF_2_EN				= Qdata.HF_1_EN 		& DI.Q3_cb_pos & !DI.Q31_ds_pos;
 								
 	//HF_3----------------------------
 	
-	Qdata.HF_3_CB_pos=0;//DI. from MRB
-	Qdata.HF_3_DSC_pos=0;//DI. from MRB
-	Qdata.HF_3_DB_pos=0;//DI. from MRB
+	Qdata.HF_3_CB_pos = DI.Q2_cb_pos;//DI. from MRB
+	Qdata.HF_3_DSC_pos=DI.Q20_ds_pos;//DI. from MRB
+	
+	Qdata.HF_3_EN= Qdata.HF_3_CB_pos & Qdata.HF_3_DSC_pos;
+		
+	
+	//--------------------------------
 	
 	
-	Qdata.HF_3_EN=Qdata.HF_3_CB_pos & 
-								Qdata.HF_3_DSC_pos&
-								Qdata.HF_3_DB_pos;							
+	if(status.regulation_enable==0 && current_state==run){
 	
-	//---------------------------------
+	
+	if((Qdata.HF_1_DSC_pos & (!Qdata.HF_1_CB_pos)	& DI.CB_Operation_Qbasic) | Qstartup.step1){
+	
+		Qstartup.step1=1;Qdata.HF_1_EN=1;
+	
+	}
+	
+	
+	Qstartup.step1_passed=on_delay(Qstartup.step1,Qstartup.step1_passed,_2sec,&Qstartup.step1_counter);
+	
+	
+	if((Qstartup.step1_passed & !Qdata.HF_2_CB_pos		& DI.CB_Operation_Qbasic)|Qstartup.step2){
+		
+		Qstartup.step2=1;Qdata.HF_2_EN=1;	
+	
+	}
+	
+		Qstartup.step2_passed=on_delay(Qstartup.step2,Qstartup.step2_passed,_2sec,&Qstartup.step2_counter);
+	
+	
+	if( (Qstartup.step2_passed  & Qdata.HF_3_DSC_pos & (!Qdata.HF_3_CB_pos) & DI.CB_Operation_Qbasic) |Qstartup.step3){
+		
+		Qstartup.step3=1;Qdata.HF_3_EN =1;	
+	
+	}
+		
+}else{
+	
+	Qstartup.step1=0;
+	Qstartup.step2=0;
+	Qstartup.step3=0;
+	
+	Qstartup.step1_passed=0;
+	Qstartup.step2_passed=0; 
+
+	Qstartup.step1_counter=0;
+	Qstartup.step2_counter=0;
+
+}
 	
 	
 	

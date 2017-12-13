@@ -12,7 +12,9 @@ void openLoopMode(void);
 void manualVarMode(void);
 void manualAngleMode(void);
 void firingTestMode(void);
+void interMode(void);
 void hfMode(void);
+
 
 enum ModeID{	
 
@@ -22,11 +24,13 @@ openLoop,
 manualVar,
 manualAngle,
 firingTest,
-hf	
+inter,	
+hf
+
 	
 };
 
 extern enum ModeID current_mode;
-
+extern enum ModeID new_mode;
 
 #endif

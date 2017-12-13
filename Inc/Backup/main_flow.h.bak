@@ -12,4 +12,6 @@ void faultRoutines(void);
 void tripRoutines(void);
 void ios(void);
 
+void pushDataToMaster(void);
+
 #endif

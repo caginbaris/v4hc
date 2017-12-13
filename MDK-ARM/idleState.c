@@ -8,12 +8,20 @@ void idleState(){
 	
 	static long counter=0;
 	static uint8_t idleFlag=0;
+	
+	// Output Set
+	
+	DO.READY=0;
+	DO.RUN=1;
+	DO.IBF=0;
 
 	// led indication
 	
 	DO.LD_IBF=0;
 	DO.LD_READY=0;
 	DO.LD_RUN=1;
+	
+	status.Qbasic_flag=1;
 	
 	idleFlag=off_delay(DI.Q1_cb_pos,idleFlag,_1sec,&counter);
 	

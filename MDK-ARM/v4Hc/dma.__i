@@ -1,6 +1,0 @@
--c --cpu Cortex-M7.fp.sp -D__EVAL -D__MICROLIB -g -O3 -Otime --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F7xx_HAL_Driver/Inc -I ../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I ../Drivers/CMSIS/Include -I ..\Inc\Comm_Library_Header -I ..\Src\Comm_Library_Source --C99
--IC:\Users\baris.cengiz\Dropbox\habas_310\v4hc\MDK-ARM\RTE
--IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include
--IC:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include
--D__UVISION_VERSION="521" -D_RTE_ -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx
--o v4hc\dma.o --omf_browse v4hc\dma.crf --depend v4hc\dma.d "../Src/dma.c"

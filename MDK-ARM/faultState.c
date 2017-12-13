@@ -6,6 +6,13 @@
 
 void faultState(){
 	
+	// Output Set
+	
+	DO.READY=0;
+	DO.RUN=0;
+	DO.IBF=1;
+	
+	
 	// led indication
 	
 	DO.LD_IBF=1;
