@@ -12,7 +12,7 @@
 
 
 struct AdcData meanRMS={0};
-struct fastRMS fRMS;
+struct fastRMS fRMS={0};
 float  cRMS=0;
 union  uAdc meanRMS_sum={0};
 

@@ -18,14 +18,14 @@ void mode_selection(){
 			
 		/*mode selections*/	
 			
-		if(runningModeFlags.bit.closedLoopControl & !runningModeFlags.bit.openLoopControl 	){current_mode=closedLoop;}
-		if(runningModeFlags.bit.closedLoopControl & runningModeFlags.bit.openLoopControl 		){current_mode=openLoop;}
-		if(runningModeFlags.bit.manualControl     & runningModeFlags.bit.manualVarControl 	){current_mode=manualVar;}
-		if(runningModeFlags.bit.manualControl     & runningModeFlags.bit.manualAngleControl	){current_mode=manualAngle;}
+		if(runningModeFlags.bit.closedLoopControl & !runningModeFlags.bit.openLoopControl 	){new_mode=closedLoop;}
+		if(runningModeFlags.bit.closedLoopControl & runningModeFlags.bit.openLoopControl 		){new_mode=openLoop;}
+		if(runningModeFlags.bit.manualControl     & runningModeFlags.bit.manualVarControl 	){new_mode=manualVar;}
+		if(runningModeFlags.bit.manualControl     & runningModeFlags.bit.manualAngleControl	){new_mode=manualAngle;}
 		
 		if(runningModeFlags.bit.only2HF						 & (current_state!=run)										){
 			
-			current_mode=hf;
+			new_mode=hf;
 			
 		}else{
 			
@@ -35,7 +35,7 @@ void mode_selection(){
 		
 		if(runningModeFlags.bit.firingTestMode    & (current_state!=run)										){
 		
-			current_mode=firingTest;
+			new_mode=firingTest;
 			
 		}else{
 		
@@ -44,20 +44,7 @@ void mode_selection(){
 		}
 		
 		/*flag selections*/	
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			
 		}
-		
-		
 	}
 }

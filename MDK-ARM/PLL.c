@@ -6,7 +6,7 @@
  */
 
 #include <math.h>
-#include <nfbm.h>
+#include "nfbm.h"
 
 
 #define PI_limit 3.1415926535f
@@ -88,8 +88,8 @@ float PLL_theta (float Valpha_pll, float wt_pll,int index){
 void PLL_all(void){
 
 
-    //PLL.ab_rad=PLL_theta(adc.Vab_sync,PLL.ab_rad,1);
-    //PLL.bc_rad=PLL_theta(adc.Vca_sync,PLL.bc_rad,2);
-    //PLL.ca_rad=PLL_theta(adc.Vca_sync,PLL.ca_rad,3);
+    PLL.ab_rad=PLL_theta(adc.Vab_sync,PLL.ab_rad,1);
+    PLL.bc_rad=PLL_theta(adc.Vca_sync,PLL.bc_rad,2);
+    PLL.ca_rad=PLL_theta(adc.Vca_sync,PLL.ca_rad,3);
 
 }

@@ -4,6 +4,7 @@
 #include "commReceivedParameters.h"
 #include <math.h>
 
+#define VnomSquare 34500.0f*34500.0f
 #define div3 0.333333333333333333333f
 
 struct references ref_ab;
@@ -38,9 +39,9 @@ void Ref_OL(){
 
 void Ref_manualVar(){
 	
-	ref_ab.final_Q=0.0f;
-	ref_bc.final_Q=0.0f;
-	ref_ca.final_Q=0.0f;
+	ref_ab.final_Q=ref_set.ManualQ;
+	ref_bc.final_Q=ref_set.ManualQ;
+	ref_ca.final_Q=ref_set.ManualQ;
 
 
 }
@@ -48,9 +49,9 @@ void Ref_manualVar(){
 
 void Ref_manualAngle(){
 	
-	ref_ab.final_alpha=120.0f;
-	ref_bc.final_alpha=120.0f;
-	ref_ca.final_alpha=120.0f;
+	ref_ab.final_alpha=ref_set.ManualAlpha;
+	ref_bc.final_alpha=ref_set.ManualAlpha;
+	ref_ca.final_alpha=ref_set.ManualAlpha;
 
 
 }
@@ -75,8 +76,11 @@ void Ref_flag_handles(){
 			PI.Qref=(ref_set.MV_Bus_Offset);
 			
 			}else{
-			
-			PI.Qref=(ref_set.MV_Bus_Offset - ref_param_received.TR_Offset);
+				
+			ref_set.TR_Offset = sys.TR_Ratio*sys.TR_Uk*(VnomSquare)/sys.TR_Power;
+				
+				
+			PI.Qref=(ref_set.MV_Bus_Offset - ref_set.TR_Offset);
 			
 			}
 		
@@ -86,28 +90,21 @@ void Ref_flag_handles(){
 		
 		if(runningModeFlags.bit.pfControl ){
 			
-			ref_set.Q_PF_Set=cl.Ptotal*tan(acos(ref_param_received.PF_Set))*div3;
+			ref_set.Q_PF_Set=cl.Ptotal*tan(acos(ref_set.PF_Set))*div3;
 			
 			if(runningModeFlags.bit.pointSelect){
 				
 			PI.Qref=ref_set.Q_PF_Set;
 			
 			}else{
+				
+			ref_set.TR_Offset = sys.TR_Ratio*sys.TR_Uk*(VnomSquare)/sys.TR_Power;	
 			
-			PI.Qref=(ref_set.Q_PF_Set - ref_param_received.TR_Offset);
+			PI.Qref=(ref_set.Q_PF_Set - ref_set.TR_Offset);
 			
 			}
 		
 		}
-		
-
-		
-
-		
-		
-	
-	
-
 
 }
 

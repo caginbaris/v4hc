@@ -16,8 +16,8 @@ union mode_flags{
 		uint32_t manualVarControl:1; //
 		uint32_t manualAngleControl:1;
 		uint32_t only2HF;
-		uint32_t controlRefSelect; // for bus offset default 0 to MV
 		uint32_t firingTestMode;
+		uint32_t firingTestEnable;
 	
 	}bit;
 	

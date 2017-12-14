@@ -10,6 +10,8 @@ void closedLoopMode(void){
 	CL_handles();
 	PI_CL();
 	Ref_CL();
+	Ref_flag_handles();
+	
 	
 }
 

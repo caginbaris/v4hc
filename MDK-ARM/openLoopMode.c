@@ -9,7 +9,9 @@ void openLoopMode(void){
 OL_handles();
 OL_calculations();	
 PI_OL();
-Ref_OL();	
+Ref_OL();
+Ref_flag_handles();	
+	
 	
 	
 

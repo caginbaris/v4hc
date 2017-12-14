@@ -1,5 +1,6 @@
 
 #include "states.h"
+#include "modes.h"
 #include "nfbm.h"
 #include "ios.h"
 
@@ -21,7 +22,7 @@ void readyState(void){
 	
 	status.MV_ready_flag=DI.Q10_ds_pos;
 	
-	if(DI.start_stop && status.MV_ready_flag){current_state=run;}
+	if(DI.start_stop & status.MV_ready_flag & current_mode!=firingTest){current_state=run;}
 	if(extTrip.all){current_state=tripped;}
 	if(voltage_loss.trip){current_state=fault;}
 

@@ -1,5 +1,6 @@
 
 #include "states.h"
+#include "modes.h"
 #include "aux_functions.h"
 #include "nfbm.h"
 #include "ios.h"
@@ -28,7 +29,7 @@ void runState(void){
 	DO.LD_READY=0;
 	DO.LD_RUN=1;
 	
-	if((DI.Q1_cb_pos |DI.CB_Operation_Qbasic) & !status.start_flag /*remaining entry!*/){
+	if((DI.Q1_cb_pos |DI.CB_Operation_Qbasic) & (!status.start_flag) & (current_mode!=hf) /*remaining entry!*/){
 		
 		status.start_flag=1;
 	
@@ -79,9 +80,7 @@ void runState(void){
 	status.regulation_enable=0;
 
 	DO.StartupCompleted=0;	
-		
-	status.Qbasic_flag=1;	
-		
+
 	current_state=idle;	
 		
 	
