@@ -455,6 +455,50 @@ uint8_t enable;
 extern struct currentLimitParameters I_limiter;
 
 
+struct voltageLimitParameters{
+	
+	
+	float level;
+	float delay;
+	float tau;
+	
+	struct{
+		
+	float pick;
+	float start;
+	float Bout;
+	long counter;
+	
+	}ab;
+	
+	
+	struct{
+		
+	float pick;
+	float start;
+	float Bout;
+	long counter;
+	
+	}bc;
+	
+	
+	struct{
+		
+	float pick;
+	float start;
+	float Bout;
+	long counter;	
+	
+	}ca;
+
+	
+	
+
+};
+
+
+
+
 
 
 union cb_operations{
