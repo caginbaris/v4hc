@@ -36,6 +36,9 @@ void Qbasic_calculation(void){
 	
 	//in normal operation
 	
+
+
+	
 	//HF_1-2------------------------------
 	
 	Qdata.HF_1_CB_pos		=	DI.Q1_cb_pos;				//DI. from MRB
@@ -98,6 +101,12 @@ void Qbasic_calculation(void){
 	Qstartup.step2_counter=0;
 
 }
+
+
+
+
+	/*CB closing in manual after startup*/
+
 	
 	
 	

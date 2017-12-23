@@ -43,7 +43,7 @@ void runState(void){
 	}
 	
 	
-	status.regulation_enable=on_delay(status.start_flag,status.regulation_enable,_10sec,&regulationCounter);
+	status.regulation_enable=on_delay(status.start_flag,status.regulation_enable,_12sec,&regulationCounter);
 	
 	
 	if(status.regulation_enable){

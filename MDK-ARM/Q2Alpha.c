@@ -7,6 +7,7 @@
 
 #include "nfbm.h"
 #include "Q2Alpha.h"
+#include "modes.h"
 
 
 
@@ -54,15 +55,20 @@ float Q2alpha(float Qin, float RMS, float TCR_XL){
 
 
 void Q2alpha_transforms(){
+	
+	
+	if(	current_mode==closedLoop 	|
+			current_mode==openLoop 		|
+			current_mode==manualVar 	|
+			current_mode==inter){
 
 
-
-
-	//	ref_ab.final_alpha=Q2alpha(ref_ab.final_Q-tcr_limit.ab.Q,fRMS.ab,sys.TCR_XL_ab);
-	//	ref_bc.final_alpha=Q2alpha(ref_bc.final_Q-tcr_limit.bc.Q,fRMS.bc,sys.TCR_XL_bc);
-	//	ref_ca.final_alpha=Q2alpha(ref_ca.final_Q-tcr_limit.ca.Q,fRMS.ca,sys.TCR_XL_ca);
-
-
+		ref_ab.final_alpha=Q2alpha(ref_ab.final_Q,fRMS.Vab,sys.TCR_XL_ab);
+		ref_bc.final_alpha=Q2alpha(ref_bc.final_Q,fRMS.Vbc,sys.TCR_XL_bc);
+		ref_ca.final_alpha=Q2alpha(ref_ca.final_Q,fRMS.Vca,sys.TCR_XL_ca);
+			
+			}
+	
 }
 
 

@@ -3,6 +3,7 @@
 #include "main.h"
 #include "stm32f7xx_hal.h"
 #include "ios.h"
+#include "nfbm.h"
 
 struct 	digitalInputs DI={0};
 struct 	digitalOutputs DO={0};
@@ -55,8 +56,33 @@ void ios(void){
 	uDI.DI=DI;
 	uDO.DO=DO;
 	
-
+	cb_pos.all=0;
 	
+	if(DI.Furnace3_SWT){
+	
+	cb_pos.bit.eaf1=DI.EAF1_cb_pos; 
+	cb_pos.bit.eaf2=DI.EAF2_cb_pos;
+	cb_pos.bit.eaf3=DI.EAF3_cb_pos;
+	
+	cb_pos.bit.lf1=DI.LF1_cb_pos; 
+	cb_pos.bit.lf2=DI.LF2_cb_pos;
+	cb_pos.bit.lf3=DI.LF3_cb_pos;
+		
+	cb_pos.bit.q2=DI.Q2_cb_pos;
+	cb_pos.bit.q3=DI.Q3_cb_pos;			
+	
+	}else{
+		
+	cb_pos.bit.eaf1=DI.EAF1_cb_pos; 
+	cb_pos.bit.eaf3=DI.EAF3_cb_pos;
+	
+	cb_pos.bit.lf1=DI.LF1_cb_pos; 
+	cb_pos.bit.lf2=DI.LF2_cb_pos;
+		
+	cb_pos.bit.q2=DI.Q2_cb_pos;
+	cb_pos.bit.q3=DI.Q3_cb_pos;			
+
+	}
 	
 }
 

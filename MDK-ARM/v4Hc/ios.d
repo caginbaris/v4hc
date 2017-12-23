@@ -40,3 +40,4 @@ v4hc\ios.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h
 v4hc\ios.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h
 v4hc\ios.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h
 v4hc\ios.o: ../Inc/ios.h
+v4hc\ios.o: ../Inc/nfbm.h

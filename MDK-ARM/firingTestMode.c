@@ -15,11 +15,9 @@ void firingTestMode(void){
 				
 			if(TestFire.counter++>TestFire.firing_duration*ms){
 
-
 				status.start_flag=0;
 				TestFire.counter=0;
 				TestFire.enable_firing=0;
-
 
 		}
 	}

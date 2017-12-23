@@ -57,6 +57,16 @@ void Ref_manualAngle(){
 }
 
 
+void Ref_hf(){
+
+	ref_ab.final_alpha=fire.alpha_limit_down;
+	ref_bc.final_alpha=fire.alpha_limit_down;
+	ref_ca.final_alpha=fire.alpha_limit_down;
+
+
+}
+
+
 void Ref_inter(){
 	
 	ref_ab.final_alpha=Qbasic.ab;

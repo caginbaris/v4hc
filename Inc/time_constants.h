@@ -13,6 +13,7 @@
 #define  _4sec				4*_1sec
 #define  _5sec				5*_1sec
 #define  _10sec				10*_1sec
+#define  _12sec				12*_1sec
 
 #endif
 

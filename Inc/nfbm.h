@@ -512,6 +512,9 @@ union cb_operations{
 		uint8_t lf1;
 		uint8_t lf2;
 		uint8_t lf3;
+		
+		uint8_t q2;
+		uint8_t q3;
 	
 	}bit;
 	
