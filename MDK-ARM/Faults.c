@@ -7,7 +7,7 @@ struct internal_fault voltage_loss;
 
 void faultRoutines(void){
 	
-// voltage loss
+// voltage loss- cau sync channel must be ysed
 	
 if(minSelector_3p(fRMS.Vab,fRMS.Vbc,fRMS.Vca<voltage_loss.limit)){
 

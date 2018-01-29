@@ -4,7 +4,8 @@
 #include "time_constants.h"
 
 #define rms_channelNo 18
-#define rms_period 500.0f
+#define rms_sample 5000
+#define rms_period 5000.0f
 #define i_rms_period 1/rms_period 
 #define rms_div3 0.3333333333333f
 #define c_rms_time _10sec
@@ -17,9 +18,11 @@ float  cRMS=0;
 union  uAdc meanRMS_sum={0};
 
 
+
+
 void mean_RMS(union uAdc in,struct AdcData *out){
 	
-	static uint8_t counter=0;
+	static uint16_t counter=0;
 	uint8_t i;
 	
 	
@@ -33,7 +36,7 @@ void mean_RMS(union uAdc in,struct AdcData *out){
 	
 	switch (counter)
 	{
-		case 0: out->Van=sqrtf(meanRMS_sum.ch.Van*i_rms_period);meanRMS_sum.ch.Van=0.0f;break;
+		case 33: out->Van=sqrtf(meanRMS_sum.ch.Van*i_rms_period);meanRMS_sum.ch.Van=0.0f;break;
 		case 1: out->Vbn=sqrtf(meanRMS_sum.ch.Vbn*i_rms_period);meanRMS_sum.ch.Vbn=0.0f;break;
 		case 2: out->Vcn=sqrtf(meanRMS_sum.ch.Vcn*i_rms_period);meanRMS_sum.ch.Vcn=0.0f;break;
 		
@@ -60,7 +63,7 @@ void mean_RMS(union uAdc in,struct AdcData *out){
 
   }
 	
-	if(++counter==rms_channelNo){counter=0;}
+	if(++counter==rms_sample){counter=0;}
 	
 }
 
@@ -104,5 +107,26 @@ void RMS_all(void){
 	correction_RMS();
 	
 	
+
+}
+
+
+float averager(){
+	
+	
+	static uint32_t count=0;
+	static float sum=0;
+	static float x=0;
+	
+	sum+=Adc.bufferAdc[ch];
+	
+	if(++count==125000){
+	
+		x=sum/125000.0f;
+		sum=0;
+		count=0;
+	}
+	
+	return x;
 
 }

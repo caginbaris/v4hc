@@ -81,6 +81,7 @@ enum AdcChannel{
 
 };
 
+extern enum AdcChannel ch;
 
 struct PhaseLockedLoop{
 

@@ -20,6 +20,9 @@ struct AdcData adc;
 struct AdcData offset;
 struct AdcData scale;
 
+enum AdcChannel ch=Van;
+
+void main_flow(void);
 
 void init_conversion(){
 union  uAdc init;		
@@ -27,11 +30,14 @@ uint8_t i=0;
 	
 
 
-for(i=0;i<18;i++){init.bufferAdc[i]=2048.0f;}	
+for(i=0;i<18;i++){init.bufferAdc[i]=0.0f;}	
 offset=init.ch;	
 for(i=0;i<18;i++){init.bufferAdc[i]=1.0f;}	
-scale=init.ch;		
-	
+scale=init.ch;
+
+
+offset.Vab_sync=2060;
+scale.Vab_sync=35;	
 	
 	
 }
@@ -72,9 +78,19 @@ if(hadc->Instance==ADC1){
 	
 	adc=Adc.ch;
 	
+	
+	
+	main_flow();
+	
+	HAL_GPIO_WritePin(DO_TEST_1_GPIO_Port,DO_TEST_1_Pin,GPIO_PIN_RESET );
+
+	
 	conversion_completed=1;
 	
 	}
 
 
 }
+
+
+

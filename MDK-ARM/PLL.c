@@ -8,6 +8,9 @@
 #include <math.h>
 #include "nfbm.h"
 
+#include "stm32f7xx_hal.h"
+#include "main.h"
+
 
 #define PI_limit 3.1415926535f
 #define wi_pll   314.15926535f
@@ -91,5 +94,17 @@ void PLL_all(void){
     PLL.ab_rad=PLL_theta(adc.Vab_sync,PLL.ab_rad,1);
     PLL.bc_rad=PLL_theta(adc.Vca_sync,PLL.bc_rad,2);
     PLL.ca_rad=PLL_theta(adc.Vca_sync,PLL.ca_rad,3);
+	
+		if(PLL.ab_rad>0.0f &&PLL.ab_rad<0.5f*3.14159f){
+		
+			HAL_GPIO_WritePin(DO_TEST_2_GPIO_Port,DO_TEST_2_Pin,GPIO_PIN_SET);
+			
+		}else{
+			
+			HAL_GPIO_WritePin(DO_TEST_2_GPIO_Port,DO_TEST_2_Pin,GPIO_PIN_RESET);
+		
+		}
+	
+	
 
 }

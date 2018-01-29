@@ -9,7 +9,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2017 STMicroelectronics
+  * COPYRIGHT(c) 2018 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -75,6 +75,7 @@ static void MX_NVIC_Init(void);
 
 void main_flow(void);
 void init_all(void);
+void pushDataToMaster(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -87,6 +88,12 @@ int main(void)
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
+
+  /* Enable I-Cache-------------------------------------------------------------*/
+  SCB_EnableICache();
+
+  /* Enable D-Cache-------------------------------------------------------------*/
+  SCB_EnableDCache();
 
   /* MCU Configuration----------------------------------------------------------*/
 
@@ -145,9 +152,8 @@ int main(void)
 		
 	if(conversion_completed){
 		
-		main_flow();
+		pushDataToMaster();
 		conversion_completed=0;
-		HAL_GPIO_WritePin(DO_TEST_1_GPIO_Port,DO_TEST_1_Pin,GPIO_PIN_RESET );
 	
 	}	
 		

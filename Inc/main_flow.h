@@ -11,7 +11,7 @@ void mode_chart(void);
 void faultRoutines(void);
 void tripRoutines(void);
 void ios(void);
-
+void firing(void);
 void pushDataToMaster(void);
 
 #endif

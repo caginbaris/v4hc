@@ -18,10 +18,11 @@ void main_flow(){
 	mode_chart(); 
 	state_chart();
 	
+	firing(); 
+	
 	ios();
 	
-	
-	pushDataToMaster();
+
 	
 	
 

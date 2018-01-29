@@ -5,10 +5,10 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.21.1.0
 Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Cagin Baris Cengiz, Endoks Energy, LIC=----
+License Information: baris Microsoft, Microsoft, LIC=LJWBS-L8BSK-YB8E9-4SYP4-1AVNZ-0FDW6
  
 Tool Versions:
-Toolchain:       MDK-Lite  Version: 5.21a
+Toolchain:       MDK-ARM Professional  Version: 5.21a
 Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 3 (build 300)
 Assembler:       Armasm.exe V5.06 update 3 (build 300)
@@ -21,38 +21,63 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
 Dialog DLL:      TCM.DLL V1.14.14.0
  
 <h2>Project:</h2>
-C:\Users\baris.cengiz\Dropbox\habas_310\v4hc\MDK-ARM\v4Hc.uvprojx
-Project File Date:  12/14/2017
+C:\Users\BARIS\Documents\v4hc\MDK-ARM\v4Hc.uvprojx
+Project File Date:  01/27/2018
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'v4Hc'
-compiling hfMode.c...
-compiling firingTestMode.c...
-../Inc/firingTest.h(26): warning:  #1-D: last line of file ends without a newline
-  #endif
-firingTestMode.c: 1 warning, 0 errors
+compiling Faults.c...
+compiling idleState.c...
+compiling init_all.c...
+compiling main.c...
+compiling Firing.c...
+Firing.c(124): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(
+R_1_GPIO_Port,
+R_1_Pin,fr.Ap);
+Firing.c(125): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(
+R_4_GPIO_Port,
+R_4_Pin,fr.An);
+Firing.c(127): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(
+R_2_GPIO_Port,
+R_2_Pin,fr.Bp);
+Firing.c(128): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(
+R_5_GPIO_Port,
+R_5_Pin,fr.Bn);
+Firing.c(130): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(
+R_3_GPIO_Port,
+R_3_Pin,fr.Cp);
+Firing.c(131): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(
+R_6_GPIO_Port,
+R_6_Pin,fr.Cn);
+Firing.c: 6 warnings, 0 errors
 linking...
-Program Size: Code=29492 RO-data=980 RW-data=372 ZI-data=27428  
-"v4Hc\v4Hc.axf" - 0 Error(s), 1 Warning(s).
+Program Size: Code=28556 RO-data=980 RW-data=384 ZI-data=27504  
+"v4Hc\v4Hc.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: ARM
-                http://www.keil.com/pack/ARM.CMSIS.5.0.0-Beta4.pack
+                http://www.keil.com/pack/ARM.CMSIS.5.0.0.pack
                 ARM::CMSIS:CORE:5.0.0
                 CMSIS (Cortex Microcontroller Software Interface Standard)
    * Component: CORE Version: 5.0.0
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\baris.cengiz\Dropbox\habas_310\v4hc\MDK-ARM\RTE
-  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include
-  C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include
+  C:\Users\BARIS\Documents\v4hc\MDK-ARM\RTE
+  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include
+  C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.8.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include
 
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.0
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

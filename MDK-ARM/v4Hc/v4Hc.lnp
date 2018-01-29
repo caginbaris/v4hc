@@ -1,4 +1,4 @@
---cpu Cortex-M7.fp.sp
+--cpu Cortex-M7.fp.dp
 "v4hc\system_stm32f7xx.o"
 "v4hc\startup_stm32f767xx.o"
 "v4hc\stm32f7xx_hal_i2c_ex.o"

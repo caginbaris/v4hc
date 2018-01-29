@@ -145,9 +145,7 @@ int main(void)
 		
 	if(conversion_completed){
 		
-		main_flow();
 		conversion_completed=0;
-		HAL_GPIO_WritePin(DO_TEST_1_GPIO_Port,DO_TEST_1_Pin,GPIO_PIN_RESET );
 	
 	}	
 		

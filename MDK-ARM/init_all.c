@@ -5,6 +5,7 @@ void init_all(void){
 
 
 init_conversion();
-
+init_firing();
 
 }
+
