@@ -7,7 +7,7 @@
 
 void interMode(void){
 	
-	static long timeOutCounter;
+	static long timeOutCounter=0;
 	
 	
 	Ref_inter();

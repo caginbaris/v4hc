@@ -376,7 +376,10 @@ struct system_parameters{
 	float TCR_XL_ab;
 	float TCR_XL_bc;
 	float TCR_XL_ca;
-
+	
+	float	Bp_ab;
+	float Bp_bc;
+	float Bp_ca;
 
 	float TR_Power;
 	float TR_Ratio;

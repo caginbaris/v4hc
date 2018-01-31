@@ -13,5 +13,8 @@ void tripRoutines(void);
 void ios(void);
 void firing(void);
 void pushDataToMaster(void);
+void lead_lag_calculation(void);
+void Q2alpha_transforms(void);
+void ref_basic(void);
 
 #endif

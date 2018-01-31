@@ -232,7 +232,7 @@ void ref_filtering(){
 void OL_calculations(){
 
 
-	lead_lag_calculation();
+	
 
 	Qol.a=(fpp_bc.Vlead*fpp_ab.Ilead + fpp_bc.Vlag*fpp_ab.Ilag)*i2sqrt3;
 	Qol.b=(fpp_ca.Vlead*fpp_bc.Ilead + fpp_ca.Vlag*fpp_bc.Ilag)*i2sqrt3;

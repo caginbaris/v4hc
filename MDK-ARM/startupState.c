@@ -16,7 +16,7 @@ void startupState(){
 	
 	DO.READY=0;
 	DO.RUN=0;
-	DO.IBF=0;
+	DO.IBF=1;
 	DO.StartupCompleted=0;
 	
 	// Led Blink indication
@@ -38,7 +38,7 @@ void startupState(){
 	if(extTrip.all){current_state=tripped;}
 	if(voltage_loss.trip){current_state=fault;}
 	
-	DO.LD_IBF=0;
+	DO.LD_IBF=1;
 	DO.LD_READY=0;
 	DO.LD_RUN=0;
 	

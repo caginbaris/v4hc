@@ -8,11 +8,15 @@
 #include "nfbm.h"
 #include "Q2Alpha.h"
 #include "modes.h"
-
+#include "aux_functions.h"
 
 
 
 void init_Q2alpha(void){
+	
+	sys.TCR_XL_ab=9.425;
+	sys.TCR_XL_bc=9.425;
+	sys.TCR_XL_ca=9.425;
 
 
 
@@ -20,12 +24,12 @@ void init_Q2alpha(void){
 
 
 
-float Q2alpha(float Qin, float RMS, float TCR_XL){
+float Q2alpha(float x){
 
-	float x,x2,x3,x4,x5;
+	float x2,x3,x4,x5;
 	float alpha;
 
-	x=TCR_XL*Qin/RMS;
+	
 
 	if(x<0.005f){x=0.005f;}
 	if(x>0.91f) {x=0.91f;}
@@ -39,14 +43,9 @@ float Q2alpha(float Qin, float RMS, float TCR_XL){
 	if(x>=0.1f){alpha = (p1_u*x5 + p2_u*x4 + p3_u*x3 + p4_u*x2 + p5_u*x +p6_u)*r2d;}
 	if(x<0.1f ){alpha = (p1_l*x5 + p2_l*x4 + p3_l*x3 + p4_l*x2 + p5_l*x +p6_l)*r2d;}
 
-
-	if(alpha>fire.alpha_limit_down){alpha=fire.alpha_limit_down;}
-	if(alpha<fire.alpha_limit_up){alpha=fire.alpha_limit_up;}
-
+	f_limiter(&alpha,fire.alpha_limit_down,fire.alpha_limit_up);
 
 	alpha=alpha-trigger_offset;
-
-	if(Qin<=0){alpha=fire.alpha_limit_down;}
 
 	return alpha;
 
@@ -62,12 +61,20 @@ void Q2alpha_transforms(){
 			current_mode==manualVar 	|
 			current_mode==inter){
 
+		//cau scaled to 34500 with 90
+				
+		sys.Bp_ab=	(ref_ab.final_Q*sys.TCR_XL_ab) /(fRMS.Vab*90.0f*90.0f);	
+		sys.Bp_bc=	(ref_ab.final_Q*sys.TCR_XL_bc) /(fRMS.Vbc*90.0f*90.0f);	
+		sys.Bp_ca=	(ref_ab.final_Q*sys.TCR_XL_ca) /(fRMS.Vca*90.0f*90.0f);	
+				
+		ref_ab.final_alpha=Q2alpha(sys.Bp_ab);
+		ref_bc.final_alpha=Q2alpha(sys.Bp_bc);
+		ref_ca.final_alpha=Q2alpha(sys.Bp_ca);
 
-		ref_ab.final_alpha=Q2alpha(ref_ab.final_Q,fRMS.Vab,sys.TCR_XL_ab);
-		ref_bc.final_alpha=Q2alpha(ref_bc.final_Q,fRMS.Vbc,sys.TCR_XL_bc);
-		ref_ca.final_alpha=Q2alpha(ref_ca.final_Q,fRMS.Vca,sys.TCR_XL_ca);
 			
-			}
+		}
+			
+		
 	
 }
 

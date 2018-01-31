@@ -3,6 +3,8 @@
 
 void init_conversion(void);
 void init_firing(void);
+void init_Q2alpha(void);
+void init_Qbasic(void);
 
 #endif
 

@@ -173,8 +173,8 @@
 #define CTB1_IBF_DO_3_GPIO_Port GPIOA
 #define CTB1_StartComp_DO_4_Pin GPIO_PIN_10
 #define CTB1_StartComp_DO_4_GPIO_Port GPIOA
-#define CTB1_SP_DO_5_Pin GPIO_PIN_11
-#define CTB1_SP_DO_5_GPIO_Port GPIOA
+#define CTB1_IBF_DO_5_Pin GPIO_PIN_11
+#define CTB1_IBF_DO_5_GPIO_Port GPIOA
 #define CTB1_SP_DO_6_Pin GPIO_PIN_12
 #define CTB1_SP_DO_6_GPIO_Port GPIOA
 #define DO_7_Pin GPIO_PIN_10

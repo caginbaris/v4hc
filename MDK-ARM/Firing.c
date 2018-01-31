@@ -15,6 +15,8 @@ struct firing_parameters fire;
 struct firingOutputs fr={0};
 union firingOutputsUnion ufr={0};
 
+uint8_t firing_disable=1;
+
 
 void init_firing(void){
 	
@@ -48,7 +50,6 @@ void firing(){
 	fire.bc.alpha=ref_bc.final_alpha;
 	fire.ca.alpha=ref_ca.final_alpha;
 
- //cau alpha limit up down initial
 	if(fire.ab.alpha>fire.alpha_limit_up)  {fire.ab.alpha=fire.alpha_limit_up;}
 	if(fire.ab.alpha<fire.alpha_limit_down){fire.ab.alpha=fire.alpha_limit_down;}
 
@@ -83,7 +84,7 @@ void firing(){
 	fire.ca.pre_alpha_n=fire.ca.alpha_neg;
 	
 
-	if(status.start_flag==1){
+	if(status.start_flag==1 && firing_disable==0){
 
 
 		if((PLL.ab_deg>=fire.ab.alpha) && (PLL.ab_deg<=(fire.ab.alpha+firing_offset))) 		  									{fr.Ap=1;	fire.ab.p_fired=1;}

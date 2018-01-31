@@ -21,11 +21,11 @@ void runState(void){
 	
 	DO.READY=0;
 	DO.RUN=1;
-	DO.IBF=0;
+	DO.IBF=1;
 	
 	// led indication
 	
-	DO.LD_IBF=0;
+	DO.LD_IBF=1;
 	DO.LD_READY=0;
 	DO.LD_RUN=1;
 	
@@ -75,7 +75,7 @@ void runState(void){
 	
 	//stop routine------------------------------
 	
-	if(DI.start_stop || extTrip.all){
+	if(DI.start_stop==0 || extTrip.all==1){
 	
 	status.regulation_enable=0;
 
@@ -86,29 +86,6 @@ void runState(void){
 	
 	}
 	
-	          
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
 }
 
 

@@ -12,11 +12,11 @@ void trippedState(){
 	
 	DO.READY=0;
 	DO.RUN=0;
-	DO.IBF=0;
+	DO.IBF=1;
 	
 	// led indication
 	
-	DO.LD_IBF=0;
+	DO.LD_IBF=1;
 	DO.LD_READY=0;
 	DO.LD_RUN=0;
 	

@@ -3,6 +3,7 @@
 #include "nfbm.h"
 #include "commReceivedParameters.h"
 #include <math.h>
+#include "aux_functions.h"
 
 #define VnomSquare 34500.0f*34500.0f
 #define div3 0.333333333333333333333f
@@ -13,6 +14,8 @@ struct references ref_ca;
 
 void init_references()
 {
+	
+	ref_set.ManualAlpha=120.0f;
 
 }
 
@@ -39,9 +42,13 @@ void Ref_OL(){
 
 void Ref_manualVar(){
 	
+	
+	
 	ref_ab.final_Q=ref_set.ManualQ;
 	ref_bc.final_Q=ref_set.ManualQ;
 	ref_ca.final_Q=ref_set.ManualQ;
+	
+	
 
 
 }
@@ -49,9 +56,13 @@ void Ref_manualVar(){
 
 void Ref_manualAngle(){
 	
+	f_limiter(&(ref_set.ManualAlpha),95.0f,170.0f);
+	
 	ref_ab.final_alpha=ref_set.ManualAlpha;
 	ref_bc.final_alpha=ref_set.ManualAlpha;
 	ref_ca.final_alpha=ref_set.ManualAlpha;
+	
+
 
 
 }
@@ -59,11 +70,11 @@ void Ref_manualAngle(){
 
 void Ref_hf(){
 
-	ref_ab.final_alpha=fire.alpha_limit_down;
-	ref_bc.final_alpha=fire.alpha_limit_down;
-	ref_ca.final_alpha=fire.alpha_limit_down;
+	ref_ab.final_alpha=fire.alpha_limit_up;
+	ref_bc.final_alpha=fire.alpha_limit_up;
+	ref_ca.final_alpha=fire.alpha_limit_up;
 
-
+		
 }
 
 
@@ -74,6 +85,19 @@ void Ref_inter(){
 	ref_ca.final_alpha=Qbasic.ca;
 
 
+}
+
+void ref_basic(){
+	
+	if(status.Qbasic_flag ){
+
+	ref_ab.final_Q=Qbasic.ab;
+	ref_bc.final_Q=Qbasic.bc;
+	ref_ca.final_Q=Qbasic.ca;
+	
+	}
+		
+	
 }
 
 void Ref_flag_handles(){

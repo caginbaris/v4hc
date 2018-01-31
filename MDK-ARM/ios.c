@@ -44,14 +44,19 @@ void ios(void){
 	DI.PLB_INT_DO_SPARE6	=HAL_GPIO_ReadPin(PLB_INT_DI_SP6_DI_29_GPIO_Port,PLB_INT_DI_SP6_DI_29_Pin);
 	DI.reset							=HAL_GPIO_ReadPin(DI_RESET_GPIO_Port,DI_RESET_Pin);
 	
+	
+	DO.IBF=1;
+	
 	HAL_GPIO_WritePin(CTB1_READY_DO_1_GPIO_Port,CTB1_READY_DO_1_Pin,(GPIO_PinState)DO.READY);
 	HAL_GPIO_WritePin(CTB1_RUN_DO_2_GPIO_Port  ,CTB1_RUN_DO_2_Pin,  (GPIO_PinState)DO.RUN);
-	HAL_GPIO_WritePin(CTB1_IBF_DO_3_GPIO_Port,CTB1_IBF_DO_3_Pin, 		(GPIO_PinState)DO.IBF);
+	HAL_GPIO_WritePin(CTB1_IBF_DO_5_GPIO_Port,CTB1_IBF_DO_5_Pin, 		(GPIO_PinState)DO.IBF); //cau wrong  pin init
 	HAL_GPIO_WritePin(CTB1_StartComp_DO_4_GPIO_Port,CTB1_StartComp_DO_4_Pin,	(GPIO_PinState)DO.StartupCompleted);
 	
 	HAL_GPIO_WritePin(LD_IBF_GPIO_Port,LD_IBF_Pin,(GPIO_PinState)DO.LD_IBF);
 	HAL_GPIO_WritePin(LD_READY_GPIO_Port,LD_READY_Pin,	(GPIO_PinState)DO.LD_READY);
 	HAL_GPIO_WritePin(LD_RUN_GPIO_Port,LD_RUN_Pin,(GPIO_PinState)DO.LD_RUN);
+	
+	
 	
 	uDI.DI=DI;
 	uDO.DO=DO;

@@ -89,7 +89,7 @@ void MX_GPIO_Init(void)
                           |DO_7_Pin|DO_8_Pin|DO_9_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, CTB1_RUN_DO_2_Pin|CTB1_IBF_DO_3_Pin|CTB1_StartComp_DO_4_Pin|CTB1_SP_DO_5_Pin 
+  HAL_GPIO_WritePin(GPIOA, CTB1_RUN_DO_2_Pin|CTB1_IBF_DO_3_Pin|CTB1_StartComp_DO_4_Pin|CTB1_IBF_DO_5_Pin 
                           |CTB1_SP_DO_6_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
@@ -200,7 +200,7 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : PAPin PAPin PAPin PAPin 
                            PAPin */
-  GPIO_InitStruct.Pin = CTB1_RUN_DO_2_Pin|CTB1_IBF_DO_3_Pin|CTB1_StartComp_DO_4_Pin|CTB1_SP_DO_5_Pin 
+  GPIO_InitStruct.Pin = CTB1_RUN_DO_2_Pin|CTB1_IBF_DO_3_Pin|CTB1_StartComp_DO_4_Pin|CTB1_IBF_DO_5_Pin 
                           |CTB1_SP_DO_6_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;

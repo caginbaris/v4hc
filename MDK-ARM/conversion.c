@@ -30,15 +30,29 @@ uint8_t i=0;
 	
 
 
-for(i=0;i<18;i++){init.bufferAdc[i]=0.0f;}	
+for(i=0;i<18;i++){init.bufferAdc[i]=2080.0f;}	
 offset=init.ch;	
 for(i=0;i<18;i++){init.bufferAdc[i]=1.0f;}	
 scale=init.ch;
 
 
-offset.Vab_sync=2060;
-scale.Vab_sync=35;	
-	
+
+scale.Vab_sync=0.436547995f;
+scale.Vbc_sync=0.436547995f;	
+scale.Vca_sync=0.436547995f;	
+
+
+scale.Van=0.419913f;
+scale.Vbn=0.419913f;
+scale.Vcn=0.419913f;
+
+scale.Ia=0.0554437f; 
+scale.Ib=0.0554437; 
+scale.Ic=0.0554437; 
+
+scale.Iload_a=0.0554437004f*3.0f;
+scale.Iload_b=0.0554437004f*3.0f;
+scale.Iload_c=0.0554437004f*3.0f;
 	
 }
 
