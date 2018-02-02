@@ -17,9 +17,9 @@ void init_Qbasic(void){
 	
 	
 
-	Qdata.QHF_1=90.0; 	/* 3HF entered from HMI side*/ 
-	Qdata.QHF_2=80.0;		/* 2HF entered from HMI side*/ 
-	Qdata.QHF_3=100.0; 	/* 4HF entered from HMI side*/
+	Qdata.QHF_1=0.0f;//90.0; 	/* 3HF entered from HMI side*/ 
+	Qdata.QHF_2=0.0f;//80.0;		/* 2HF entered from HMI side*/ 
+	Qdata.QHF_3=0.0f;//100.0; 	/* 4HF entered from HMI side*/
 
 	
 	Qdata.BHF_1=Qdata.QHF_1/(3.0f*Vnom*Vnom);
@@ -60,7 +60,7 @@ void Qbasic_calculation(void){
 	//--------------------------------
 	
 	
-	if(status.regulation_enable==0 && current_state==run){
+	if(current_state==run){
 	
 	
 	if((Qdata.HF_1_DSC_pos & (!Qdata.HF_1_CB_pos)	& DI.CB_Operation_Qbasic) | Qstartup.step1){
@@ -111,17 +111,17 @@ void Qbasic_calculation(void){
 	
 	
 	
-	Qbasic.ab=Qdata.BHF_1*fRMS.Vab*Qdata.HF_1_EN*90*90+
-						Qdata.BHF_2*fRMS.Vab*Qdata.HF_2_EN*90*90+
-						Qdata.BHF_3*fRMS.Vab*Qdata.HF_3_EN*90*90;
+	Qbasic.ab=Qdata.BHF_1*fRMS.Vab*Qdata.HF_1_EN+
+						Qdata.BHF_2*fRMS.Vab*Qdata.HF_2_EN+
+						Qdata.BHF_3*fRMS.Vab*Qdata.HF_3_EN;
 						
-	Qbasic.bc=Qdata.BHF_1*fRMS.Vbc*Qdata.HF_1_EN*90*90+
-						Qdata.BHF_2*fRMS.Vbc*Qdata.HF_2_EN*90*90+
-						Qdata.BHF_3*fRMS.Vbc*Qdata.HF_3_EN*90*90;
+	Qbasic.bc=Qdata.BHF_1*fRMS.Vbc*Qdata.HF_1_EN*+
+						Qdata.BHF_2*fRMS.Vbc*Qdata.HF_2_EN+
+						Qdata.BHF_3*fRMS.Vbc*Qdata.HF_3_EN;
 
-	Qbasic.ca=Qdata.BHF_1*fRMS.Vca*Qdata.HF_1_EN*90*90+
-						Qdata.BHF_2*fRMS.Vca*Qdata.HF_2_EN*90*90+
-						Qdata.BHF_3*fRMS.Vca*Qdata.HF_3_EN*90*90;
+	Qbasic.ca=Qdata.BHF_1*fRMS.Vca*Qdata.HF_1_EN+
+						Qdata.BHF_2*fRMS.Vca*Qdata.HF_2_EN+
+						Qdata.BHF_3*fRMS.Vca*Qdata.HF_3_EN;
 						
 	
 	Qbasic.mean=	(Qbasic.ab+Qbasic.bc+Qbasic.ca)*i3;				

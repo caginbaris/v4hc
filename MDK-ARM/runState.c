@@ -61,7 +61,9 @@ void runState(void){
 		
 		if(cb_op_flag){
 			
-		status.Qbasic_flag=1;	
+			
+		//cau	removed
+		//status.Qbasic_flag=1;	
 		
 		cb_op_flag=off_delay(0,cb_op_flag,_2sec,&cb_opp_counter);
 			

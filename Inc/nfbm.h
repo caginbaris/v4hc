@@ -260,6 +260,10 @@ extern union statUnion uStatus;
 
 struct fastRMS {
 
+	float Vab_raw;
+	float Vbc_raw;
+	float Vca_raw;
+	
 	float Vab;
 	float Vbc;
 	float Vca;

@@ -150,29 +150,29 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>DI</ItemText>
+          <ItemText>ref_set</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>fRMS</ItemText>
+          <ItemText>PI</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
           <count>0</count>
           <WinNumber>2</WinNumber>
-          <ItemText>ref_ab</ItemText>
+          <ItemText>cl</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>2</WinNumber>
-          <ItemText>sys</ItemText>
+          <ItemText>current_mode</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>2</WinNumber>
-          <ItemText>status</ItemText>
+          <ItemText>current_sate</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
@@ -187,27 +187,32 @@
         <Ww>
           <count>5</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Qdata</ItemText>
+          <ItemText>ref_ab</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Qbasic</ItemText>
+          <ItemText>sys</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>2</WinNumber>
-          <ItemText>current_mode</ItemText>
+          <ItemText>status</ItemText>
         </Ww>
         <Ww>
           <count>8</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Qstartup</ItemText>
+          <ItemText>cb_op_flag</ItemText>
         </Ww>
         <Ww>
           <count>9</count>
           <WinNumber>2</WinNumber>
-          <ItemText>firing_disable</ItemText>
+          <ItemText>fRMS</ItemText>
+        </Ww>
+        <Ww>
+          <count>10</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>Qbasic</ItemText>
         </Ww>
       </WatchWindow2>
       <Tracepoint>

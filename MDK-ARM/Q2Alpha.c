@@ -14,11 +14,9 @@
 
 void init_Q2alpha(void){
 	
-	sys.TCR_XL_ab=9.425;
-	sys.TCR_XL_bc=9.425;
-	sys.TCR_XL_ca=9.425;
-
-
+	sys.TCR_XL_ab=0.001f*7.92f*2*3.14159f*50.0f;
+	sys.TCR_XL_bc=0.001f*7.92f*2*3.14159f*50.0f;
+	sys.TCR_XL_ca=0.001f*7.92f*2*3.14159f*50.0f;
 
 }
 
@@ -63,9 +61,9 @@ void Q2alpha_transforms(){
 
 		//cau scaled to 34500 with 90
 				
-		sys.Bp_ab=	(ref_ab.final_Q*sys.TCR_XL_ab) /(fRMS.Vab*90.0f*90.0f);	
-		sys.Bp_bc=	(ref_ab.final_Q*sys.TCR_XL_bc) /(fRMS.Vbc*90.0f*90.0f);	
-		sys.Bp_ca=	(ref_ab.final_Q*sys.TCR_XL_ca) /(fRMS.Vca*90.0f*90.0f);	
+		sys.Bp_ab=	(ref_ab.final_Q*sys.TCR_XL_ab) /(fRMS.Vab);	
+		sys.Bp_bc=	(ref_ab.final_Q*sys.TCR_XL_bc) /(fRMS.Vbc);	
+		sys.Bp_ca=	(ref_ab.final_Q*sys.TCR_XL_ca) /(fRMS.Vca);	
 				
 		ref_ab.final_alpha=Q2alpha(sys.Bp_ab);
 		ref_bc.final_alpha=Q2alpha(sys.Bp_bc);

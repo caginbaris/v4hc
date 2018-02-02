@@ -2,6 +2,7 @@
 #include "nfbm.h"
 #include <math.h>
 #include "time_constants.h"
+#include "plf_constants.h"
 
 #define rms_channelNo 18
 #define rms_sample 5000
@@ -68,15 +69,119 @@ void mean_RMS(union uAdc in,struct AdcData *out){
 }
 
 
+float plf_rms_ab(float x){
+
+	static float xfz1=0,xfz2=0;
+	static float yf=0,yfz1=0,yfz2=0;
+
+	static float xsz1=0,xsz2=0;
+	static float ys=0,ysz1=0,ysz2=0;
+
+
+
+	yf=(bf0*x)+(bf1*xfz1)+(bf2*xfz2)+(af1*yfz1)+(af2*yfz2);
+
+	xfz2=xfz1;
+	xfz1=x;
+
+	yfz2=yfz1;
+	yfz1=yf;
+
+
+	ys=(bs0*yf)+(bs1*xsz1)+(bs2*xsz2)+(as1*ysz1)+(as2*ysz2);
+
+	xsz2=xsz1;
+	xsz1=yf;
+
+	ysz2=ysz1;
+	ysz1=ys;
+
+
+	return ys*peu;
+
+}
+
+
+float plf_rms_bc(float x){
+
+	static float xfz1=0,xfz2=0;
+	static float yf=0,yfz1=0,yfz2=0;
+
+	static float xsz1=0,xsz2=0;
+	static float ys=0,ysz1=0,ysz2=0;
+
+
+
+	yf=(bf0*x)+(bf1*xfz1)+(bf2*xfz2)+(af1*yfz1)+(af2*yfz2);
+
+	xfz2=xfz1;
+	xfz1=x;
+
+	yfz2=yfz1;
+	yfz1=yf;
+
+
+	ys=(bs0*yf)+(bs1*xsz1)+(bs2*xsz2)+(as1*ysz1)+(as2*ysz2);
+
+	xsz2=xsz1;
+	xsz1=yf;
+
+	ysz2=ysz1;
+	ysz1=ys;
+
+
+	return ys*peu;
+
+}
+
+float plf_rms_ca(float x){
+
+	static float xfz1=0,xfz2=0;
+	static float yf=0,yfz1=0,yfz2=0;
+
+	static float xsz1=0,xsz2=0;
+	static float ys=0,ysz1=0,ysz2=0;
+
+
+
+	yf=(bf0*x)+(bf1*xfz1)+(bf2*xfz2)+(af1*yfz1)+(af2*yfz2);
+
+	xfz2=xfz1;
+	xfz1=x;
+
+	yfz2=yfz1;
+	yfz1=yf;
+
+
+	ys=(bs0*yf)+(bs1*xsz1)+(bs2*xsz2)+(as1*ysz1)+(as2*ysz2);
+
+	xsz2=xsz1;
+	xsz1=yf;
+
+	ysz2=ysz1;
+	ysz1=ys;
+
+
+	return ys*peu;
+
+}
+
+
 void fast_RMS(void){
 	
 	
-fRMS.Vab=(fpp_ab.Vlag*fpp_ab.Vlag + fpp_ab.Vlead*fpp_ab.Vlead)*0.5f;
-fRMS.Vbc=(fpp_bc.Vlag*fpp_bc.Vlag + fpp_bc.Vlead*fpp_bc.Vlead)*0.5f;
-fRMS.Vca=(fpp_ca.Vlag*fpp_ca.Vlag + fpp_ca.Vlead*fpp_ca.Vlead)*0.5f;
 
+	
+	
+fRMS.Vab_raw=(fpp_ab.Vlag*fpp_ab.Vlag + fpp_ab.Vlead*fpp_ab.Vlead)*0.5f;
+fRMS.Vbc_raw=(fpp_bc.Vlag*fpp_bc.Vlag + fpp_bc.Vlead*fpp_bc.Vlead)*0.5f;
+fRMS.Vca_raw=(fpp_ca.Vlag*fpp_ca.Vlag + fpp_ca.Vlead*fpp_ca.Vlead)*0.5f;
 
-
+fRMS.Vab=plf_rms_ab(fRMS.Vab_raw);	
+fRMS.Vbc=plf_rms_bc(fRMS.Vbc_raw);
+fRMS.Vca=plf_rms_ca(fRMS.Vca_raw);
+	
+	
 }
 
 void correction_RMS(void){
@@ -130,3 +235,6 @@ float averager(){
 	return x;
 
 }
+
+
+

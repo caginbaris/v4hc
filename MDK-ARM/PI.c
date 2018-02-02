@@ -1,12 +1,20 @@
 #include "nfbm.h"
 
-struct control_loops PI;
+struct control_loops PI={0};
 
 
 void init_PI(void){
-
-
-
+	
+	PI.CL.Ki=0.00012f;
+	PI.CL.Kp=0.05f;
+	PI.CL.plimit=48000.0f;
+	PI.CL.nlimit=0.0f;
+	
+	
+	PI.OL.Ki=0.00008f;
+	PI.OL.Kp=0.05f;
+	PI.OL.plimit=48000.0f;
+	PI.OL.nlimit=-48000.0f;
 
 }
 

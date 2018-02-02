@@ -8,5 +8,6 @@ init_conversion();
 init_Q2alpha();
 init_firing();
 init_Qbasic();
+init_PI();
 }
 

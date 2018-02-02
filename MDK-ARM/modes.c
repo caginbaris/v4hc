@@ -7,7 +7,7 @@
 #include "modes.h"
 #include "nfbm.h"
 
-enum ModeID current_mode=manualVar;
+enum ModeID current_mode=manualAngle;
 enum ModeID new_mode=manualAngle;
 
 void (*mode[])(void)={
