@@ -9,5 +9,6 @@ init_Q2alpha();
 init_firing();
 init_Qbasic();
 init_PI();
+init_OpenLoopCalc();
 }
 

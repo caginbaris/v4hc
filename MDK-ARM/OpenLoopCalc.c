@@ -23,7 +23,9 @@ struct system_parameters sys={0};
 
 
 void init_OpenLoopCalc(){
-
+	
+	sys.OL_ref_limit=50000.0f;
+	sys.OL_ratio=0.75f;
 
 
 }
@@ -196,9 +198,9 @@ void ref_filtering(){
 
 
 
-	Qol.ab_f=plf_sos_ab(Qol.ref_ab);
-	Qol.bc_f=plf_sos_bc(Qol.ref_bc);
-	Qol.ca_f=plf_sos_ca(Qol.ref_ca);
+	Qol.ab_f=plf_sos_ab(Qol.ab);
+	Qol.bc_f=plf_sos_bc(Qol.bc);
+	Qol.ca_f=plf_sos_ca(Qol.ca);
 
 
 
@@ -216,26 +218,28 @@ void OL_calculations(){
 	Qol.b=(fpp_ca.Vlead*fpp_bc.Ilead + fpp_ca.Vlag*fpp_bc.Ilag)*i2sqrt3;
 	Qol.c=(fpp_ab.Vlead*fpp_ca.Ilead + fpp_ab.Vlag*fpp_ca.Ilag)*i2sqrt3;
 
+	
 	Qol.ab=Qol.a+Qol.b-Qol.c;
 	Qol.bc=Qol.b+Qol.c-Qol.a;
 	Qol.ca=Qol.c+Qol.a-Qol.b;
-
-
-	Qol.ref_ab=Qbasic.ab-Qol.ab;
-	Qol.ref_bc=Qbasic.bc-Qol.bc;
-	Qol.ref_ca=Qbasic.ca-Qol.ca;
-
+	
 	ref_filtering();
 
+	Qol.ref_ab=Qbasic.ab-Qol.ab_f;
+	Qol.ref_bc=Qbasic.bc-Qol.bc_f;
+	Qol.ref_ca=Qbasic.ca-Qol.ca_f;
 
-	if(Qol.ab_f>sys.OL_ref_limit){Qol.ab_f=sys.OL_ref_limit;}
-	if(Qol.ab_f<0.0f){Qol.ab_f=0.0f;}
+	
 
-	if(Qol.bc_f>sys.OL_ref_limit){Qol.bc_f=sys.OL_ref_limit;}
-	if(Qol.bc_f<0.0f){Qol.bc_f=0.0f;}
 
-	if(Qol.ca_f>sys.OL_ref_limit){Qol.ca_f=sys.OL_ref_limit;}
-	if(Qol.ca_f<0.0f){Qol.ca_f=0.0f;}
+	if(Qol.ref_ab>sys.OL_ref_limit){Qol.ref_ab=sys.OL_ref_limit;}
+	if(Qol.ref_ab<0.0f){Qol.ref_ab=0.0f;}
+
+	if(Qol.ref_bc>sys.OL_ref_limit){Qol.ref_bc=sys.OL_ref_limit;}
+	if(Qol.ref_bc<0.0f){Qol.ref_bc=0.0f;}
+
+	if(Qol.ref_ca>sys.OL_ref_limit){Qol.ref_ca=sys.OL_ref_limit;}
+	if(Qol.ref_ca<0.0f){Qol.ref_ca=0.0f;}
 
 
 

@@ -17,6 +17,7 @@ void init_references()
 	
 	ref_set.ManualAlpha=120.0f;
 	
+	
 
 }
 
@@ -33,9 +34,9 @@ void Ref_CL(){
 
 void Ref_OL(){
 	
-	ref_ab.final_Q=Qol.ab_f*sys.OL_ratio + PI.OL.PIout*(1.0f-sys.OL_ratio);
-	ref_bc.final_Q=Qol.bc_f*sys.OL_ratio + PI.OL.PIout*(1.0f-sys.OL_ratio);
-	ref_ca.final_Q=Qol.ca_f*sys.OL_ratio + PI.OL.PIout*(1.0f-sys.OL_ratio);
+	ref_ab.final_Q=Qol.ref_ab*sys.OL_ratio + PI.OL.PIout*(1.0f-sys.OL_ratio);
+	ref_bc.final_Q=Qol.ref_bc*sys.OL_ratio + PI.OL.PIout*(1.0f-sys.OL_ratio);
+	ref_ca.final_Q=Qol.ref_ca*sys.OL_ratio + PI.OL.PIout*(1.0f-sys.OL_ratio);
 
 
 }

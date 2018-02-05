@@ -6,6 +6,7 @@ void init_firing(void);
 void init_Q2alpha(void);
 void init_Qbasic(void);
 void init_PI(void);
+void init_OpenLoopCalc(void);
 
 #endif
 

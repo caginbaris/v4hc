@@ -11,7 +11,7 @@ void init_PI(void){
 	PI.CL.nlimit=0.0f;
 	
 	
-	PI.OL.Ki=0.00008f;
+	PI.OL.Ki=0.0005f;
 	PI.OL.Kp=0.05f;
 	PI.OL.plimit=48000.0f;
 	PI.OL.nlimit=-48000.0f;
@@ -67,7 +67,7 @@ void PI_CL(void){
 
 void PI_OL(void){
 
-	PI.OL.error=PI.Qref-PI.OL.Qin;
+	PI.OL.error=PI.Qref*0.333333f-PI.OL.Qin;
 
 	PI.OL.Pout=PI.OL.error*PI.OL.Kp;
 	PI.OL.Iout=PI.OL.Iout+PI.OL.error*PI.OL.Ki;
