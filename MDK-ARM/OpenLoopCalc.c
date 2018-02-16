@@ -8,7 +8,7 @@
 #include "nfbm.h"
 #include "constants.h"
 #include "plf_constants.h"
-
+#include "aux_functions.h"
 
 
 
@@ -229,19 +229,10 @@ void OL_calculations(){
 	Qol.ref_bc=Qbasic.bc-Qol.bc_f;
 	Qol.ref_ca=Qbasic.ca-Qol.ca_f;
 
-	
 
-
-	if(Qol.ref_ab>sys.OL_ref_limit){Qol.ref_ab=sys.OL_ref_limit;}
-	if(Qol.ref_ab<0.0f){Qol.ref_ab=0.0f;}
-
-	if(Qol.ref_bc>sys.OL_ref_limit){Qol.ref_bc=sys.OL_ref_limit;}
-	if(Qol.ref_bc<0.0f){Qol.ref_bc=0.0f;}
-
-	if(Qol.ref_ca>sys.OL_ref_limit){Qol.ref_ca=sys.OL_ref_limit;}
-	if(Qol.ref_ca<0.0f){Qol.ref_ca=0.0f;}
-
-
+	f_limiter(&Qol.ref_ab,0,sys.Q_limit);
+	f_limiter(&Qol.ref_bc,0,sys.Q_limit);
+	f_limiter(&Qol.ref_ca,0,sys.Q_limit);
 
 }
 

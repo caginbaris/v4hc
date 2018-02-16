@@ -37,7 +37,7 @@ void mean_RMS(union uAdc in,struct AdcData *out){
 	
 	switch (counter)
 	{
-		case 33: out->Van=sqrtf(meanRMS_sum.ch.Van*i_rms_period);meanRMS_sum.ch.Van=0.0f;break;
+		case 0: out->Van=sqrtf(meanRMS_sum.ch.Van*i_rms_period);meanRMS_sum.ch.Van=0.0f;break;
 		case 1: out->Vbn=sqrtf(meanRMS_sum.ch.Vbn*i_rms_period);meanRMS_sum.ch.Vbn=0.0f;break;
 		case 2: out->Vcn=sqrtf(meanRMS_sum.ch.Vcn*i_rms_period);meanRMS_sum.ch.Vcn=0.0f;break;
 		

@@ -106,8 +106,6 @@ struct control_loops{
 
 		float Kp;
 		float Ki;
-		float plimit;
-		float nlimit;
 
 		struct{float Qin;float error;float Pout;float Iout;float PIout;}ab;
 		struct{float Qin;float error;float Pout;float Iout;float PIout;}bc;
@@ -139,12 +137,6 @@ struct firing_parameters{
 
 
 
-
-	float alpha_limit_up;
-	float alpha_limit_down;
-
-	float overload_alpha;
-	float nominal_alpha;
 
 
 
@@ -394,12 +386,17 @@ struct system_parameters{
 	
 	float Q_limit;
 	
-	float Alpha_limit;
-	float B_limit;
-	
+	float Alpha_limit_up;
 	float Alpha_limit_down;
+	
+	float B_limit_up;
 	float B_limit_down;
 	
+	float I_limit;
+	float I_limit_time;
+	
+	float V_limit;
+	float V_limit_time;
 
 
 
@@ -534,7 +531,28 @@ union cb_operations{
 extern union cb_operations cb_pos;
 
 
+struct TurnRatios{
 
+	float VT_MV_primary;
+	float VT_MV_secondary;
+	
+	float VT_HV_primary;
+	float VT_HV_secondary;
+	
+	float CT_MV_primary;
+	float CT_MV_secondary;
+	
+	float CT_TCR_primary;
+	float CT_TCR_secondary;
+	
+	float CT_LOAD_primary;
+	float CT_LOAD_secondary;	
+	
+
+};
+
+
+extern struct TurnRatios TR; 
 
 
 

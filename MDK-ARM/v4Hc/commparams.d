@@ -7,4 +7,8 @@ v4hc\commparams.o: ..\Inc\Comm_Library_Header\CommConfig.h
 v4hc\commparams.o: ..\Inc\Comm_Library_Header\UART_MasterSlave.h
 v4hc\commparams.o: ../Inc/ios.h
 v4hc\commparams.o: ../Inc/nfbm.h
+v4hc\commparams.o: ../Inc/modes.h
+v4hc\commparams.o: ../Inc/states.h
 v4hc\commparams.o: ../Inc/commReceivedParameters.h
+v4hc\commparams.o: ../Inc/firingTest.h
+v4hc\commparams.o: ../Inc/Qbasic.h

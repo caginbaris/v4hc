@@ -41,7 +41,7 @@ float Q2alpha(float x){
 	if(x>=0.1f){alpha = (p1_u*x5 + p2_u*x4 + p3_u*x3 + p4_u*x2 + p5_u*x +p6_u)*r2d;}
 	if(x<0.1f ){alpha = (p1_l*x5 + p2_l*x4 + p3_l*x3 + p4_l*x2 + p5_l*x +p6_l)*r2d;}
 
-	f_limiter(&alpha,fire.alpha_limit_down,fire.alpha_limit_up);
+	f_limiter(&alpha,sys.Alpha_limit_down,sys.Alpha_limit_up);
 
 	alpha=alpha-trigger_offset;
 
@@ -61,10 +61,15 @@ void Q2alpha_transforms(){
 
 		//cau scaled to 34500 with 90
 				
+		if(fRMS.Vab>1.0f && fRMS.Vbc>1.0f && fRMS.Vca>1.0f){
+				
 		sys.Bp_ab=	(ref_ab.final_Q*sys.TCR_XL_ab) /(fRMS.Vab);	
 		sys.Bp_bc=	(ref_ab.final_Q*sys.TCR_XL_bc) /(fRMS.Vbc);	
 		sys.Bp_ca=	(ref_ab.final_Q*sys.TCR_XL_ca) /(fRMS.Vca);	
-				
+			
+		}
+		
+		
 		ref_ab.final_alpha=Q2alpha(sys.Bp_ab);
 		ref_bc.final_alpha=Q2alpha(sys.Bp_bc);
 		ref_ca.final_alpha=Q2alpha(sys.Bp_ca);

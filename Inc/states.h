@@ -17,13 +17,13 @@ void trippedState(void);
 
 enum StateID{	
 	
-	startup,
-	fault,
-	ready,
-	run,
-	idle,
-	stopped,
-	tripped
+	startup=0x01,
+	fault=0x02,
+	ready=0x04,
+	run=0x08,
+	idle=0x10,
+	stopped=0x20,
+	tripped=0x40
 	
 };
 

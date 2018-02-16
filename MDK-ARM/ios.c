@@ -58,8 +58,7 @@ void ios(void){
 	
 	
 	
-	uDI.DI=DI;
-	uDO.DO=DO;
+
 	
 	cb_pos.all=0;
 	

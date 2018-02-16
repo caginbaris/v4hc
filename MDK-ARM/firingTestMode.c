@@ -6,6 +6,13 @@
 struct TestFiring TestFire;
 
 
+void init_firingTestMode(void){
+
+
+
+}
+
+
 void firingTestMode(void){
 	
 	

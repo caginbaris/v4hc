@@ -27,6 +27,8 @@ void Ref_CL(){
 	ref_ab.final_Q=PI.CL.ab.PIout;
 	ref_bc.final_Q=PI.CL.bc.PIout;
 	ref_ca.final_Q=PI.CL.ca.PIout;
+	
+	
 
 
 }
@@ -37,6 +39,9 @@ void Ref_OL(){
 	ref_ab.final_Q=Qol.ref_ab*sys.OL_ratio + PI.OL.PIout*(1.0f-sys.OL_ratio);
 	ref_bc.final_Q=Qol.ref_bc*sys.OL_ratio + PI.OL.PIout*(1.0f-sys.OL_ratio);
 	ref_ca.final_Q=Qol.ref_ca*sys.OL_ratio + PI.OL.PIout*(1.0f-sys.OL_ratio);
+	
+	
+	
 
 
 }
@@ -46,9 +51,14 @@ void Ref_manualVar(){
 	
 	
 	
+	f_limiter(&ref_set.ManualQ,0,sys.Q_limit);
+	
 	ref_ab.final_Q=ref_set.ManualQ;
 	ref_bc.final_Q=ref_set.ManualQ;
 	ref_ca.final_Q=ref_set.ManualQ;
+	
+
+	
 	
 	
 
@@ -58,7 +68,7 @@ void Ref_manualVar(){
 
 void Ref_manualAngle(){
 	
-	f_limiter(&(ref_set.ManualAlpha),95.0f,170.0f);
+	f_limiter(&(ref_set.ManualAlpha),sys.Alpha_limit_down,sys.Alpha_limit_up);
 	
 	ref_ab.final_alpha=ref_set.ManualAlpha;
 	ref_bc.final_alpha=ref_set.ManualAlpha;
@@ -72,9 +82,9 @@ void Ref_manualAngle(){
 
 void Ref_hf(){
 
-	ref_ab.final_alpha=fire.alpha_limit_up;
-	ref_bc.final_alpha=fire.alpha_limit_up;
-	ref_ca.final_alpha=fire.alpha_limit_up;
+	ref_ab.final_alpha=sys.Alpha_limit_up;
+	ref_bc.final_alpha=sys.Alpha_limit_up;
+	ref_ca.final_alpha=sys.Alpha_limit_up;
 
 		
 }
@@ -126,7 +136,7 @@ void Ref_flag_handles(){
 		
 		if(runningModeFlags.bit.pfControl ){
 			
-			ref_set.Q_PF_Set=cl.Ptotal*tan(acos(ref_set.PF_Set))*div3;
+			ref_set.Q_PF_Set=cl.Ptotal*tanf(acosf(ref_set.PF_Set))*div3;
 			
 			if(runningModeFlags.bit.pointSelect){
 				

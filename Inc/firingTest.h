@@ -22,5 +22,8 @@ struct TestFiring{
 };
 
 
+extern struct TestFiring TestFire;
+
+
 
 #endif

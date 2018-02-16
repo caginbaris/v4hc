@@ -19,6 +19,7 @@ union  uAdc Adc;
 struct AdcData adc;
 struct AdcData offset;
 struct AdcData scale;
+struct TurnRatios TR;
 
 enum AdcChannel ch=Van;
 

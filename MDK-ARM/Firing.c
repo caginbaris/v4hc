@@ -10,6 +10,7 @@
 #include "nfbm.h"
 #include "firing.h"
 #include "main.h"
+#include "aux_functions.h"
 
 struct firing_parameters fire;
 struct firingOutputs fr={0};
@@ -21,8 +22,7 @@ uint8_t firing_disable=1;
 void init_firing(void){
 	
 	
-	fire.alpha_limit_down=95.0f;
-	fire.alpha_limit_up=170.0f;
+
 
 
 }
@@ -50,16 +50,10 @@ void firing(){
 	fire.bc.alpha=ref_bc.final_alpha;
 	fire.ca.alpha=ref_ca.final_alpha;
 
-	if(fire.ab.alpha>fire.alpha_limit_up)  {fire.ab.alpha=fire.alpha_limit_up;}
-	if(fire.ab.alpha<fire.alpha_limit_down){fire.ab.alpha=fire.alpha_limit_down;}
-
-	if(fire.bc.alpha>fire.alpha_limit_up)  {fire.bc.alpha=fire.alpha_limit_up;}
-	if(fire.bc.alpha<fire.alpha_limit_down){fire.bc.alpha=fire.alpha_limit_down;}
-
-	if(fire.ca.alpha>fire.alpha_limit_up)  {fire.ca.alpha=fire.alpha_limit_up;}
-	if(fire.ca.alpha<fire.alpha_limit_down){fire.ca.alpha=fire.alpha_limit_down;}
-
-
+	f_limiter(&fire.ab.alpha,sys.Alpha_limit_down,sys.Alpha_limit_up);
+	f_limiter(&fire.bc.alpha,sys.Alpha_limit_down,sys.Alpha_limit_up);
+	f_limiter(&fire.ca.alpha,sys.Alpha_limit_down,sys.Alpha_limit_up);
+	
 	fire.ab.alpha_neg=ref_ab.final_alpha+180.0f;
 	fire.bc.alpha_neg=ref_bc.final_alpha+180.0f;
 	fire.ca.alpha_neg=ref_ca.final_alpha+180.0f;

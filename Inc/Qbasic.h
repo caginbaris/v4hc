@@ -58,5 +58,7 @@ struct QbasicStartup{
 
 };
 
+extern struct QbasicData Qdata;
+
 #endif
 
