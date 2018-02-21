@@ -77,10 +77,6 @@ void pushDataToMaster(void){
 	comParams.pushDataBufferF[24]=ref_bc.final_alpha;
 	comParams.pushDataBufferF[25]=ref_ca.final_alpha;
 	
-	comParams.pushDataBufferF[23]=sys.Bp_ab;
-	comParams.pushDataBufferF[24]=sys.Bp_bc;
-	comParams.pushDataBufferF[25]=sys.Bp_ca;
-	
 	comParams.pushDataBufferF[26]=sys.Bp_ab;
 	comParams.pushDataBufferF[27]=sys.Bp_bc;
 	comParams.pushDataBufferF[28]=sys.Bp_ca;
@@ -169,8 +165,11 @@ void pushDataToMaster(void){
 	comParams.pushDataBufferF[131]=sys.TCR_XL_ab;
 	comParams.pushDataBufferF[132]=sys.TCR_XL_bc;
 	comParams.pushDataBufferF[133]=sys.TCR_XL_ca;
+	comParams.pushDataBufferF[134]=sys.TR_Power;
+	comParams.pushDataBufferF[135]=sys.TR_Uk;
+	comParams.pushDataBufferF[136]=sys.TR_Ratio;
 	
-	/*spare 134-149*/
+	/*spare 137-149*/
 	
 	comParams.pushDataBufferF[150]=TR.VT_MV_primary;
 	comParams.pushDataBufferF[151]=TR.VT_MV_primary;
@@ -196,10 +195,55 @@ void pushDataToMaster(void){
 void pullDataFromMaster(void){
 	
 	
-	receivedModeFlags.all=comParams.pushDataBufferDW[0];
+	receivedModeFlags.all=comParams_uart.recDataBufferDW[0];
+	//DW spare 1 to 4
+	ref_set.MV_Bus_Offset=comParams_uart.recDataBufferF[0];
+	ref_set.PF_Set=comParams_uart.recDataBufferF[1];
+	ref_set.ManualQ=comParams_uart.recDataBufferF[2];
+	ref_set.ManualAlpha=comParams_uart.recDataBufferF[3];
+	sys.Q_limit=comParams_uart.recDataBufferF[4];
+	sys.Alpha_limit_up=comParams_uart.recDataBufferF[5];
+	sys.Alpha_limit_down=comParams_uart.recDataBufferF[6];
+	sys.I_limit=comParams_uart.recDataBufferF[7];
+	sys.I_limit_time=comParams_uart.recDataBufferF[8];
+	sys.V_limit=comParams_uart.recDataBufferF[9];
+	sys.V_limit_time=comParams_uart.recDataBufferF[10];
+	sys.B_limit_up=comParams_uart.recDataBufferF[11];
+	sys.B_limit_down=comParams_uart.recDataBufferF[12];
+	TestFire.alpha=comParams_uart.recDataBufferF[13];
+	TestFire.firing_duration=comParams_uart.recDataBufferF[14];
+	PI.CL.Kp=comParams_uart.recDataBufferF[15];
+	PI.CL.Ki=comParams_uart.recDataBufferF[16];
+	PI.OL.Kp=comParams_uart.recDataBufferF[17];
+	PI.OL.Ki=comParams_uart.recDataBufferF[18];
+	Qdata.QHF_1=comParams_uart.recDataBufferF[19];;
+	Qdata.QHF_2=comParams_uart.recDataBufferF[20];
+	Qdata.QHF_3=comParams_uart.recDataBufferF[21];
+	Qdata.QHF_4=comParams_uart.recDataBufferF[22];
+	sys.TCR_XL_ab=comParams_uart.recDataBufferF[23];;
+	sys.TCR_XL_bc=comParams_uart.recDataBufferF[24];
+	sys.TCR_XL_ca=comParams_uart.recDataBufferF[25];
+	sys.TR_Power=comParams_uart.recDataBufferF[26];
+	sys.TR_Uk=comParams_uart.recDataBufferF[27];
+	sys.TR_Ratio=comParams_uart.recDataBufferF[28];
 	
+	/*29-40 spare*/
 	
-
-
-
+	TR.VT_MV_primary=comParams_uart.recDataBufferF[41];
+	TR.VT_MV_secondary=comParams_uart.recDataBufferF[42];
+	
+	TR.VT_HV_primary=comParams_uart.recDataBufferF[43];
+	TR.VT_HV_secondary=comParams_uart.recDataBufferF[44];
+	
+	TR.CT_MV_primary=comParams_uart.recDataBufferF[45];
+	TR.CT_MV_secondary=comParams_uart.recDataBufferF[46];
+	
+	TR.CT_TCR_primary=comParams_uart.recDataBufferF[47];
+	TR.CT_TCR_secondary=comParams_uart.recDataBufferF[48];
+	
+	TR.CT_LOAD_primary=comParams_uart.recDataBufferF[49];;
+	TR.CT_LOAD_secondary=comParams_uart.recDataBufferF[50];
+	
+	/*51-55 Spare */
+	
 }
