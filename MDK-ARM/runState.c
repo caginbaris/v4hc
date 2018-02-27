@@ -29,14 +29,18 @@ void runState(void){
 	DO.LD_READY=0;
 	DO.LD_RUN=1;
 	
-	if((DI.Q1_cb_pos |DI.CB_Operation_Qbasic) & (!status.start_flag) & (current_mode!=hf) /*remaining entry!*/){
+	if(	(DI.Q1_cb_pos |DI.CB_Operation_Qbasic) & 
+			(!status.start_flag) /*remaining entry!*/){
 		
 		status.start_flag=1;
 	
 	}
 	
 	
-	if(status.start_flag & !status.regulation_enable){
+	if(status.start_flag & 
+		!status.regulation_enable & 
+		(current_mode==openLoop | current_mode==closedLoop)&
+		!status.Qbasic_flag){
 	
 		status.Qbasic_flag=1;
 		
@@ -46,9 +50,17 @@ void runState(void){
 	status.regulation_enable=on_delay(status.start_flag,status.regulation_enable,_12sec,&regulationCounter);
 	
 	
+	if(status.regulation_enable & status.Qbasic_flag){
+	
+		status.Qbasic_flag=0;
+	
+	}
+	
+	
+	
 	if(status.regulation_enable){
 		
-		status.Qbasic_flag=0;
+		/*sebeke güç kontrolü sonrasinda DO.startup set, +-5 MVAR, for 2sec*/
 		
 		DO.StartupCompleted=1;
 		
