@@ -197,7 +197,7 @@ void pullDataFromMaster(void){
 	
 	receivedModeFlags.all=comParams_uart.recDataBufferDW[0];
 	//DW spare 1 to 4
-	ref_set.MV_Bus_Offset=comParams_uart.recDataBufferF[0];
+	ref_set.MV_Bus_Offset=comParams_uart.recDataBufferF[0]*1e6;
 	ref_set.PF_Set=comParams_uart.recDataBufferF[1];
 	ref_set.ManualQ=comParams_uart.recDataBufferF[2];
 	ref_set.ManualAlpha=comParams_uart.recDataBufferF[3];

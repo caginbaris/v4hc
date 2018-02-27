@@ -114,7 +114,7 @@ void ref_basic(){
 
 void Ref_flag_handles(){
 
-
+#if 0
 		if(runningModeFlags.bit.reactivePowerControl ){
 			
 			if(runningModeFlags.bit.pointSelect){
@@ -151,6 +151,8 @@ void Ref_flag_handles(){
 			}
 		
 		}
+		
+		#endif
 
 }
 

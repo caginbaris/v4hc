@@ -8,7 +8,7 @@ union mode_flags runningModeFlags;
 
 void mode_selection(){
 	
-	
+	#if 0
 	if(status.configData_flag){
 	
 	  if(current_mode==inter){
@@ -47,4 +47,6 @@ void mode_selection(){
 			
 		}
 	}
+	
+	#endif
 }
