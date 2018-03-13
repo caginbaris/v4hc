@@ -159,7 +159,7 @@ int main(void)
 	}else{
 		
 	//pullDataFromMaster();
-	pushDataToMaster();
+	//pushDataToMaster();
 
 	
 	}	

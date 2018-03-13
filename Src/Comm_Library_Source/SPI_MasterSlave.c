@@ -96,7 +96,7 @@ static void spi_frameProcess(void)
 
 static void spi_pushAllData(void)
 {
-	spi_prepareTestData();
+	// spi_prepareTestData();
 	spi_preparePushData();
 	spi_selectChip();
 	HAL_SPI_Transmit_IT(&hspi2, comParams.txBuffer, comParams.txIndex);

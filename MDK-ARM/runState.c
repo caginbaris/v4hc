@@ -11,6 +11,8 @@ union cb_operations cb_pos={0};
 void runState(void){
 	
 	static long regulationCounter=0;
+	static long start_count=0;
+	static uint8_t start_stop=0;
 	
 	static uint8_t cb_op=0,cb_op_back=0,cb_op_flag=0;
 	long cb_opp_counter=0;
@@ -89,8 +91,10 @@ void runState(void){
 	
 	//stop routine------------------------------
 	
-	if(DI.start_stop==0 || extTrip.all==1){
+	start_stop=off_delay(DI.start_stop,start_stop,_2sec,&start_count);
 	
+	if(start_stop==0 || extTrip.all==1){
+		
 	status.regulation_enable=0;
 
 	DO.StartupCompleted=0;	

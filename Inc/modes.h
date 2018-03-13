@@ -19,13 +19,13 @@ void hfMode(void);
 enum ModeID{	
 
 
-closedLoop=0x1,
-openLoop=0x2,
-manualVar=0x4,
-manualAngle=0x8,
-firingTest=0x10,
-inter=0x20,	
-hf=0x40
+closedLoop,
+openLoop,
+manualVar,
+manualAngle,
+firingTest,
+inter,	
+hf
 
 	
 };

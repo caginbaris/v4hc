@@ -5,7 +5,7 @@
 
 #include <stdint.h>
 
-#define Vnom 34.5f
+
 #define i3   0.333333333333333f
 
 
@@ -20,6 +20,8 @@ struct QbasicData{
 	float BHF_2;
 	float BHF_3;
 	float BHF_4;
+	
+	float QTCR;
 
 	
 	uint32_t HF_1_CB_pos:1;
@@ -51,9 +53,11 @@ struct QbasicStartup{
 	
 	uint32_t  step1_passed:1;
 	uint32_t  step2_passed:1;
+	uint32_t  step3_passed:1;
 	
 	long step1_counter;
 	long step2_counter;
+	long step3_counter;
 
 
 };

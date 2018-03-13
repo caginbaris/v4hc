@@ -133,9 +133,9 @@ void pushDataToMaster(void){
 	// online parameters
 	
 	
-	//DW spare-1
-	//DW spare-2
-	//DW spare-3
+	comParams.pushDataBufferDW[14]=receivedModeFlags.all; 
+	comParams.pushDataBufferDW[15]=33; 
+	comParams.pushDataBufferDW[16]=34; 
 	//DW spare-4
 	//DW spare-5
 	
@@ -162,29 +162,31 @@ void pushDataToMaster(void){
 	comParams.pushDataBufferF[128]=Qdata.QHF_1;
 	comParams.pushDataBufferF[129]=Qdata.QHF_2;
 	comParams.pushDataBufferF[130]=Qdata.QHF_3;
-	comParams.pushDataBufferF[131]=sys.TCR_XL_ab;
-	comParams.pushDataBufferF[132]=sys.TCR_XL_bc;
-	comParams.pushDataBufferF[133]=sys.TCR_XL_ca;
-	comParams.pushDataBufferF[134]=sys.TR_Power;
-	comParams.pushDataBufferF[135]=sys.TR_Uk;
-	comParams.pushDataBufferF[136]=sys.TR_Ratio;
-	
-	/*spare 137-149*/
+	comParams.pushDataBufferF[131]=Qdata.QHF_4;
+	comParams.pushDataBufferF[132]=Qdata.QTCR;
+	comParams.pushDataBufferF[133]=sys.TCR_XL_ab;
+	comParams.pushDataBufferF[134]=sys.TCR_XL_bc;
+	comParams.pushDataBufferF[135]=sys.TCR_XL_ca;
+	comParams.pushDataBufferF[136]=sys.TR_Power;
+	comParams.pushDataBufferF[137]=sys.TR_Uk;
+	comParams.pushDataBufferF[138]=sys.TR_Ratio;
+	comParams.pushDataBufferF[139]=sys.Vnom ;
+	/*spare 139-149*/
 	
 	comParams.pushDataBufferF[150]=TR.VT_MV_primary;
-	comParams.pushDataBufferF[151]=TR.VT_MV_primary;
+	comParams.pushDataBufferF[151]=TR.VT_MV_secondary ;
 	
 	comParams.pushDataBufferF[152]=TR.VT_HV_primary;
-	comParams.pushDataBufferF[153]=TR.VT_HV_primary;
+	comParams.pushDataBufferF[153]=TR.VT_HV_secondary;
 	
 	comParams.pushDataBufferF[154]=TR.CT_MV_primary;
-	comParams.pushDataBufferF[155]=TR.CT_MV_primary;
+	comParams.pushDataBufferF[155]=TR.CT_MV_secondary;
 	
 	comParams.pushDataBufferF[156]=TR.CT_TCR_primary;
-	comParams.pushDataBufferF[157]=TR.CT_TCR_primary;
+	comParams.pushDataBufferF[157]=TR.CT_TCR_secondary;
 	
 	comParams.pushDataBufferF[158]=TR.CT_LOAD_primary;
-	comParams.pushDataBufferF[159]=TR.CT_LOAD_primary;
+	comParams.pushDataBufferF[159]=TR.CT_LOAD_secondary;
 	
 	
 	
@@ -197,7 +199,7 @@ void pullDataFromMaster(void){
 	
 	receivedModeFlags.all=comParams_uart.recDataBufferDW[0];
 	//DW spare 1 to 4
-	ref_set.MV_Bus_Offset=comParams_uart.recDataBufferF[0]*1e6;
+	ref_set.MV_Bus_Offset=comParams_uart.recDataBufferF[0];
 	ref_set.PF_Set=comParams_uart.recDataBufferF[1];
 	ref_set.ManualQ=comParams_uart.recDataBufferF[2];
 	ref_set.ManualAlpha=comParams_uart.recDataBufferF[3];
@@ -220,13 +222,14 @@ void pullDataFromMaster(void){
 	Qdata.QHF_2=comParams_uart.recDataBufferF[20];
 	Qdata.QHF_3=comParams_uart.recDataBufferF[21];
 	Qdata.QHF_4=comParams_uart.recDataBufferF[22];
-	sys.TCR_XL_ab=comParams_uart.recDataBufferF[23];;
-	sys.TCR_XL_bc=comParams_uart.recDataBufferF[24];
-	sys.TCR_XL_ca=comParams_uart.recDataBufferF[25];
-	sys.TR_Power=comParams_uart.recDataBufferF[26];
-	sys.TR_Uk=comParams_uart.recDataBufferF[27];
-	sys.TR_Ratio=comParams_uart.recDataBufferF[28];
-	
+	Qdata.QTCR=comParams_uart.recDataBufferF[23];
+	sys.TCR_XL_ab=comParams_uart.recDataBufferF[24];;
+	sys.TCR_XL_bc=comParams_uart.recDataBufferF[25];
+	sys.TCR_XL_ca=comParams_uart.recDataBufferF[26];
+	sys.TR_Power=comParams_uart.recDataBufferF[27];
+	sys.TR_Uk=comParams_uart.recDataBufferF[28];
+	sys.TR_Ratio=comParams_uart.recDataBufferF[29];
+	sys.Vnom=comParams_uart.recDataBufferF[30];;
 	/*29-40 spare*/
 	
 	TR.VT_MV_primary=comParams_uart.recDataBufferF[41];

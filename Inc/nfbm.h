@@ -360,6 +360,7 @@ struct OpenLoopQ{
 	float ref_bc;
 	float ref_ca;
 
+	
 
 };
 
@@ -397,6 +398,8 @@ struct system_parameters{
 	
 	float V_limit;
 	float V_limit_time;
+	
+	float Vnom;
 
 
 

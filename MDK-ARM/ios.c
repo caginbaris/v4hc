@@ -46,6 +46,7 @@ void ios(void){
 	
 	
 	DO.IBF=1;
+	DO.LD_IBF=1;
 	
 	HAL_GPIO_WritePin(CTB1_READY_DO_1_GPIO_Port,CTB1_READY_DO_1_Pin,(GPIO_PinState)DO.READY);
 	HAL_GPIO_WritePin(CTB1_RUN_DO_2_GPIO_Port  ,CTB1_RUN_DO_2_Pin,  (GPIO_PinState)DO.RUN);
