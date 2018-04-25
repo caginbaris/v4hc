@@ -9,6 +9,11 @@
 #include "firingTest.h"
 #include "Qbasic.h"
 
+
+#define toK 0.001f
+#define toM 0.001f
+#define toPercent 100.0f
+
 union mode_flags receivedModeFlags;
 
 struct ref_parameters ref_param_received;
@@ -27,8 +32,8 @@ void pushDataToMaster(void){
 	uDO.DO=DO;
 	uStatus.status=status;
 
-	comParams.pushDataBufferDW[0]=current_state;
-	comParams.pushDataBufferDW[1]=current_mode;
+	comParams.pushDataBufferDW[0]=1<<current_state;
+	comParams.pushDataBufferDW[1]=1<<current_mode;
 	comParams.pushDataBufferDW[2]=uDI.all;
 	comParams.pushDataBufferDW[3]=uDO.all;
 	comParams.pushDataBufferDW[4]=uStatus.all;
@@ -42,44 +47,44 @@ void pushDataToMaster(void){
 	//DW spare-12
 	//DW spare-13
 	
-	comParams.pushDataBufferF[0]=Qbasic.ab;
-	comParams.pushDataBufferF[1]=Qbasic.bc;
-	comParams.pushDataBufferF[2]=Qbasic.ca;
+	comParams.pushDataBufferF[0]=Qbasic.ab*toM;
+	comParams.pushDataBufferF[1]=Qbasic.bc*toM;
+	comParams.pushDataBufferF[2]=Qbasic.ca*toM;
 	
 	
-	comParams.pushDataBufferF[3]=cl.Qab;
-	comParams.pushDataBufferF[4]=cl.Qbc;
-	comParams.pushDataBufferF[5]=cl.Qca;
-	comParams.pushDataBufferF[6]=cl.Qsum;
-	comParams.pushDataBufferF[7]=cl.Psum;
+	comParams.pushDataBufferF[3]=cl.Qab*toM;
+	comParams.pushDataBufferF[4]=cl.Qbc*toM;
+	comParams.pushDataBufferF[5]=cl.Qca*toM;
+	comParams.pushDataBufferF[6]=cl.Qsum*toM;
+	comParams.pushDataBufferF[7]=cl.Psum*toM;
 	
-	comParams.pushDataBufferF[8]=Qol.a;
-	comParams.pushDataBufferF[9]=Qol.b;
-	comParams.pushDataBufferF[10]=Qol.c;
+	comParams.pushDataBufferF[8]=Qol.a*toM;
+	comParams.pushDataBufferF[9]=Qol.b*toM;
+	comParams.pushDataBufferF[10]=Qol.c*toM;
 	
-	comParams.pushDataBufferF[11]=Qol.ab;
-	comParams.pushDataBufferF[12]=Qol.bc;
-	comParams.pushDataBufferF[13]=Qol.ca;
+	comParams.pushDataBufferF[11]=Qol.ab*toM;
+	comParams.pushDataBufferF[12]=Qol.bc*toM;
+	comParams.pushDataBufferF[13]=Qol.ca*toM;
 	
-	comParams.pushDataBufferF[14]=PI.CL.ab.PIout;
-	comParams.pushDataBufferF[15]=PI.CL.bc.PIout;
-	comParams.pushDataBufferF[16]=PI.CL.ca.PIout;
+	comParams.pushDataBufferF[14]=PI.CL.ab.PIout*toM;
+	comParams.pushDataBufferF[15]=PI.CL.bc.PIout*toM;
+	comParams.pushDataBufferF[16]=PI.CL.ca.PIout*toM;
 	
-	comParams.pushDataBufferF[17]=Qol.ref_ab;
-	comParams.pushDataBufferF[18]=Qol.ref_bc;
-	comParams.pushDataBufferF[19]=Qol.ref_ca;
+	comParams.pushDataBufferF[17]=Qol.ref_ab*toM;
+	comParams.pushDataBufferF[18]=Qol.ref_bc*toM;
+	comParams.pushDataBufferF[19]=Qol.ref_ca*toM;
 	
-	comParams.pushDataBufferF[20]=ref_ab.final_Q;
-	comParams.pushDataBufferF[21]=ref_bc.final_Q;
-	comParams.pushDataBufferF[22]=ref_ca.final_Q;
+	comParams.pushDataBufferF[20]=ref_ab.final_Q*toM;
+	comParams.pushDataBufferF[21]=ref_bc.final_Q*toM;
+	comParams.pushDataBufferF[22]=ref_ca.final_Q*toM;
 	
 	comParams.pushDataBufferF[23]=ref_ab.final_alpha;
 	comParams.pushDataBufferF[24]=ref_bc.final_alpha;
 	comParams.pushDataBufferF[25]=ref_ca.final_alpha;
 	
-	comParams.pushDataBufferF[26]=sys.Bp_ab;
-	comParams.pushDataBufferF[27]=sys.Bp_bc;
-	comParams.pushDataBufferF[28]=sys.Bp_ca;
+	comParams.pushDataBufferF[26]=sys.Bp_ab*toPercent;
+	comParams.pushDataBufferF[27]=sys.Bp_bc*toPercent;
+	comParams.pushDataBufferF[28]=sys.Bp_ca*toPercent;
 	
 	comParams.pushDataBufferF[29]=meanRMS.Van;
 	comParams.pushDataBufferF[30]=meanRMS.Vbn;
@@ -112,22 +117,22 @@ void pushDataToMaster(void){
 	comParams.pushDataBufferF[49]=fRMS.Vbc;
 	comParams.pushDataBufferF[50]=fRMS.Vca;
 	
-	comParams.pushDataBufferF[51]=PI.Qref;
+	comParams.pushDataBufferF[51]=PI.Qref*toM;
 	
-	comParams.pushDataBufferF[52]=PI.CL.ab.Qin;
-	comParams.pushDataBufferF[53]=PI.CL.bc.Qin;
-	comParams.pushDataBufferF[54]=PI.CL.ca.Qin;
-	comParams.pushDataBufferF[55]=PI.OL.Qin;
-	
-	
-	comParams.pushDataBufferF[56]=PI.CL.ab.PIout;
-	comParams.pushDataBufferF[57]=PI.CL.bc.PIout;
-	comParams.pushDataBufferF[58]=PI.CL.ca.PIout;
-	comParams.pushDataBufferF[59]=PI.OL.PIout;
+	comParams.pushDataBufferF[52]=PI.CL.ab.Qin*toM;
+	comParams.pushDataBufferF[53]=PI.CL.bc.Qin*toM;
+	comParams.pushDataBufferF[54]=PI.CL.ca.Qin*toM;
+	comParams.pushDataBufferF[55]=PI.OL.Qin*toM;
 	
 	
-	comParams.pushDataBufferF[60]=ref_set.TR_Offset;
-	comParams.pushDataBufferF[61]=ref_set.Q_PF_Set;
+	comParams.pushDataBufferF[56]=PI.CL.ab.PIout*toM;
+	comParams.pushDataBufferF[57]=PI.CL.bc.PIout*toM;
+	comParams.pushDataBufferF[58]=PI.CL.ca.PIout*toM;
+	comParams.pushDataBufferF[59]=PI.OL.PIout*toM;
+	
+	
+	comParams.pushDataBufferF[60]=ref_set.TR_Offset*toM;
+	comParams.pushDataBufferF[61]=ref_set.Q_PF_Set*toM;
 	
 	
 	// online parameters
@@ -140,11 +145,11 @@ void pushDataToMaster(void){
 	//DW spare-5
 	
 	
-	comParams.pushDataBufferF[109]=ref_set.MV_Bus_Offset;
+	comParams.pushDataBufferF[109]=ref_set.MV_Bus_Offset*toM;
 	comParams.pushDataBufferF[110]=ref_set.PF_Set;
-	comParams.pushDataBufferF[111]=ref_set.ManualQ;
+	comParams.pushDataBufferF[111]=ref_set.ManualQ*toM;
 	comParams.pushDataBufferF[112]=ref_set.ManualAlpha;
-	comParams.pushDataBufferF[113]=sys.Q_limit;
+	comParams.pushDataBufferF[113]=sys.Q_limit*toM;
 	comParams.pushDataBufferF[114]=sys.Alpha_limit_up;
 	comParams.pushDataBufferF[115]=sys.Alpha_limit_down;
 	comParams.pushDataBufferF[116]=sys.I_limit;
@@ -159,11 +164,11 @@ void pushDataToMaster(void){
 	comParams.pushDataBufferF[125]=PI.CL.Ki;
 	comParams.pushDataBufferF[126]=PI.OL.Kp;
 	comParams.pushDataBufferF[127]=PI.OL.Ki;
-	comParams.pushDataBufferF[128]=Qdata.QHF_1;
-	comParams.pushDataBufferF[129]=Qdata.QHF_2;
-	comParams.pushDataBufferF[130]=Qdata.QHF_3;
-	comParams.pushDataBufferF[131]=Qdata.QHF_4;
-	comParams.pushDataBufferF[132]=Qdata.QTCR;
+	comParams.pushDataBufferF[128]=Qdata.QHF_1*toM;
+	comParams.pushDataBufferF[129]=Qdata.QHF_2*toM;
+	comParams.pushDataBufferF[130]=Qdata.QHF_3*toM;
+	comParams.pushDataBufferF[131]=Qdata.QHF_4*toM;
+	comParams.pushDataBufferF[132]=Qdata.QTCR*toM;
 	comParams.pushDataBufferF[133]=sys.TCR_XL_ab;
 	comParams.pushDataBufferF[134]=sys.TCR_XL_bc;
 	comParams.pushDataBufferF[135]=sys.TCR_XL_ca;
