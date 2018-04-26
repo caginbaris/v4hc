@@ -551,6 +551,11 @@ struct TurnRatios{
 	float CT_LOAD_primary;
 	float CT_LOAD_secondary;	
 	
+	float VT_MV;
+	float VT_HV;
+	float CT_MV;
+	float CT_TCR;
+	float CT_LOAD;
 
 };
 

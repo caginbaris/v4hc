@@ -8,45 +8,20 @@ union mode_flags runningModeFlags;
 
 void mode_selection(){
 	
-	#if 0
-	if(status.configData_flag){
-	
-	  if(current_mode==inter){
-		
 		runningModeFlags.all=receivedModeFlags.all;
-		ref_set=ref_param_received;	
-			
+		
 		/*mode selections*/	
+	
+		if(runningModeFlags.bit.only_2HF					& (current_state!=run)){	new_mode=hf;}
+		if(runningModeFlags.bit.firingTest    		& (current_state!=run)){	new_mode=firingTest;}
 			
-		if(runningModeFlags.bit.closedLoopControl & !runningModeFlags.bit.openLoopControl 	){new_mode=closedLoop;}
-		if(runningModeFlags.bit.closedLoopControl & runningModeFlags.bit.openLoopControl 		){new_mode=openLoop;}
-		if(runningModeFlags.bit.manualControl     & runningModeFlags.bit.manualVarControl 	){new_mode=manualVar;}
-		if(runningModeFlags.bit.manualControl     & runningModeFlags.bit.manualAngleControl	){new_mode=manualAngle;}
+		if(runningModeFlags.bit.closedLoopControl & !runningModeFlags.bit.openLoopControl 		){new_mode=closedLoop;}
+		if(runningModeFlags.bit.closedLoopControl & runningModeFlags.bit.openLoopControl 			){new_mode=openLoop;}
+		if(runningModeFlags.bit.manualControl     & !runningModeFlags.bit.Qcontrol_compSelect ){new_mode=manualVar;}
+		if(runningModeFlags.bit.manualControl     & runningModeFlags.bit.Qcontrol_compSelect	){new_mode=manualAngle;}
 		
-		if(runningModeFlags.bit.only2HF						 & (current_state!=run)										){
-			
-			new_mode=hf;
-			
-		}else{
-			
-			runningModeFlags.bit.only2HF=0;
-		
-		}
-		
-		if(runningModeFlags.bit.firingTestMode    & (current_state!=run)										){
-		
-			new_mode=firingTest;
-			
-		}else{
-		
-		runningModeFlags.bit.firingTestMode=0;
-			
-		}
+		if(current_mode!=new_mode){current_mode=inter;}
 		
 		/*flag selections*/	
 			
-		}
-	}
-	
-	#endif
 }

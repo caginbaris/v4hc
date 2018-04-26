@@ -13,12 +13,15 @@
 #define toK 0.001f
 #define toM 0.001f
 #define toPercent 100.0f
+#define eps  0.000001f
 
 union mode_flags receivedModeFlags;
 
 struct ref_parameters ref_param_received;
 struct ref_parameters ref_set;
 union statUnion uStatus={0}; 
+
+void mode_selection(void);
 
 extern float cRMS;
 
@@ -195,6 +198,11 @@ void pushDataToMaster(void){
 	
 	
 	
+	TR.VT_MV=		(TR.VT_MV_secondary>eps) 		?	 	(TR.VT_MV_primary/TR.VT_MV_secondary) 		: 0.0f;
+	TR.VT_HV=		(TR.VT_HV_secondary>eps) 		? 	(TR.VT_HV_primary/TR.VT_HV_secondary) 		: 0.0f;
+	TR.CT_MV=		(TR.CT_MV_secondary>eps) 		? 	(TR.CT_MV_primary/TR.CT_MV_secondary) 		: 0.0f;
+	TR.CT_TCR=	(TR.CT_TCR_secondary>eps) 	? 	(TR.CT_TCR_primary/TR.CT_TCR_secondary) 	: 0.0f;
+	TR.CT_LOAD=	(TR.CT_LOAD_secondary>eps) 	? 	(TR.CT_LOAD_primary/TR.CT_LOAD_secondary) : 0.0f;
 	
 }
 
@@ -203,6 +211,9 @@ void pullDataFromMaster(void){
 	
 	
 	receivedModeFlags.all=comParams_uart.recDataBufferDW[0];
+	
+	mode_selection();
+	
 	//DW spare 1 to 4
 	ref_set.MV_Bus_Offset=comParams_uart.recDataBufferF[0];
 	ref_set.PF_Set=comParams_uart.recDataBufferF[1];

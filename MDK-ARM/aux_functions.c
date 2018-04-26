@@ -1,5 +1,5 @@
 
-
+#include "aux_functions.h"
 
 int on_delay(unsigned int input, unsigned int mem, unsigned int qual_sample, long *count)
 {
@@ -93,5 +93,7 @@ float minSelector_3p(float a, float b, float c){
 	return min;
 
 }
+
+
 
 

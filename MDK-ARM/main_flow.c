@@ -14,8 +14,9 @@ void main_flow(){
 	
 	
 	PowerCalculations();
-	//faultRoutines();
+	faultRoutines();
 	tripRoutines(); 
+	
 	
 	mode_chart();  
 	state_chart();

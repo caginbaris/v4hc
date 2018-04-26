@@ -35,12 +35,17 @@
 #include "stm32f7xx.h"
 #include "stm32f7xx_it.h"
 
+
+
 /* USER CODE BEGIN 0 */
 
 #include "main.h"
 #include "UART_MasterSlave.h"
 #include "SPI_MasterSlave.h"
 #include "CommConfig.h"
+
+extern uint8_t incoming_data_flag;
+
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -249,7 +254,7 @@ void EXTI15_10_IRQHandler(void)
   /* USER CODE END EXTI15_10_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_11);
   /* USER CODE BEGIN EXTI15_10_IRQn 1 */
-  IntCnt++;
+  incoming_data_flag=1;
   /* USER CODE END EXTI15_10_IRQn 1 */
 }
 

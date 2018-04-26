@@ -12,7 +12,7 @@ void closedLoopMode(void){
 	Ref_CL();
 	
 	
-	//Ref_flag_handles();
+	Ref_flag_handles();
 	
 	
 }

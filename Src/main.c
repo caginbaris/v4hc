@@ -52,6 +52,7 @@
 
 #include "conversion.h"
 #include "init_all.h"
+#include "aux_functions.h"
 
 #include "UART_MasterSlave.h"
 #include "SPI_MasterSlave.h"
@@ -63,6 +64,9 @@
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
+
+uint8_t incoming_data_flag=0;
+long incoming_data_flag_counter=0;
 
 /* USER CODE END PV */
 
@@ -151,25 +155,28 @@ int main(void)
 
   /* USER CODE BEGIN 3 */
 		
-	if(conversion_completed){
-		
-		
-		conversion_completed=0;
-	
-	}else{
-		
-	//pullDataFromMaster();
-	//pushDataToMaster();
-
-	
-	}	
-	
-
-		
-	
-	
 	uart_runComApp();
 	spi_runComApp();
+		
+	if(conversion_completed){
+		
+		incoming_data_flag=off_delay(0,incoming_data_flag,12500,&incoming_data_flag_counter);
+		conversion_completed=0;
+	
+	}
+	
+	
+	if(incoming_data_flag){
+		
+		pullDataFromMaster();
+	
+	}else{
+	
+		pushDataToMaster();
+	
+	}
+
+
 
   }
   /* USER CODE END 3 */

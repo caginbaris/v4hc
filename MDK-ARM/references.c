@@ -16,7 +16,12 @@ void init_references()
 {
 	
 	ref_set.ManualAlpha=120.0f;
-	
+	ref_set.ManualQ=0;
+	ref_set.MV_Bus_Offset=0;
+	ref_set.TR_Offset=0;
+	ref_set.MV_Bus_Offset=0;
+	ref_set.PF_Set=1.0f;
+	ref_set.Q_PF_Set=0;
 	
 
 }
@@ -29,8 +34,6 @@ void Ref_CL(){
 	ref_ca.final_Q=PI.CL.ca.PIout;
 	
 	
-
-
 }
 
 
@@ -56,10 +59,6 @@ void Ref_manualVar(){
 	ref_ab.final_Q=ref_set.ManualQ;
 	ref_bc.final_Q=ref_set.ManualQ;
 	ref_ca.final_Q=ref_set.ManualQ;
-	
-
-	
-	
 	
 
 
@@ -114,17 +113,16 @@ void ref_basic(){
 
 void Ref_flag_handles(){
 
-#if 0
-		if(runningModeFlags.bit.reactivePowerControl ){
+
+		if(!runningModeFlags.bit.Qcontrol_compSelect ){
 			
-			if(runningModeFlags.bit.pointSelect){
+			if(runningModeFlags.bit.PCC_pointSelect){
 				
 			PI.Qref=(ref_set.MV_Bus_Offset);
 			
 			}else{
 				
 			ref_set.TR_Offset = sys.TR_Ratio*sys.TR_Uk*(VnomSquare)/sys.TR_Power;
-				
 				
 			PI.Qref=(ref_set.MV_Bus_Offset - ref_set.TR_Offset);
 			
@@ -134,11 +132,11 @@ void Ref_flag_handles(){
 		
 		
 		
-		if(runningModeFlags.bit.pfControl ){
+		if(runningModeFlags.bit.Qcontrol_compSelect ){
 			
 			ref_set.Q_PF_Set=cl.Ptotal*tanf(acosf(ref_set.PF_Set))*div3;
 			
-			if(runningModeFlags.bit.pointSelect){
+			if(runningModeFlags.bit.PCC_pointSelect){
 				
 			PI.Qref=ref_set.Q_PF_Set;
 			
@@ -152,7 +150,6 @@ void Ref_flag_handles(){
 		
 		}
 		
-		#endif
 
 }
 
