@@ -21,9 +21,8 @@ uint8_t firing_disable=1;
 
 void init_firing(void){
 	
-	
-
-
+sys.Alpha_limit_up=170.0f;
+sys.Alpha_limit_down=95;	
 
 }
 
@@ -78,7 +77,7 @@ void firing(){
 	fire.ca.pre_alpha_n=fire.ca.alpha_neg;
 	
 
-	if(status.start_flag==1 && firing_disable==0){
+	if(status.start_flag==1){
 
 
 		if((PLL.ab_deg>=fire.ab.alpha) && (PLL.ab_deg<=(fire.ab.alpha+firing_offset))) 		  									{fr.Ap=1;	fire.ab.p_fired=1;}

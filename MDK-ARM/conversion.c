@@ -57,8 +57,8 @@ scale.Iload_c=0.0554437004f*3.0f;
 
 
 
-TR.VT_HV=345;
-TR.VT_MV=345;
+TR.VT_HV=345.0f;
+TR.VT_MV=345.0f;
 TR.CT_MV=1;
 TR.CT_TCR=1;
 TR.CT_LOAD=1;

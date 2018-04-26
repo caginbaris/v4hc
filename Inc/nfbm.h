@@ -73,9 +73,9 @@ enum AdcChannel{
 	Itcr_ab=10,		//AN-10
 	Itcr_ca=11,		//A-N12
 	
-	Vab_sync=12,	//AN-7
-	Vbc_sync=13,	//AN-8
-	Vca_sync=15,	//AN-9
+	Vab_sync=12,	//AN-7-34.5kv
+	Vbc_sync=13,	//AN-8-34.5kv
+	Vca_sync=15,	//AN-9-34.5kv
 	
 
 

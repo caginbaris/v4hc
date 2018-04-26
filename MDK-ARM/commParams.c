@@ -15,6 +15,8 @@
 #define toPercent 100.0f
 #define eps  0.000001f
 
+#define MVAR2VAR 1000000.0f
+
 union mode_flags receivedModeFlags;
 
 struct ref_parameters ref_param_received;
@@ -198,11 +200,7 @@ void pushDataToMaster(void){
 	
 	
 	
-	TR.VT_MV=		(TR.VT_MV_secondary>eps) 		?	 	(TR.VT_MV_primary/TR.VT_MV_secondary) 		: 0.0f;
-	TR.VT_HV=		(TR.VT_HV_secondary>eps) 		? 	(TR.VT_HV_primary/TR.VT_HV_secondary) 		: 0.0f;
-	TR.CT_MV=		(TR.CT_MV_secondary>eps) 		? 	(TR.CT_MV_primary/TR.CT_MV_secondary) 		: 0.0f;
-	TR.CT_TCR=	(TR.CT_TCR_secondary>eps) 	? 	(TR.CT_TCR_primary/TR.CT_TCR_secondary) 	: 0.0f;
-	TR.CT_LOAD=	(TR.CT_LOAD_secondary>eps) 	? 	(TR.CT_LOAD_primary/TR.CT_LOAD_secondary) : 0.0f;
+
 	
 }
 
@@ -215,11 +213,11 @@ void pullDataFromMaster(void){
 	mode_selection();
 	
 	//DW spare 1 to 4
-	ref_set.MV_Bus_Offset=comParams_uart.recDataBufferF[0];
+	ref_set.MV_Bus_Offset=comParams_uart.recDataBufferF[0]*MVAR2VAR;
 	ref_set.PF_Set=comParams_uart.recDataBufferF[1];
-	ref_set.ManualQ=comParams_uart.recDataBufferF[2];
+	ref_set.ManualQ=comParams_uart.recDataBufferF[2]*MVAR2VAR;
 	ref_set.ManualAlpha=comParams_uart.recDataBufferF[3];
-	sys.Q_limit=comParams_uart.recDataBufferF[4];
+	sys.Q_limit=comParams_uart.recDataBufferF[4]*MVAR2VAR;
 	sys.Alpha_limit_up=comParams_uart.recDataBufferF[5];
 	sys.Alpha_limit_down=comParams_uart.recDataBufferF[6];
 	sys.I_limit=comParams_uart.recDataBufferF[7];
@@ -234,15 +232,15 @@ void pullDataFromMaster(void){
 	PI.CL.Ki=comParams_uart.recDataBufferF[16];
 	PI.OL.Kp=comParams_uart.recDataBufferF[17];
 	PI.OL.Ki=comParams_uart.recDataBufferF[18];
-	Qdata.QHF_1=comParams_uart.recDataBufferF[19];;
-	Qdata.QHF_2=comParams_uart.recDataBufferF[20];
-	Qdata.QHF_3=comParams_uart.recDataBufferF[21];
-	Qdata.QHF_4=comParams_uart.recDataBufferF[22];
-	Qdata.QTCR=comParams_uart.recDataBufferF[23];
-	sys.TCR_XL_ab=comParams_uart.recDataBufferF[24];;
+	Qdata.QHF_1=comParams_uart.recDataBufferF[19]*MVAR2VAR;
+	Qdata.QHF_2=comParams_uart.recDataBufferF[20]*MVAR2VAR;
+	Qdata.QHF_3=comParams_uart.recDataBufferF[21]*MVAR2VAR;
+	Qdata.QHF_4=comParams_uart.recDataBufferF[22]*MVAR2VAR;
+	Qdata.QTCR=comParams_uart.recDataBufferF[23]*MVAR2VAR;
+	sys.TCR_XL_ab=comParams_uart.recDataBufferF[24];
 	sys.TCR_XL_bc=comParams_uart.recDataBufferF[25];
 	sys.TCR_XL_ca=comParams_uart.recDataBufferF[26];
-	sys.TR_Power=comParams_uart.recDataBufferF[27];
+	sys.TR_Power=comParams_uart.recDataBufferF[27]*MVAR2VAR;
 	sys.TR_Uk=comParams_uart.recDataBufferF[28];
 	sys.TR_Ratio=comParams_uart.recDataBufferF[29];
 	sys.Vnom=comParams_uart.recDataBufferF[30];;
@@ -262,6 +260,13 @@ void pullDataFromMaster(void){
 	
 	TR.CT_LOAD_primary=comParams_uart.recDataBufferF[49];;
 	TR.CT_LOAD_secondary=comParams_uart.recDataBufferF[50];
+	
+	
+	TR.VT_MV=		(TR.VT_MV_secondary>eps) 		?	 	(TR.VT_MV_primary/TR.VT_MV_secondary) 		: 0.0f;
+	TR.VT_HV=		(TR.VT_HV_secondary>eps) 		? 	(TR.VT_HV_primary/TR.VT_HV_secondary) 		: 0.0f;
+	TR.CT_MV=		(TR.CT_MV_secondary>eps) 		? 	(TR.CT_MV_primary/TR.CT_MV_secondary) 		: 0.0f;
+	TR.CT_TCR=	(TR.CT_TCR_secondary>eps) 	? 	(TR.CT_TCR_primary/TR.CT_TCR_secondary) 	: 0.0f;
+	TR.CT_LOAD=	(TR.CT_LOAD_secondary>eps) 	? 	(TR.CT_LOAD_primary/TR.CT_LOAD_secondary) : 0.0f;
 	
 	/*51-55 Spare */
 	

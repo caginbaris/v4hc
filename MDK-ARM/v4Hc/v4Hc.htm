@@ -3,7 +3,7 @@
 <title>Static Call Graph - [v4Hc\v4Hc.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image v4Hc\v4Hc.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Thu Apr 26 10:12:51 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Thu Apr 26 15:38:07 2018
 <BR><P>
 <H3>Maximum Stack Usage =        288 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1225,8 +1225,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;openLoopMode
 </UL>
 
-<P><STRONG><a name="[ef]"></a>PLL_all</STRONG> (Thumb, 128 bytes, Stack size 24 bytes, pll.o(i.PLL_all))
-<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = PLL_all &rArr; PLL_theta &rArr; __hardfp_sinf &rArr; __mathlib_rredf2
+<P><STRONG><a name="[ef]"></a>PLL_all</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, pll.o(i.PLL_all))
+<BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = PLL_all &rArr; PLL_theta &rArr; __hardfp_sinf &rArr; __mathlib_rredf2
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLL_theta
@@ -1628,7 +1628,7 @@ Global Symbols
 <P><STRONG><a name="[1]"></a>faultState</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, faultstate.o(i.faultState))
 <BR>[Address Reference Count : 1]<UL><LI> states.o(.data)
 </UL>
-<P><STRONG><a name="[11f]"></a>firing</STRONG> (Thumb, 1338 bytes, Stack size 32 bytes, firing.o(i.firing))
+<P><STRONG><a name="[11f]"></a>firing</STRONG> (Thumb, 1334 bytes, Stack size 32 bytes, firing.o(i.firing))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = firing &rArr; firingOutputs
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_limiter
@@ -1695,7 +1695,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_all
 </UL>
 
-<P><STRONG><a name="[125]"></a>init_firing</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, firing.o(i.init_firing))
+<P><STRONG><a name="[125]"></a>init_firing</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, firing.o(i.init_firing))
 <BR><BR>[Called By]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_all
 </UL>
 
@@ -1814,7 +1814,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main_flow
 </UL>
 
-<P><STRONG><a name="[13d]"></a>mode_selection</STRONG> (Thumb, 130 bytes, Stack size 0 bytes, selection.o(i.mode_selection))
+<P><STRONG><a name="[13d]"></a>mode_selection</STRONG> (Thumb, 140 bytes, Stack size 0 bytes, selection.o(i.mode_selection))
 <BR><BR>[Called By]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pullDataFromMaster
 </UL>
 
@@ -1873,7 +1873,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ref_filtering
 </UL>
 
-<P><STRONG><a name="[133]"></a>pullDataFromMaster</STRONG> (Thumb, 360 bytes, Stack size 8 bytes, commparams.o(i.pullDataFromMaster))
+<P><STRONG><a name="[133]"></a>pullDataFromMaster</STRONG> (Thumb, 510 bytes, Stack size 8 bytes, commparams.o(i.pullDataFromMaster))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = pullDataFromMaster
 </UL>
 <BR>[Calls]<UL><LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mode_selection
@@ -1881,8 +1881,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[134]"></a>pushDataToMaster</STRONG> (Thumb, 1338 bytes, Stack size 8 bytes, commparams.o(i.pushDataToMaster))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = pushDataToMaster
+<P><STRONG><a name="[134]"></a>pushDataToMaster</STRONG> (Thumb, 1232 bytes, Stack size 12 bytes, commparams.o(i.pushDataToMaster))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = pushDataToMaster
 </UL>
 <BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
