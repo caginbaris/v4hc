@@ -11,11 +11,13 @@
 
 
 #define toK 0.001f
-#define toM 0.001f
+#define toK2 0.000001f
+#define toM  0.000001f
 #define toPercent 100.0f
 #define eps  0.000001f
 
 #define MVAR2VAR 1000000.0f
+#define ind2imp  2.0f*3.14159f*50.0f*0.001f 
 
 union mode_flags receivedModeFlags;
 
@@ -118,9 +120,9 @@ void pushDataToMaster(void){
 	
 	comParams.pushDataBufferF[47]=cRMS;
 	
-	comParams.pushDataBufferF[48]=fRMS.Vab;
-	comParams.pushDataBufferF[49]=fRMS.Vbc;
-	comParams.pushDataBufferF[50]=fRMS.Vca;
+	comParams.pushDataBufferF[48]=fRMS.Vab*toK2;
+	comParams.pushDataBufferF[49]=fRMS.Vbc*toK2;
+	comParams.pushDataBufferF[50]=fRMS.Vca*toK2;
 	
 	comParams.pushDataBufferF[51]=PI.Qref*toM;
 	
@@ -237,9 +239,9 @@ void pullDataFromMaster(void){
 	Qdata.QHF_3=comParams_uart.recDataBufferF[21]*MVAR2VAR;
 	Qdata.QHF_4=comParams_uart.recDataBufferF[22]*MVAR2VAR;
 	Qdata.QTCR=comParams_uart.recDataBufferF[23]*MVAR2VAR;
-	sys.TCR_XL_ab=comParams_uart.recDataBufferF[24];
-	sys.TCR_XL_bc=comParams_uart.recDataBufferF[25];
-	sys.TCR_XL_ca=comParams_uart.recDataBufferF[26];
+	sys.TCR_XL_ab=comParams_uart.recDataBufferF[24]*ind2imp;
+	sys.TCR_XL_bc=comParams_uart.recDataBufferF[25]*ind2imp;
+	sys.TCR_XL_ca=comParams_uart.recDataBufferF[26]*ind2imp;
 	sys.TR_Power=comParams_uart.recDataBufferF[27]*MVAR2VAR;
 	sys.TR_Uk=comParams_uart.recDataBufferF[28];
 	sys.TR_Ratio=comParams_uart.recDataBufferF[29];
@@ -262,11 +264,11 @@ void pullDataFromMaster(void){
 	TR.CT_LOAD_secondary=comParams_uart.recDataBufferF[50];
 	
 	
-	TR.VT_MV=		(TR.VT_MV_secondary>eps) 		?	 	(TR.VT_MV_primary/TR.VT_MV_secondary) 		: 0.0f;
-	TR.VT_HV=		(TR.VT_HV_secondary>eps) 		? 	(TR.VT_HV_primary/TR.VT_HV_secondary) 		: 0.0f;
-	TR.CT_MV=		(TR.CT_MV_secondary>eps) 		? 	(TR.CT_MV_primary/TR.CT_MV_secondary) 		: 0.0f;
-	TR.CT_TCR=	(TR.CT_TCR_secondary>eps) 	? 	(TR.CT_TCR_primary/TR.CT_TCR_secondary) 	: 0.0f;
-	TR.CT_LOAD=	(TR.CT_LOAD_secondary>eps) 	? 	(TR.CT_LOAD_primary/TR.CT_LOAD_secondary) : 0.0f;
+	//TR.VT_MV=		(TR.VT_MV_secondary>eps) 		?	 	(TR.VT_MV_primary/TR.VT_MV_secondary) 		: 0.0f;
+	//TR.VT_HV=		(TR.VT_HV_secondary>eps) 		? 	(TR.VT_HV_primary/TR.VT_HV_secondary) 		: 0.0f;
+	//TR.CT_MV=		(TR.CT_MV_secondary>eps) 		? 	(TR.CT_MV_primary/TR.CT_MV_secondary) 		: 0.0f;
+	//TR.CT_TCR=	(TR.CT_TCR_secondary>eps) 	? 	(TR.CT_TCR_primary/TR.CT_TCR_secondary) 	: 0.0f;
+	//TR.CT_LOAD=	(TR.CT_LOAD_secondary>eps) 	? 	(TR.CT_LOAD_primary/TR.CT_LOAD_secondary) : 0.0f;
 	
 	/*51-55 Spare */
 	

@@ -16,7 +16,7 @@ voltage_loss.pick_up=1;
 }
 
 
-if(minSelector_3p(fRMS.Vab,fRMS.Vbc,fRMS.Vca<voltage_loss.limit)>voltage_loss.limit*1.1f){
+if(minSelector_3p(fRMS.Vab,fRMS.Vbc,fRMS.Vca)>voltage_loss.limit*1.1f){
 
 voltage_loss.pick_up=0;
 	

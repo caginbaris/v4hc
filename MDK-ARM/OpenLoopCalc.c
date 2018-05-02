@@ -31,7 +31,7 @@ void init_OpenLoopCalc(){
 }
 
 
-void lead_lag_calculation(){
+void lead_lag_calculation(){ //cau voltage input line changed
 
 
 		static float Vlagz_ab=0.0f,Vxz_ab=0,Ilagz_ab=0.0f,Ixz_ab=0;
@@ -40,7 +40,7 @@ void lead_lag_calculation(){
 
 		//********************************************************
 
-		fpp_ab.Vlag =Vlagz_ab*a1 + (adc.Vab +Vxz_ab)*b1;
+		fpp_ab.Vlag =Vlagz_ab*a1 + (adc.Vab  +Vxz_ab)*b1;
 		Vxz_ab=adc.Vab;
 		Vlagz_ab=fpp_ab.Vlag*isqrt2;
 

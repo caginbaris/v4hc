@@ -4,6 +4,7 @@
 #include "stm32f7xx_hal.h"
 #include "ios.h"
 #include "nfbm.h"
+#include "aux_functions.h"
 
 struct 	digitalInputs DI={0};
 struct 	digitalOutputs DO={0};
@@ -11,7 +12,10 @@ union 	digitalInputsUnion uDI={0};
 union 	digitalOutputsUnion uDO={0};
 
 
+static long counter[32]={0}; 
+
 void ios(void){
+	
 	
 	
 	DI.start_stop					=HAL_GPIO_ReadPin(START_STOP_DI_1_GPIO_Port,START_STOP_DI_1_Pin);

@@ -57,15 +57,15 @@ extern union uAdc Adc;
 
 enum AdcChannel{
 
-	Van=0, 				//AN-1
+	Van=0, 				//AN-1-34.5kv
 	Iload_a=1,		//AN-13
 	Ia=2,					//AN-2
 	
-	Vbn=3,				//AN-3
+	Vbn=3,				//AN-3-34.5kv
 	Iload_b=4,		//AN-14
 	Ib=5,					//AN-4
 	
-	Vcn=6,				//AN-5
+	Vcn=6,				//AN-5-34.5kv
 	Iload_c=7,		//AN-15
 	Itcr_bc=8,		//AN-11
 	
@@ -73,9 +73,9 @@ enum AdcChannel{
 	Itcr_ab=10,		//AN-10
 	Itcr_ca=11,		//A-N12
 	
-	Vab_sync=12,	//AN-7-34.5kv
-	Vbc_sync=13,	//AN-8-34.5kv
-	Vca_sync=15,	//AN-9-34.5kv
+	Vab_sync=12,	//AN-7
+	Vbc_sync=13,	//AN-8
+	Vca_sync=15,	//AN-9
 	
 
 

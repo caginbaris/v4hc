@@ -89,7 +89,7 @@ void Qbasic_calculation(void){
 		if(Qstartup.step2 & !DI.CB_Operation_Qbasic & !Qdata.HF_2_CB_pos){Qstartup.step2=0;}
 	
 	
-	if( (Qstartup.step2_passed  & Qdata.HF_3_DSC_pos & (!Qdata.HF_3_CB_pos) & DI.CB_Operation_Qbasic & !Qstartup.step3_passed)){
+	if( (Qstartup.step2_passed  & Qdata.HF_3_DSC_pos & (!Qdata.HF_3_CB_pos) & DI.CB_Operation_Qbasic)){
 		
 		Qstartup.step3=1;Qdata.HF_3_EN =1;	
 	

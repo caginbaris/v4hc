@@ -5,6 +5,9 @@
 
 void main_flow(){
 	
+	
+	#if 1
+	
 	Qbasic_calculation();
 	
 	
@@ -26,6 +29,8 @@ void main_flow(){
 	Q2alpha_transforms();
 	firing(); 
 	ios();
+	
+	#endif
 	
 
 	

@@ -134,7 +134,7 @@ void Ref_flag_handles(){
 		
 		if(runningModeFlags.bit.Qcontrol_compSelect ){
 			
-			ref_set.Q_PF_Set=cl.Ptotal*tanf(acosf(ref_set.PF_Set))*div3;
+			ref_set.Q_PF_Set=cl.Ptotal*tanf(acosf(ref_set.PF_Set));//*div3;
 			
 			if(runningModeFlags.bit.PCC_pointSelect){
 				

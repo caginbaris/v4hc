@@ -72,6 +72,36 @@ int off_delay(unsigned int input, unsigned int mem, unsigned int qual_sample, lo
 
 
 
+int on_off_delay(unsigned int input, unsigned int mem, unsigned int qual_sample, long *count)
+{
+
+	int out;
+
+	out = mem;
+
+	if (input ^ mem)
+	{
+		*count = *count + 1;
+
+		if ((*count) == qual_sample)
+		{
+			out = input;
+			*count = 0;
+		}
+
+	}
+
+	else
+	{
+		*count = 0;
+	}
+
+	return out;
+
+}
+
+
+
 
 
 

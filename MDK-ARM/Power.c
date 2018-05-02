@@ -41,7 +41,7 @@ float Vq=0;
 
 Vq=quadrature(adc.Vab);	
 	
-cl.Psum			=cl.Psum 		+	adc.Vab * adc.Ia;//+	adc.Van * adc.Ia
+cl.Psum			=cl.Psum 		+	adc.Vab  * adc.Ia;//+	adc.Van * adc.Ia
 												//+	adc.Vbn * adc.Ib
 												//+	adc.Vcn * adc.Ic;
 	

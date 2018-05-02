@@ -6,12 +6,12 @@ struct control_loops PI={0};
 
 void init_PI(void){
 	
-	PI.CL.Ki=0.00012f;
+	PI.CL.Ki=0.0006f;
 	PI.CL.Kp=0.05f;
 
 	
 	
-	PI.OL.Ki=0.0005f;
+	PI.OL.Ki=0.00008f;
 	PI.OL.Kp=0.05f;
 
 
