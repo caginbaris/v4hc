@@ -563,7 +563,19 @@ struct TurnRatios{
 extern struct TurnRatios TR; 
 
 
+struct levelCheckParameters{
+	
+	long counter[3];
+	
+	uint8_t TCR_ab_fault:1;
+	uint8_t TCR_bc_fault:1;
+	uint8_t TCR_ca_fault:1;
 
+
+};
+
+
+extern struct levelCheckParameters levelCheck;
 
 
 

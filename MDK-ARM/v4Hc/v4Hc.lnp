@@ -38,6 +38,7 @@
 "v4hc\trips.o"
 "v4hc\current_limiter.o"
 "v4hc\voltage_limiter.o"
+"v4hc\level_check.o"
 "v4hc\pll.o"
 "v4hc\pi.o"
 "v4hc\references.o"

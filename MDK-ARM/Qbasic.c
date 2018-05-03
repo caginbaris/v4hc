@@ -95,25 +95,19 @@ void Qbasic_calculation(void){
 	
 	}
 	
-	//Qstartup.step3_passed=on_delay(Qstartup.step3,Qstartup.step3_passed,_2sec,&Qstartup.step3_counter);
+	
 	
 	if(Qstartup.step3 & !DI.CB_Operation_Qbasic & !Qdata.HF_3_CB_pos){Qstartup.step3=0;}
+	
+
+
 		
-}else{
-	
-	Qstartup.step1=0;
-	Qstartup.step2=0;
-	Qstartup.step3=0;
-	
-	Qstartup.step1_passed=0;
-	Qstartup.step2_passed=0; 
-
-	Qstartup.step1_counter=0;
-	Qstartup.step2_counter=0;
-
 }
+	
 
-
+	if(!Qdata.HF_1_CB_pos & Qstartup.step1_passed){Qstartup.step1=0;}; //cau
+	if(!Qdata.HF_2_CB_pos & Qstartup.step2_passed){Qstartup.step2=0;};
+	if(!Qdata.HF_3_CB_pos & Qstartup.step3_passed){Qstartup.step3=0;};
 
 
 	/*CB closing in manual after startup*/
