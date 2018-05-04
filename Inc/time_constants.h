@@ -3,6 +3,8 @@
 
 #define   t2s 				25000
 #define   ms 					25
+#define   _5ms 				5*ms
+#define   _10ms 			2*_5ms
 #define  _1period 		20*ms
 #define  _2period 		2*_1period
 #define  _3period 		3*_1period

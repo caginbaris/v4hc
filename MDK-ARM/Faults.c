@@ -28,11 +28,14 @@ voltage_loss.trip=on_delay(voltage_loss.pick_up,voltage_loss.trip,_3period,&volt
 
 
 if(voltage_loss.trip){
+	
+	DO.IBF=0;
 
 if(DI.reset==1 && voltage_loss.pick_up==0){
 
 	voltage_loss.trip=0;
-
+	DO.IBF=1;
+	
 	}
 }
 

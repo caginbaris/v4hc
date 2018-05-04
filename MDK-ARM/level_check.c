@@ -9,7 +9,7 @@
 
 struct levelCheckParameters levelCheck={0};
 
-void level_check(){
+void level_check_startup(){
 	
 	float It=0;
 
@@ -37,6 +37,10 @@ void level_check(){
 	levelCheck.TCR_bc_fault=0;
 	levelCheck.TCR_ca_fault=0;
 	
+	levelCheck.counter[0]=0;
+	levelCheck.counter[1]=0;
+	levelCheck.counter[2]=0;		
+		
 	}
 
 
