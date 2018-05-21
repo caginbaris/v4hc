@@ -38,9 +38,9 @@ scale=init.ch;
 
 
 
-scale.Vab_sync=0.10699f;
-scale.Vbc_sync=0.10699f;
-scale.Vca_sync=0.10699f;	
+scale.Vab_sync=0.112f;
+scale.Vbc_sync=0.112f;
+scale.Vca_sync=0.112f;	
 
 
 scale.Van=0.10699f;

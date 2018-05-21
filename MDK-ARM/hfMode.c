@@ -1,8 +1,10 @@
 #include "nfbm.h"
 
+void Ref_hf();
+
 void hfMode(void){
 	
-	
+	Ref_hf();
 
 	PI.CL.ab.Iout=Qbasic.ab; PI.CL.ab.Pout=0;PI.CL.ab.PIout=Qbasic.ab;
 	PI.CL.bc.Iout=Qbasic.bc; PI.CL.bc.Pout=0;PI.CL.bc.PIout=Qbasic.bc;

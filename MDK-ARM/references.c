@@ -74,8 +74,6 @@ void Ref_manualAngle(){
 	ref_ca.final_alpha=ref_set.ManualAlpha;
 	
 
-
-
 }
 
 

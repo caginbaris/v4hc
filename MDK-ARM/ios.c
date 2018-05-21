@@ -59,7 +59,7 @@ void ios(void){
 	HAL_GPIO_WritePin(CTB1_READY_DO_1_GPIO_Port,CTB1_READY_DO_1_Pin,(GPIO_PinState)DO.READY);
 	HAL_GPIO_WritePin(CTB1_RUN_DO_2_GPIO_Port  ,CTB1_RUN_DO_2_Pin,  (GPIO_PinState)DO.RUN);
 	HAL_GPIO_WritePin(CTB1_IBF_DO_5_GPIO_Port,CTB1_IBF_DO_5_Pin, 		(GPIO_PinState)DO.IBF); //cau wrong  pin init
-	HAL_GPIO_WritePin(CTB1_StartComp_DO_4_GPIO_Port,CTB1_StartComp_DO_4_Pin,	(GPIO_PinState)DO.StartupCompleted);
+	HAL_GPIO_WritePin(CTB1_SP_DO_6_GPIO_Port,CTB1_SP_DO_6_Pin,	(GPIO_PinState)DO.StartupCompleted);
 	
 	HAL_GPIO_WritePin(LD_IBF_GPIO_Port,LD_IBF_Pin,(GPIO_PinState)DO.LD_IBF);
 	HAL_GPIO_WritePin(LD_READY_GPIO_Port,LD_READY_Pin,	(GPIO_PinState)DO.LD_READY);

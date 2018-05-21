@@ -18,6 +18,9 @@ void init_Q2alpha(void){
 	sys.TCR_XL_bc=0.001f*7.92f*2*3.14159f*50.0f;
 	sys.TCR_XL_ca=0.001f*7.92f*2*3.14159f*50.0f;
 
+	sys.Alpha_limit_down=95.0f;
+	sys.Alpha_limit_up=170.0f;
+	
 }
 
 
