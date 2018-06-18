@@ -4,8 +4,8 @@
 #include "modes.h"
 #include "time_constants.h"
 
-#define up_threshold 		1.1f
-#define down_threshold 	0.9f
+#define up_threshold 		1.20f
+#define down_threshold 	0.8f
 
 struct levelCheckParameters levelCheck={0};
 
@@ -19,15 +19,15 @@ void level_check_startup(){
 		
 		It=(ref_ab.final_Q/meanRMS.Vab);
 		
-		levelCheck.TCR_ab_fault=on_delay((meanRMS.Itcr_ab>(It*up_threshold) || meanRMS.Itcr_ab<(It*down_threshold)),levelCheck.TCR_ab_fault,_1sec,&levelCheck.counter[0]);
+		levelCheck.TCR_ab_fault=on_delay((meanRMS.Itcr_ab>(It*up_threshold) || meanRMS.Itcr_ab<(It*down_threshold)),levelCheck.TCR_ab_fault,_4period,&levelCheck.counter[0]);
 			
 		It=(ref_bc.final_Q/meanRMS.Vbc);
 		
-		levelCheck.TCR_bc_fault=on_delay((meanRMS.Itcr_bc>(It*up_threshold) || meanRMS.Itcr_bc<(It*down_threshold)),levelCheck.TCR_bc_fault,_1sec,&levelCheck.counter[1]);	
+		levelCheck.TCR_bc_fault=on_delay((meanRMS.Itcr_bc>(It*up_threshold) || meanRMS.Itcr_bc<(It*down_threshold)),levelCheck.TCR_bc_fault,_4period,&levelCheck.counter[1]);	
 	
 		It=(ref_ca.final_Q/meanRMS.Vca);
 		
-		levelCheck.TCR_ca_fault=on_delay((meanRMS.Itcr_ca>(It*up_threshold) || meanRMS.Itcr_ca<(It*down_threshold)),levelCheck.TCR_ca_fault,_1sec,&levelCheck.counter[2]);	
+		levelCheck.TCR_ca_fault=on_delay((meanRMS.Itcr_ca>(It*up_threshold) || meanRMS.Itcr_ca<(It*down_threshold)),levelCheck.TCR_ca_fault,_4period,&levelCheck.counter[2]);	
 	
 		}
 	

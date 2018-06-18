@@ -15,11 +15,13 @@ struct QbasicData{
 	float QHF_2;
 	float QHF_3;
 	float QHF_4;
+	float QHF_ext;
 	
 	float BHF_1;
 	float BHF_2;
 	float BHF_3;
 	float BHF_4;
+	float BHF_ext;
 	
 	float QTCR;
 
@@ -28,19 +30,20 @@ struct QbasicData{
 	uint32_t HF_2_CB_pos:1;
 	uint32_t HF_3_CB_pos:1;
 	uint32_t HF_4_CB_pos:1;
-
+	
 	
 	uint32_t HF_1_DSC_pos:1;
 	uint32_t HF_2_DSC_pos:1;
 	uint32_t HF_3_DSC_pos:1;
 	uint32_t HF_4_DSC_pos:1;
-
+	
 	
 	uint32_t HF_1_EN:1;
 	uint32_t HF_2_EN:1;
 	uint32_t HF_3_EN:1;
 	uint32_t HF_4_EN:1;
 	
+	uint32_t HF_ext_EN:1;
 
 };
 

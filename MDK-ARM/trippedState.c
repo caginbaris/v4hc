@@ -24,7 +24,8 @@ void trippedState(){
 		if(extTrip.all==0){
 			
 		current_state=ready;	
-		if(voltage_loss.trip){current_state=fault;}
+			
+		if(faultData.bit.voltage_loss_trip){current_state=fault;}
 		
 		}
 	

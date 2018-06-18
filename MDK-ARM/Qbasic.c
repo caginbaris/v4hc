@@ -60,7 +60,13 @@ void Qbasic_calculation(void){
 	Qdata.HF_3_EN= Qdata.HF_3_CB_pos & Qdata.HF_3_DSC_pos;
 		
 	
-	//--------------------------------
+	//HF_ext
+	
+	Qdata.HF_ext_EN=DI.Furnace3_SWT+DI.PLB_INT_DO_SPARE4/*external filter cb position*/;
+	
+	
+	
+	
 	
 	
 	if(current_state==run){
@@ -116,17 +122,20 @@ void Qbasic_calculation(void){
 	
 	
 	
-	Qbasic.ab=Qdata.BHF_1*fRMS.Vab*Qdata.HF_1_EN+
-						Qdata.BHF_2*fRMS.Vab*Qdata.HF_2_EN+
-						Qdata.BHF_3*fRMS.Vab*Qdata.HF_3_EN;
+	Qbasic.ab=Qdata.BHF_1		*fRMS.Vab*	Qdata.HF_1_EN+
+						Qdata.BHF_2		*fRMS.Vab*	Qdata.HF_2_EN+
+						Qdata.BHF_3		*fRMS.Vab*	Qdata.HF_3_EN+
+						Qdata.BHF_ext	*fRMS.Vab*	Qdata.HF_ext_EN;
 						
 	Qbasic.bc=Qdata.BHF_1*fRMS.Vbc*Qdata.HF_1_EN*+
 						Qdata.BHF_2*fRMS.Vbc*Qdata.HF_2_EN+
-						Qdata.BHF_3*fRMS.Vbc*Qdata.HF_3_EN;
+						Qdata.BHF_3*fRMS.Vbc*Qdata.HF_3_EN+
+						Qdata.BHF_ext	*fRMS.Vbc*	Qdata.HF_ext_EN;
 
 	Qbasic.ca=Qdata.BHF_1*fRMS.Vca*Qdata.HF_1_EN+
 						Qdata.BHF_2*fRMS.Vca*Qdata.HF_2_EN+
-						Qdata.BHF_3*fRMS.Vca*Qdata.HF_3_EN;
+						Qdata.BHF_3*fRMS.Vca*Qdata.HF_3_EN+
+						Qdata.BHF_ext	*fRMS.Vbc*	Qdata.HF_ext_EN;
 						
 	
 	Qbasic.mean=	(Qbasic.ab+Qbasic.bc+Qbasic.ca)*i3;				

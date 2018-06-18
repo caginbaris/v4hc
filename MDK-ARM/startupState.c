@@ -35,8 +35,8 @@ void startupState(){
 	if(on_delay(1,0,_5sec,&timeOutCounter)){
 	
 	current_state=ready;		
-	if(extTrip.all){current_state=tripped;}
-	if(voltage_loss.trip){current_state=fault;}
+	if(faultData.bit.ex_trip){current_state=tripped;}
+	if(faultData.bit.voltage_loss_trip){current_state=fault;}
 	
 	DO.LD_IBF=1;
 	DO.LD_READY=0;

@@ -3,22 +3,22 @@
 #include "time_constants.h"
 #include "ios.h"
 
-struct external_fault extTrip={0};
 
+static long counter=0;
 
 void tripRoutines(void){
 
 
 	if(!(DI.SVC_TRIP & DI.Q1_trip_ctb)){
 	
-	extTrip.pick_up=1;
+	faultData.bit.ex_pick=1;
 		
 	}else{
 	
-	extTrip.pick_up=0;
+	faultData.bit.ex_pick=0;
 	
 	}
 	
-	extTrip.all=off_delay(extTrip.pick_up,extTrip.all,half_sec,&extTrip.counter);
+	faultData.bit.ex_trip=off_delay(faultData.bit.ex_pick,faultData.bit.ex_trip,half_sec,&counter);
 	
 }

@@ -324,6 +324,31 @@ struct external_fault{
 
 extern struct external_fault extTrip;
 
+union fault_data{
+	
+	struct{
+		
+		uint32_t voltage_loss_pick:1;
+		uint32_t ex_pick:1;
+		uint32_t level_check_ab_pick:1;
+		uint32_t level_check_bc_pick:1;
+		uint32_t level_check_ca_pick:1;
+		
+		uint32_t voltage_loss_trip:1;
+		uint32_t ex_trip:1;
+		uint32_t level_check_ab_trip:1;
+		uint32_t level_check_bc_trip:1;
+		uint32_t level_check_ca_trip:1;
+	
+	}bit;
+	
+	
+	uint32_t all;
+	
+
+};
+
+extern union fault_data faultData;
 
 struct fastPowerParameters{
 
@@ -400,6 +425,7 @@ struct system_parameters{
 	float V_limit_time;
 	
 	float Vnom;
+	
 
 
 

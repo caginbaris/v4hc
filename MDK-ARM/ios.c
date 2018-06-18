@@ -47,7 +47,7 @@ void ios(void){
 	DI._2HF_Operation	    =on_off_delay(HAL_GPIO_ReadPin(_2HF_Operation_DI_26_GPIO_Port,_2HF_Operation_DI_26_Pin),							DI._2HF_Operation,			_10ms,	&counter[22]);
 	DI.Commisioning				=on_off_delay(HAL_GPIO_ReadPin(Commisioning_DI_25_GPIO_Port,Commisioning_DI_25_Pin),									DI.Commisioning,				_10ms,	&counter[23]);
 	DI.CB_Operation_Qbasic=on_off_delay(HAL_GPIO_ReadPin(CB_Operation_Qbasic_DI_28_GPIO_Port,CB_Operation_Qbasic_DI_28_Pin),		DI.CB_Operation_Qbasic,	_10ms,	&counter[24]);
-	DI.PLB_INT_DO_SPARE4	=HAL_GPIO_ReadPin(PLB_INT_DI_SP4_DI_27_GPIO_Port,PLB_INT_DI_SP4_DI_27_Pin);
+	DI.PLB_INT_DO_SPARE4	=on_off_delay(HAL_GPIO_ReadPin(PLB_INT_DI_SP4_DI_27_GPIO_Port,PLB_INT_DI_SP4_DI_27_Pin),DI.PLB_INT_DO_SPARE4,_10ms,&counter[21]);
 	DI.PLB_INT_DO_SPARE6	=HAL_GPIO_ReadPin(PLB_INT_DI_SP6_DI_29_GPIO_Port,PLB_INT_DI_SP6_DI_29_Pin);
 	
 	DI.reset							=on_off_delay(HAL_GPIO_ReadPin(DI_RESET_GPIO_Port,DI_RESET_Pin),DI.reset,_10ms,&counter[25]);
