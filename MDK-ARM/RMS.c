@@ -3,21 +3,23 @@
 #include <math.h>
 #include "time_constants.h"
 #include "plf_constants.h"
+#include "aux_functions.h"
 
 #define rms_channelNo 18
-#define rms_sample 5000
-#define rms_period 5000.0f
-#define i_rms_period 1/rms_period 
+#define rms_sample 500 
+#define rms_period 500.0f
+#define i_rms_period 1.0f/rms_period 
 #define rms_div3 0.3333333333333f
 #define c_rms_time _10sec
-#define c_rms_div  1/c_rms_time
+#define c_rms_div  1.0f/c_rms_time
 
 
 struct AdcData meanRMS={0};
 struct fastRMS fRMS={0};
 float  cRMS=0;
 union  uAdc meanRMS_sum={0};
-
+uint8_t cEN=0;
+long cEN_counter=0;
 
 
 
@@ -190,17 +192,29 @@ void correction_RMS(void){
 	static float average_sum=0;
 	float average;
 	
-	average=(meanRMS.Ia+meanRMS.Ib+meanRMS.Ic)*rms_div3;
+	
+	average=(meanRMS.Ia+meanRMS.Ib+meanRMS.Ic)*0.33333333f;
 	average_sum+=average;
 	
-	if(++counter==c_rms_time){
+	if(++counter>=250000){
 		
 		
-	cRMS=average_sum*c_rms_div;
+	cRMS=average_sum*0.000004f;
 	average_sum=0;	
 	counter=0;	
 	
 	}
+	
+	
+	cEN=on_off_delay((average<150.0f),cEN,2500,&cEN_counter);
+	
+	if(cEN){
+	
+	cRMS=0;
+	
+	}
+	
+	
 	
 
 }

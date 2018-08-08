@@ -12,3 +12,4 @@ v4hc\commparams.o: ../Inc/states.h
 v4hc\commparams.o: ../Inc/commReceivedParameters.h
 v4hc\commparams.o: ../Inc/firingTest.h
 v4hc\commparams.o: ../Inc/Qbasic.h
+v4hc\commparams.o: ../Inc/aux_functions.h

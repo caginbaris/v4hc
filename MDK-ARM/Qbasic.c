@@ -62,17 +62,13 @@ void Qbasic_calculation(void){
 	
 	//HF_ext
 	
-	Qdata.HF_ext_EN=DI.Furnace3_SWT+DI.PLB_INT_DO_SPARE4/*external filter cb position*/;
+	Qdata.HF_ext_EN=DI.Furnace3_SWT & DI.PLB_INT_DO_SPARE4;//cau /*external filter cb position*/
 	
 	
+
+	//*******************
 	
-	
-	
-	
-	if(current_state==run){
-	
-	
-	if((Qdata.HF_1_DSC_pos & (!Qdata.HF_1_CB_pos)	& DI.CB_Operation_Qbasic & !Qstartup.step1_passed )){
+	if((Qdata.HF_1_DSC_pos & (!Qdata.HF_1_CB_pos)	& DI.CB_Operation_Qbasic & !Qstartup.step1_passed & (current_state==run) )){
 	
 		Qstartup.step1=1;Qdata.HF_1_EN=1;
 	
@@ -83,37 +79,33 @@ void Qbasic_calculation(void){
 	
 	
 	
+	//*******************
 	
-	if((Qstartup.step1_passed & !Qdata.HF_2_CB_pos		& DI.CB_Operation_Qbasic & !Qstartup.step2_passed )){
+	if((Qstartup.step1_passed & (!Qdata.HF_2_CB_pos)		& DI.CB_Operation_Qbasic & !Qstartup.step2_passed )& (current_state==run)){
 		
 		Qstartup.step2=1;Qdata.HF_2_EN=1;	
 	
 	}
 	
+	
 		Qstartup.step2_passed=on_delay(Qstartup.step2,Qstartup.step2_passed,_2sec,&Qstartup.step2_counter);
 	
-		if(Qstartup.step2 & !DI.CB_Operation_Qbasic & !Qdata.HF_2_CB_pos){Qstartup.step2=0;}
 	
 	
-	if( (Qstartup.step2_passed  & Qdata.HF_3_DSC_pos & (!Qdata.HF_3_CB_pos) & DI.CB_Operation_Qbasic)){
+	//*******************	
+		
+	if( (Qstartup.step2_passed  & Qdata.HF_3_DSC_pos & (!Qdata.HF_3_CB_pos) & DI.CB_Operation_Qbasic) & (current_state==run)){
 		
 		Qstartup.step3=1;Qdata.HF_3_EN =1;	
 	
 	}
 	
+	Qstartup.step3_passed=on_delay(Qstartup.step3,Qstartup.step3_passed,_2sec,&Qstartup.step3_counter);
 	
 	
-	if(Qstartup.step3 & !DI.CB_Operation_Qbasic & !Qdata.HF_3_CB_pos){Qstartup.step3=0;}
-	
-
-
-		
-}
-	
-
-	if(!Qdata.HF_1_CB_pos & Qstartup.step1_passed){Qstartup.step1=0;}; //cau
-	if(!Qdata.HF_2_CB_pos & Qstartup.step2_passed){Qstartup.step2=0;};
-	if(!Qdata.HF_3_CB_pos & Qstartup.step3_passed){Qstartup.step3=0;};
+	if(Qstartup.step1_passed){Qstartup.step1=0;}; 
+	if(Qstartup.step2_passed){Qstartup.step2=0;};
+	if(Qstartup.step3_passed){Qstartup.step3=0;};
 
 
 	/*CB closing in manual after startup*/
@@ -127,15 +119,15 @@ void Qbasic_calculation(void){
 						Qdata.BHF_3		*fRMS.Vab*	Qdata.HF_3_EN+
 						Qdata.BHF_ext	*fRMS.Vab*	Qdata.HF_ext_EN;
 						
-	Qbasic.bc=Qdata.BHF_1*fRMS.Vbc*Qdata.HF_1_EN*+
-						Qdata.BHF_2*fRMS.Vbc*Qdata.HF_2_EN+
-						Qdata.BHF_3*fRMS.Vbc*Qdata.HF_3_EN+
+	Qbasic.bc=Qdata.BHF_1		*fRMS.Vbc*Qdata.HF_1_EN*+
+						Qdata.BHF_2		*fRMS.Vbc*Qdata.HF_2_EN+
+						Qdata.BHF_3		*fRMS.Vbc*Qdata.HF_3_EN+
 						Qdata.BHF_ext	*fRMS.Vbc*	Qdata.HF_ext_EN;
 
-	Qbasic.ca=Qdata.BHF_1*fRMS.Vca*Qdata.HF_1_EN+
-						Qdata.BHF_2*fRMS.Vca*Qdata.HF_2_EN+
-						Qdata.BHF_3*fRMS.Vca*Qdata.HF_3_EN+
-						Qdata.BHF_ext	*fRMS.Vbc*	Qdata.HF_ext_EN;
+	Qbasic.ca=Qdata.BHF_1		*fRMS.Vca*Qdata.HF_1_EN+
+						Qdata.BHF_2		*fRMS.Vca*Qdata.HF_2_EN+
+						Qdata.BHF_3		*fRMS.Vca*Qdata.HF_3_EN+
+						Qdata.BHF_ext	*fRMS.Vca*	Qdata.HF_ext_EN;
 						
 	
 	Qbasic.mean=	(Qbasic.ab+Qbasic.bc+Qbasic.ca)*i3;				

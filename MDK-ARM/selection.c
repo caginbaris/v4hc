@@ -17,12 +17,12 @@ void mode_selection(){
 		if(runningModeFlags.bit.firingTest    		& (current_state!=run)){	new_mode=firingTest; TestFire.enable_firing=1;}
 			
 		if(runningModeFlags.bit.closedLoopControl & !runningModeFlags.bit.openLoopControl 	){new_mode=closedLoop;}
-		if(runningModeFlags.bit.closedLoopControl & runningModeFlags.bit.openLoopControl 		){new_mode=openLoop;}
+		if(runningModeFlags.bit.closedLoopControl &  runningModeFlags.bit.openLoopControl 	){new_mode=openLoop;}
 		if(runningModeFlags.bit.manualControl     & !runningModeFlags.bit.manual_modeSelect ){new_mode=manualVar;}
-		if(runningModeFlags.bit.manualControl     & runningModeFlags.bit.manual_modeSelect	){new_mode=manualAngle;}
+		if(runningModeFlags.bit.manualControl     &  runningModeFlags.bit.manual_modeSelect	){new_mode=manualAngle;}
 		
 		if(current_mode!=new_mode){current_mode=inter;}
 		
 		/*flag selections*/	
-			
+
 }

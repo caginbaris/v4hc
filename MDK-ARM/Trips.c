@@ -4,10 +4,12 @@
 #include "ios.h"
 
 
-static long counter=0;
+
 
 void tripRoutines(void){
-
+	
+	static long counter=0;
+	static uint8_t temp=0;	
 
 	if(!(DI.SVC_TRIP & DI.Q1_trip_ctb)){
 	
@@ -19,6 +21,8 @@ void tripRoutines(void){
 	
 	}
 	
-	faultData.bit.ex_trip=off_delay(faultData.bit.ex_pick,faultData.bit.ex_trip,half_sec,&counter);
+	temp=off_delay(faultData.bit.ex_pick,temp,half_sec,&counter);
+	
+	if(temp){faultData.bit.ex_trip=1;}
 	
 }

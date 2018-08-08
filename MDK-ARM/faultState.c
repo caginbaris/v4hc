@@ -10,22 +10,22 @@ void faultState(){
 	
 	DO.READY=0;
 	DO.RUN=0;
-	DO.IBF=1;
+
 	
 	
 	// led indication
 	
-	DO.LD_IBF=1;
+
 	DO.LD_READY=0;
 	DO.LD_RUN=0;
 	
 	
 	
 	
-	if(!voltage_loss.trip){
+	if(!faultData.bit.general_fault){
 		
 		current_state=ready;
-		if(extTrip.all){current_state=tripped;}
+		if(faultData.bit.ex_trip){current_state=tripped;}
 	
 	}
 	

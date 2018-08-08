@@ -24,7 +24,7 @@ struct system_parameters sys={0};
 
 void init_OpenLoopCalc(){
 	
-	sys.OL_ref_limit=50000.0f;
+
 	sys.OL_ratio=0.75f;
 
 

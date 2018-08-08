@@ -8,20 +8,25 @@
 #define VnomSquare 34500.0f*34500.0f
 #define div3 0.333333333333333333333f
 
-struct references ref_ab;
-struct references ref_bc;
-struct references ref_ca;
+struct references ref_ab={160.0f,0.0f};
+struct references ref_bc={160.0f,0.0f};;
+struct references ref_ca={160.0f,0.0f};;
 
 void init_references()
 {
 	
 	ref_set.ManualAlpha=120.0f;
-	ref_set.ManualQ=0;
+	ref_set.ManualQ=0.0f;
 	ref_set.MV_Bus_Offset=0;
 	ref_set.TR_Offset=0;
 	ref_set.MV_Bus_Offset=0;
 	ref_set.PF_Set=1.0f;
-	ref_set.Q_PF_Set=0;
+	ref_set.Q_PF_Set=0;	
+	
+	sys.TR_Uk=0.144;
+	sys.TR_Power=150000000;
+	sys.TR_Ratio=0.5;
+	
 	
 
 }
@@ -34,6 +39,8 @@ void Ref_CL(){
 	ref_ca.final_Q=PI.CL.ca.PIout;
 	
 	
+
+
 }
 
 
@@ -61,6 +68,10 @@ void Ref_manualVar(){
 	ref_ca.final_Q=ref_set.ManualQ;
 	
 
+	
+	
+	
+
 
 }
 
@@ -73,6 +84,8 @@ void Ref_manualAngle(){
 	ref_bc.final_alpha=ref_set.ManualAlpha;
 	ref_ca.final_alpha=ref_set.ManualAlpha;
 	
+
+
 
 }
 
@@ -103,16 +116,21 @@ void ref_basic(){
 	ref_ab.final_Q=Qbasic.ab;
 	ref_bc.final_Q=Qbasic.bc;
 	ref_ca.final_Q=Qbasic.ca;
+		
+	PI.OL.Iout=Qbasic.mean;
+	PI.OL.PIout=Qbasic.mean;	
+		
+	PI.CL.ab.Iout=Qbasic.ab; PI.CL.ab.Pout=0.0f;
+	PI.CL.bc.Iout=Qbasic.bc; PI.CL.bc.Pout=0.0f;
+	PI.CL.ca.Iout=Qbasic.ca; PI.CL.ca.Pout=0.0f;	
 	
 	}
 		
-	
 }
 
 void Ref_flag_handles(){
-
-
-		if(!runningModeFlags.bit.Qcontrol_compSelect ){
+	
+			if(!runningModeFlags.bit.Qcontrol_compSelect ){
 			
 			if(runningModeFlags.bit.PCC_pointSelect){
 				
@@ -120,7 +138,11 @@ void Ref_flag_handles(){
 			
 			}else{
 				
-			ref_set.TR_Offset = sys.TR_Ratio*sys.TR_Uk*(VnomSquare)/sys.TR_Power;
+			if(	sys.TR_Power>1.0f){
+				
+			ref_set.TR_Offset = cRMS*cRMS*sys.TR_Ratio*sys.TR_Uk*(VnomSquare)/sys.TR_Power;
+
+			}else{ref_set.TR_Offset=0;}
 				
 			PI.Qref=(ref_set.MV_Bus_Offset - ref_set.TR_Offset);
 			
@@ -130,9 +152,10 @@ void Ref_flag_handles(){
 		
 		
 		
+		
 		if(runningModeFlags.bit.Qcontrol_compSelect ){
 			
-			ref_set.Q_PF_Set=cl.Ptotal*tanf(acosf(ref_set.PF_Set));//*div3;
+			ref_set.Q_PF_Set=cl.Ptotal*tanf(acosf(ref_set.PF_Set))*div3;
 			
 			if(runningModeFlags.bit.PCC_pointSelect){
 				
@@ -140,14 +163,16 @@ void Ref_flag_handles(){
 			
 			}else{
 				
-			ref_set.TR_Offset = sys.TR_Ratio*sys.TR_Uk*(VnomSquare)/sys.TR_Power;	
+			if(	sys.TR_Power>1.0f){	
+				
+			ref_set.TR_Offset = cRMS*cRMS*sys.TR_Ratio*sys.TR_Uk*(VnomSquare)/sys.TR_Power;	}else{ref_set.TR_Offset=0;}
 			
 			PI.Qref=(ref_set.Q_PF_Set - ref_set.TR_Offset);
 			
 			}
 		
 		}
-		
+
 
 }
 

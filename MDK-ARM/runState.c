@@ -15,7 +15,7 @@ void runState(void){
 	static uint8_t start_stop=0;
 	
 	static uint8_t cb_op=0,cb_op_back=0,cb_op_flag=0;
-	long cb_opp_counter=0;
+	static long cb_opp_counter=0;
 	
 	// CB timeout eklenebilir
 	
@@ -23,15 +23,14 @@ void runState(void){
 	
 	DO.READY=0;
 	DO.RUN=1;
-	DO.IBF=1;
+
 	
 	// led indication
 	
-	DO.LD_IBF=1;
 	DO.LD_READY=0;
 	DO.LD_RUN=1;
 	
-	if(	(DI.Q1_cb_pos |DI.CB_Operation_Qbasic) & 
+	if(	(DI.Q1_cb_pos) & 
 			(!status.start_flag) /*remaining entry!*/){
 		
 		status.start_flag=1;
@@ -40,9 +39,10 @@ void runState(void){
 	
 	
 	if(status.start_flag & 
-		!status.regulation_enable & 
 		(current_mode==openLoop | current_mode==closedLoop)&
-		!status.Qbasic_flag){
+		(!status.Qbasic_flag) &
+		(!status.regulation_enable)
+	){
 	
 		status.Qbasic_flag=1;
 		
@@ -51,16 +51,11 @@ void runState(void){
 	
 	status.regulation_enable=on_delay(status.start_flag,status.regulation_enable,_12sec,&regulationCounter);
 	
-	
-	if(status.regulation_enable & status.Qbasic_flag){
-	
-		status.Qbasic_flag=0;
-	
-	}
-	
-	
+
 	
 	if(status.regulation_enable){
+		
+		status.Qbasic_flag=0;
 		
 		/*sebeke güç kontrolü sonrasinda DO.startup set, +-5 MVAR, for 2sec*/
 		
@@ -75,11 +70,10 @@ void runState(void){
 		
 		if(cb_op_flag){
 			
-			
-		//cau	removed
-		//status.Qbasic_flag=1;	
 		
-		cb_op_flag=off_delay(0,cb_op_flag,_2sec,&cb_opp_counter);
+		status.Qbasic_flag=1;	
+		
+		cb_op_flag=off_delay(0,cb_op_flag,_3sec,&cb_opp_counter);
 			
 		if(!cb_op_flag){status.Qbasic_flag=0;}
 			
@@ -91,14 +85,13 @@ void runState(void){
 	
 	//stop routine------------------------------
 	
-	start_stop=off_delay(DI.start_stop,start_stop,_2sec,&start_count);
+	start_stop=off_delay(DI.start_stop,start_stop,_1period,&start_count);
 	
-	if(start_stop==0 || extTrip.all==1){
-           
+	if(start_stop==0 || faultData.bit.ex_trip==1  ||  DI.Q1_open_ctb==0){
 		
 	status.regulation_enable=0;
-
-	DO.StartupCompleted=0;	
+	DO.StartupCompleted=0;
+	cb_op_flag=0;		
 
 	current_state=idle;	
 		

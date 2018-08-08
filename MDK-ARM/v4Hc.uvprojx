@@ -585,6 +585,11 @@
               <FilePath>.\Trips.c</FilePath>
             </File>
             <File>
+              <FileName>level_check.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\level_check.c</FilePath>
+            </File>
+            <File>
               <FileName>current_limiter.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\current_limiter.c</FilePath>
@@ -595,14 +600,9 @@
               <FilePath>.\voltage_limiter.c</FilePath>
             </File>
             <File>
-              <FileName>level_check.c</FileName>
+              <FileName>protection_handling.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\level_check.c</FilePath>
-            </File>
-            <File>
-              <FileName>reset_handling.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\reset_handling.c</FilePath>
+              <FilePath>.\protection_handling.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -663,6 +663,16 @@
               <FileName>OpenLoopCalc.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\OpenLoopCalc.c</FilePath>
+            </File>
+            <File>
+              <FileName>rush.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\rush.c</FilePath>
+            </File>
+            <File>
+              <FileName>f_extract.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\f_extract.c</FilePath>
             </File>
           </Files>
         </Group>

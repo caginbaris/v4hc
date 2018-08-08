@@ -8,24 +8,23 @@ void trippedState(){
 
 	static long timeOutCounter=0;
 	
-	// Output Set
+		// Output Set
 	
-	DO.READY=0;
-	DO.RUN=0;
-	DO.IBF=1;
+		DO.READY=0;
+		DO.RUN=0;
+
 	
-	// led indication
+		// led indication
 	
-	DO.LD_IBF=1;
-	DO.LD_READY=0;
-	DO.LD_RUN=0;
+		DO.LD_READY=0;
+		DO.LD_RUN=0;
 	
 	
-		if(extTrip.all==0){
+		if(!faultData.bit.ex_trip){
 			
-		current_state=ready;	
+		current_state=ready;
 			
-		if(faultData.bit.voltage_loss_trip){current_state=fault;}
+		if(faultData.bit.general_fault){current_state=fault;}
 		
 		}
 	

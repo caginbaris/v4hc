@@ -12,17 +12,26 @@
 #include "main.h"
 #include "aux_functions.h"
 
-struct firing_parameters fire;
+struct firing_parameters fire={0};
 struct firingOutputs fr={0};
-union firingOutputsUnion ufr={0};
+union  firingOutputsUnion ufr={0};
 
-uint8_t firing_disable=1;
+
 
 
 void init_firing(void){
 	
-sys.Alpha_limit_up=170.0f;
-sys.Alpha_limit_down=95;	
+	ufr.all=0;
+	
+	fire.ab.alpha=sys.Alpha_limit_up;
+	fire.bc.alpha=sys.Alpha_limit_up;
+	fire.ca.alpha=sys.Alpha_limit_up;
+	
+	fire.ab.pre_alpha_p=sys.Alpha_limit_up;
+	fire.bc.pre_alpha_p=sys.Alpha_limit_up;
+	fire.ca.pre_alpha_p=sys.Alpha_limit_up;
+	
+	
 
 }
 
@@ -39,9 +48,9 @@ void firing(){
 	if(PLL.bc_deg>360.0f){PLL.bc_deg=PLL.bc_deg-360.0f;}
 	if(PLL.ca_deg>360.0f){PLL.ca_deg=PLL.ca_deg-360.0f;}
 
-	if(PLL.ab_deg<0){PLL.ab_deg=PLL.ab_deg+360;}
-	if(PLL.bc_deg<0){PLL.bc_deg=PLL.bc_deg+360;}
-	if(PLL.ca_deg<0){PLL.ca_deg=PLL.ca_deg+360;}
+	if(PLL.ab_deg<0.0f){PLL.ab_deg=PLL.ab_deg+360.0f;}
+	if(PLL.bc_deg<0.0f){PLL.bc_deg=PLL.bc_deg+360.0f;}
+	if(PLL.ca_deg<0.0f){PLL.ca_deg=PLL.ca_deg+360.0f;}
 
 
 

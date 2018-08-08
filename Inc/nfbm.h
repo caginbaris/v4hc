@@ -8,7 +8,9 @@
 #ifndef __nfbm_h
 #define __nfbm_h
 
-#include "stdint.h"
+#include <stdint.h>
+
+#define voltage_loss_limit 22000.0f
 
 
 struct AdcData{
@@ -263,7 +265,7 @@ struct fastRMS {
 };
 
 extern struct fastRMS fRMS;
-
+extern float cRMS;
 
 struct QbasicOut{
 
@@ -301,44 +303,24 @@ extern struct ClosedLoopPQ cl;
 
 
 
-struct internal_fault{
-
-
- float 	limit;
- long 	 counter;
- uint16_t 	 pick_up:1;
- uint16_t 	 trip:1;		
-
-};
-
-extern struct internal_fault voltage_loss;
-
-
-struct external_fault{
-	
-	long 	 counter;
-	uint32_t 	 pick_up:1;
-  uint32_t 	 all:1;		
-
-};
-
-extern struct external_fault extTrip;
 
 union fault_data{
 	
 	struct{
 		
 		uint32_t voltage_loss_pick:1;
-		uint32_t ex_pick:1;
 		uint32_t level_check_ab_pick:1;
 		uint32_t level_check_bc_pick:1;
 		uint32_t level_check_ca_pick:1;
+		uint32_t ex_pick:1;
 		
 		uint32_t voltage_loss_trip:1;
-		uint32_t ex_trip:1;
 		uint32_t level_check_ab_trip:1;
 		uint32_t level_check_bc_trip:1;
 		uint32_t level_check_ca_trip:1;
+		uint32_t ex_trip:1;
+		
+		uint32_t general_fault:1;
 	
 	}bit;
 	
@@ -531,7 +513,7 @@ struct voltageLimitParameters{
 };
 
 
-
+extern struct voltageLimitParameters V_limiter;
 
 
 

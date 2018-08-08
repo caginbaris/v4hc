@@ -8,16 +8,12 @@
 #include "commReceivedParameters.h"
 #include "firingTest.h"
 #include "Qbasic.h"
+#include "aux_functions.h"
 
-
-#define toK 0.001f
-#define toK2 0.000001f
-#define toM  0.000001f
-#define toPercent 100.0f
-#define eps  0.000001f
-
-#define MVAR2VAR 1000000.0f
-#define ind2imp  2.0f*3.14159f*50.0f*0.001f 
+#define toM 	1000000.0f
+#define toK 	1000.0f
+#define div3 	0.3333333f
+#define fac3 	3.0f
 
 union mode_flags receivedModeFlags;
 
@@ -25,9 +21,23 @@ struct ref_parameters ref_param_received;
 struct ref_parameters ref_set;
 union statUnion uStatus={0}; 
 
-void mode_selection(void);
-
 extern float cRMS;
+
+
+#define MV_Bus_Offset_limit 3300000.0f
+#define PF_Set_limit 1.0f
+#define Qsys_limit 70000000.0f
+#define Alpha_up_limit 175.0f
+#define Alpha_down_limit 97.0f
+#define Isys_limit 1800.0f
+#define Isys_limit_time 5.0f
+#define Vsys_limit 35000.0f
+#define Vsys_limit_time 0.3f
+#define Bsys_limit 0.95f
+
+
+
+void mode_selection(void);
 
 void pushDataToMaster(void){
 	
@@ -39,12 +49,12 @@ void pushDataToMaster(void){
 	uDO.DO=DO;
 	uStatus.status=status;
 
-	comParams.pushDataBufferDW[0]=1<<current_state;
-	comParams.pushDataBufferDW[1]=1<<current_mode;
+	comParams.pushDataBufferDW[0]=(uint8_t)1<<current_state;
+	comParams.pushDataBufferDW[1]=(uint8_t)1<<current_mode;
 	comParams.pushDataBufferDW[2]=uDI.all;
 	comParams.pushDataBufferDW[3]=uDO.all;
 	comParams.pushDataBufferDW[4]=uStatus.all;
-	//DW spare-5
+	comParams.pushDataBufferDW[5]=faultData.all;
 	//DW spare-6
 	//DW spare-7
 	//DW spare-8
@@ -59,11 +69,11 @@ void pushDataToMaster(void){
 	comParams.pushDataBufferF[2]=Qbasic.ca;
 	
 	
-	comParams.pushDataBufferF[3]=cl.Qab*toM;
-	comParams.pushDataBufferF[4]=cl.Qbc*toM;
-	comParams.pushDataBufferF[5]=cl.Qca*toM;
-	comParams.pushDataBufferF[6]=cl.Qsum*toM;
-	comParams.pushDataBufferF[7]=cl.Psum*toM;
+	comParams.pushDataBufferF[3]=cl.Qab;
+	comParams.pushDataBufferF[4]=cl.Qbc;
+	comParams.pushDataBufferF[5]=cl.Qca;
+	comParams.pushDataBufferF[6]=cl.Qtotal;
+	comParams.pushDataBufferF[7]=cl.Ptotal;
 	
 	comParams.pushDataBufferF[8]=Qol.a;
 	comParams.pushDataBufferF[9]=Qol.b;
@@ -124,7 +134,7 @@ void pushDataToMaster(void){
 	comParams.pushDataBufferF[49]=fRMS.Vbc;
 	comParams.pushDataBufferF[50]=fRMS.Vca;
 	
-	comParams.pushDataBufferF[51]=PI.Qref;
+	comParams.pushDataBufferF[51]=PI.Qref*fac3;
 	
 	comParams.pushDataBufferF[52]=PI.CL.ab.Qin;
 	comParams.pushDataBufferF[53]=PI.CL.bc.Qin;
@@ -135,11 +145,21 @@ void pushDataToMaster(void){
 	comParams.pushDataBufferF[56]=PI.CL.ab.PIout;
 	comParams.pushDataBufferF[57]=PI.CL.bc.PIout;
 	comParams.pushDataBufferF[58]=PI.CL.ca.PIout;
-	comParams.pushDataBufferF[59]=PI.OL.PIout*toM;
+	comParams.pushDataBufferF[59]=PI.OL.PIout;
 	
 	
 	comParams.pushDataBufferF[60]=ref_set.TR_Offset;
 	comParams.pushDataBufferF[61]=ref_set.Q_PF_Set;
+	
+	comParams.pushDataBufferF[62]=I_limiter.ab.B;//cau
+	comParams.pushDataBufferF[63]=I_limiter.bc.B;
+	comParams.pushDataBufferF[64]=I_limiter.ca.B;
+	comParams.pushDataBufferF[65]=V_limiter.ab.Bout;
+	comParams.pushDataBufferF[66]=V_limiter.bc.Bout;
+	comParams.pushDataBufferF[67]=V_limiter.ca.Bout;
+	
+	
+
 	
 	
 	// online parameters
@@ -152,11 +172,11 @@ void pushDataToMaster(void){
 	//DW spare-5
 	
 	
-	comParams.pushDataBufferF[109]=ref_set.MV_Bus_Offset;
+	comParams.pushDataBufferF[109]=ref_set.MV_Bus_Offset*fac3;
 	comParams.pushDataBufferF[110]=ref_set.PF_Set;
-	comParams.pushDataBufferF[111]=ref_set.ManualQ;
+	comParams.pushDataBufferF[111]=ref_set.ManualQ*fac3;
 	comParams.pushDataBufferF[112]=ref_set.ManualAlpha;
-	comParams.pushDataBufferF[113]=sys.Q_limit;
+	comParams.pushDataBufferF[113]=sys.Q_limit*fac3;
 	comParams.pushDataBufferF[114]=sys.Alpha_limit_up;
 	comParams.pushDataBufferF[115]=sys.Alpha_limit_down;
 	comParams.pushDataBufferF[116]=sys.I_limit;
@@ -183,8 +203,6 @@ void pushDataToMaster(void){
 	comParams.pushDataBufferF[137]=sys.TR_Uk;
 	comParams.pushDataBufferF[138]=sys.TR_Ratio;
 	comParams.pushDataBufferF[139]=sys.Vnom ;
-	comParams.pushDataBufferF[140]=Qdata.QHF_ext;
-	
 	/*spare 139-149*/
 	
 	comParams.pushDataBufferF[150]=TR.VT_MV_primary;
@@ -202,9 +220,15 @@ void pushDataToMaster(void){
 	comParams.pushDataBufferF[158]=TR.CT_LOAD_primary;
 	comParams.pushDataBufferF[159]=TR.CT_LOAD_secondary;
 	
-	
-	
 
+	
+	comParams.pushDataBufferF[160]=TR.VT_MV;
+	comParams.pushDataBufferF[161]=TR.VT_HV;
+	comParams.pushDataBufferF[162]=TR.CT_MV;
+	comParams.pushDataBufferF[163]=TR.CT_TCR;
+	comParams.pushDataBufferF[164]=TR.CT_LOAD;
+
+	
 	
 }
 
@@ -212,44 +236,50 @@ void pushDataToMaster(void){
 void pullDataFromMaster(void){
 	
 	
+	
 	receivedModeFlags.all=comParams_uart.recDataBufferDW[0];
 	
 	mode_selection();
 	
 	//DW spare 1 to 4
-	ref_set.MV_Bus_Offset=comParams_uart.recDataBufferF[0]*MVAR2VAR;
-	ref_set.PF_Set=comParams_uart.recDataBufferF[1];
-	ref_set.ManualQ=comParams_uart.recDataBufferF[2]*MVAR2VAR;
-	ref_set.ManualAlpha=comParams_uart.recDataBufferF[3];
-	sys.Q_limit=comParams_uart.recDataBufferF[4]*MVAR2VAR;
-	sys.Alpha_limit_up=comParams_uart.recDataBufferF[5];
-	sys.Alpha_limit_down=comParams_uart.recDataBufferF[6];
-	sys.I_limit=comParams_uart.recDataBufferF[7];
-	sys.I_limit_time=comParams_uart.recDataBufferF[8];
-	sys.V_limit=comParams_uart.recDataBufferF[9];
-	sys.V_limit_time=comParams_uart.recDataBufferF[10];
-	sys.B_limit_up=comParams_uart.recDataBufferF[11];
-	sys.B_limit_down=comParams_uart.recDataBufferF[12];
-	TestFire.alpha=comParams_uart.recDataBufferF[13];
-	TestFire.firing_duration=comParams_uart.recDataBufferF[14];
-	PI.CL.Kp=comParams_uart.recDataBufferF[15];
-	PI.CL.Ki=comParams_uart.recDataBufferF[16];
-	PI.OL.Kp=comParams_uart.recDataBufferF[17];
-	PI.OL.Ki=comParams_uart.recDataBufferF[18];
-	Qdata.QHF_1=comParams_uart.recDataBufferF[19]*MVAR2VAR;
-	Qdata.QHF_2=comParams_uart.recDataBufferF[20]*MVAR2VAR;
-	Qdata.QHF_3=comParams_uart.recDataBufferF[21]*MVAR2VAR;
-	Qdata.QHF_4=comParams_uart.recDataBufferF[22]*MVAR2VAR;
-	Qdata.QTCR=comParams_uart.recDataBufferF[23]*MVAR2VAR;
-	sys.TCR_XL_ab=comParams_uart.recDataBufferF[24]*ind2imp;
-	sys.TCR_XL_bc=comParams_uart.recDataBufferF[25]*ind2imp;
-	sys.TCR_XL_ca=comParams_uart.recDataBufferF[26]*ind2imp;
-	sys.TR_Power=comParams_uart.recDataBufferF[27]*MVAR2VAR;
-	sys.TR_Uk=comParams_uart.recDataBufferF[28];
-	sys.TR_Ratio=comParams_uart.recDataBufferF[29];
-	sys.Vnom=comParams_uart.recDataBufferF[30];
-	Qdata.QHF_ext=comParams_uart.recDataBufferF[31]*MVAR2VAR;
-	/*31-40 spare*/
+	ref_set.MV_Bus_Offset=comParams_uart.recDataBufferF[0]*toM*div3 ; f_limiter(&ref_set.MV_Bus_Offset,-MV_Bus_Offset_limit,MV_Bus_Offset_limit);
+	ref_set.PF_Set=comParams_uart.recDataBufferF[1];									f_limiter(&ref_set.PF_Set,-PF_Set_limit,PF_Set_limit);	
+	ref_set.ManualQ=comParams_uart.recDataBufferF[2]*toM*div3;				f_limiter(&ref_set.ManualQ,0.0f,Qsys_limit);	
+	ref_set.ManualAlpha=comParams_uart.recDataBufferF[3];							f_limiter(&ref_set.ManualAlpha,Alpha_down_limit,Alpha_up_limit);	
+	sys.Q_limit=comParams_uart.recDataBufferF[4]*toM*div3;						f_limiter(&sys.Q_limit,Qsys_limit*0.25,Qsys_limit);
+	sys.Alpha_limit_up=comParams_uart.recDataBufferF[5];							f_limiter(&sys.Alpha_limit_up,Alpha_down_limit,Alpha_up_limit);
+	sys.Alpha_limit_down=comParams_uart.recDataBufferF[6];						f_limiter(&sys.Alpha_limit_down,Alpha_down_limit,Alpha_up_limit);
+	sys.I_limit=comParams_uart.recDataBufferF[7];											f_limiter(&sys.I_limit,Isys_limit*0.25f,Isys_limit);
+	sys.I_limit_time=comParams_uart.recDataBufferF[8];								f_limiter(&sys.I_limit_time,Isys_limit_time*0.1f,Isys_limit_time);
+	sys.V_limit=comParams_uart.recDataBufferF[9];											f_limiter(&sys.V_limit,Vsys_limit*0.97f,Vsys_limit);
+	sys.V_limit_time=comParams_uart.recDataBufferF[10];								f_limiter(&sys.V_limit_time,Vsys_limit_time*0.1f,Vsys_limit_time);	
+	sys.B_limit_up=comParams_uart.recDataBufferF[11];									f_limiter(&sys.B_limit_up,Bsys_limit*0.25f,Bsys_limit);
+	sys.B_limit_down=comParams_uart.recDataBufferF[12];								f_limiter(&sys.B_limit_down,0,Bsys_limit);
+	TestFire.alpha=comParams_uart.recDataBufferF[13];									f_limiter(&TestFire.alpha,Alpha_down_limit,Alpha_up_limit);
+	TestFire.firing_duration=comParams_uart.recDataBufferF[14];				f_limiter(&TestFire.firing_duration,0.02,0.2);
+	//PI.CL.Kp=comParams_uart.recDataBufferF[15];
+	//PI.CL.Ki=comParams_uart.recDataBufferF[16];
+	//PI.OL.Kp=comParams_uart.recDataBufferF[17];
+	//PI.OL.Ki=comParams_uart.recDataBufferF[18];
+	Qdata.QHF_1=comParams_uart.recDataBufferF[19];
+	Qdata.QHF_2=comParams_uart.recDataBufferF[20];
+	Qdata.QHF_3=comParams_uart.recDataBufferF[21];
+	Qdata.QHF_4=comParams_uart.recDataBufferF[22];
+	Qdata.QTCR=comParams_uart.recDataBufferF[23];
+	//sys.TCR_XL_ab=comParams_uart.recDataBufferF[24];;
+	//sys.TCR_XL_bc=comParams_uart.recDataBufferF[25];
+	//sys.TCR_XL_ca=comParams_uart.recDataBufferF[26];
+	//sys.TR_Power=comParams_uart.recDataBufferF[27]*toM;
+	//sys.TR_Uk=comParams_uart.recDataBufferF[28];
+	sys.TR_Ratio=comParams_uart.recDataBufferF[29];	f_limiter(&sys.TR_Ratio,0.0f,1.0f);
+	//sys.Vnom=comParams_uart.recDataBufferF[30]*toK;
+	/*29-40 spare*/
+	
+	I_limiter.level=sys.I_limit;
+	I_limiter.delay =sys.I_limit_time;
+
+	V_limiter.level=sys.V_limit;
+	V_limiter.delay=sys.V_limit_time;
 	
 	TR.VT_MV_primary=comParams_uart.recDataBufferF[41];
 	TR.VT_MV_secondary=comParams_uart.recDataBufferF[42];
@@ -267,11 +297,12 @@ void pullDataFromMaster(void){
 	TR.CT_LOAD_secondary=comParams_uart.recDataBufferF[50];
 	
 	
-	//TR.VT_MV=		(TR.VT_MV_secondary>eps) 		?	 	(TR.VT_MV_primary/TR.VT_MV_secondary) 		: 0.0f;
-	//TR.VT_HV=		(TR.VT_HV_secondary>eps) 		? 	(TR.VT_HV_primary/TR.VT_HV_secondary) 		: 0.0f;
-	//TR.CT_MV=		(TR.CT_MV_secondary>eps) 		? 	(TR.CT_MV_primary/TR.CT_MV_secondary) 		: 0.0f;
-	//TR.CT_TCR=	(TR.CT_TCR_secondary>eps) 	? 	(TR.CT_TCR_primary/TR.CT_TCR_secondary) 	: 0.0f;
-	//TR.CT_LOAD=	(TR.CT_LOAD_secondary>eps) 	? 	(TR.CT_LOAD_primary/TR.CT_LOAD_secondary) : 0.0f;
+	TR.VT_MV=	(TR.VT_MV_secondary>1.0f) 	? 			(TR.VT_MV_primary/	TR.VT_MV_secondary) : TR.VT_MV;
+	TR.VT_HV=	(TR.VT_HV_secondary>1.0f) 	? 			(TR.VT_HV_primary/	TR.VT_HV_secondary) : TR.VT_HV;
+	TR.CT_MV=	(TR.CT_MV_secondary>1.0f) 	? 			(TR.CT_MV_primary/	TR.CT_MV_secondary) : TR.CT_MV;
+	TR.CT_TCR=	(TR.CT_TCR_secondary>1.0f) 	? 		(TR.CT_TCR_primary/	TR.CT_TCR_secondary) :TR.CT_TCR;
+	TR.CT_LOAD=	(TR.CT_LOAD_secondary>1.0f) 	? 	(TR.CT_LOAD_primary/TR.CT_LOAD_secondary):TR.CT_LOAD;
+	
 	
 	/*51-55 Spare */
 	

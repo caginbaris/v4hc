@@ -12,11 +12,11 @@ void stoppedState(){
 	
 	DO.READY=0;
 	DO.RUN=0;
-	DO.IBF=1;
+
 	
 	// led indication
 	
-	DO.LD_IBF=1;
+
 	DO.LD_READY=0;
 	DO.LD_RUN=0;
 	
@@ -24,7 +24,7 @@ void stoppedState(){
 	if(on_delay(1,0,_3sec,&timeOutCounter)){
 	
 		current_state=ready;
-		if(voltage_loss.trip){current_state=fault;}
+		if(faultData.bit.general_fault){current_state=fault;}
 	
 	}
 

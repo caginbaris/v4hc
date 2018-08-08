@@ -13,22 +13,22 @@ void idleState(){
 	
 	DO.READY=0;
 	DO.RUN=1;
-	DO.IBF=1;
+
 
 	// led indication
 	
-	DO.LD_IBF=1;
+
 	DO.LD_READY=0;
 	DO.LD_RUN=1;
 	
 	status.Qbasic_flag=1;
 	
-	idleFlag=off_delay(DI.Q1_cb_pos,idleFlag,_1sec,&counter);
+	idleFlag=off_delay(DI.Q1_cb_pos,idleFlag,_2period,&counter);
 	
 	if(!idleFlag){
 		
 		status.start_flag=0;
-		status.Qbasic_flag=0;
+		status.Qbasic_flag=0; 
 		
 		current_state=tripped;
 		if(DI.Q1_open_ctb==1){current_state=stopped;} // DI.Q1_open sinyali burayi yönlendirilecek
