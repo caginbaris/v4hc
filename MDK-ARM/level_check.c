@@ -8,7 +8,7 @@
 #define up_threshold 		1.20f
 #define down_threshold 	0.8f
 
-struct levelCheckParameters levelCheck={0};
+
 
 float fTCR[3]={0};
 static long counter[3]={0};
